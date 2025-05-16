@@ -3,7 +3,6 @@
     "name": "imigration",
     "slug": "imigration",
     "version": "1.0.0",
-
     "scheme": "imigration",
     "web": {
       "bundler": "metro",
@@ -21,28 +20,34 @@
     ],
     "experiments": {
       "typedRoutes": true,
-
       "tsconfigPaths": true
     },
-
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-
     "userInterfaceStyle": "light",
-
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.matiaskotlik.imigration"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.matiaskotlik.imigration"
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "7140fd97-1dbd-41b3-893c-f5bd0529ea39"
       }
     }
   }
