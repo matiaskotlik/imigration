@@ -30,16 +30,13 @@ export default function SurveyScreen() {
     }, 100);
 
     return () => clearTimeout(timeout);
-  }, [loaded]);
+  });
 
   return (
     <>
       <Stack.Screen options={{ title: 'Survey' }} />
-      <SafeAreaView
-        style={tw.style('flex-1 relative gap-6', {
-          backgroundColor: theme.colors.background,
-        })}>
-        <View ref={surveyRef} style={tw.style('absolute inset-0 opacity-0')}>
+      <SafeAreaView style={tw`flex-1 relative`}>
+        <View ref={surveyRef} style={tw`flex-1`}>
           <Survey
             onAfterRenderSurvey={async () => {
               setLoaded(true);
@@ -48,9 +45,7 @@ export default function SurveyScreen() {
             surveyJson={surveyJson}
           />
         </View>
-        <View
-          ref={spinnerRef}
-          style={tw.style('absolute inset-0 items-center justify-center')}>
+        <View ref={spinnerRef} style={tw`absolute inset-0 items-center justify-center`}>
           <ActivityIndicator size="large" />
         </View>
       </SafeAreaView>
