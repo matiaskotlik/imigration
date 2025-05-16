@@ -8,9 +8,11 @@ SplashScreen.preventAutoHideAsync();
 
 export function SplashScreenBarrier({ children }: PropsWithChildren) {
   // hide splashscreen after this component mounts to avoid a blank screen flash
-  useEffect(() => {
+  const handleLayout = useCallback(() => {
     SplashScreen.hide();
-  }, [])
+  }, []);
 
-  return children;
+  return <View style={tw`flex-1`} onLayout={handleLayout}>
+    {children}
+  </View>;
 }

@@ -5,7 +5,7 @@ import { Image } from 'expo-image';
 import { useTranslation } from 'react-i18next';
 import tw from 'twrnc';
 import { Container } from '@/components/ui/container';
-import {useState} from "react";
+import { useState } from 'react';
 
 const situations = {
   border: {
@@ -37,55 +37,64 @@ export default function SituationScreen() {
 
   return (
     <>
-      <Stack.Screen options={{ title: 'Situation' }} />
-      <View
-        style={tw.style('min-h-screen gap-2', {
-          backgroundColor: theme.colors.background,
-        })}>
-        <Image
-          alt="Banner"
-          style={tw.style('w-full', { aspectRatio: 3.2 })}
-          source={require('@/assets/onboarding/picado-banner-2.png')}
-        />
-        <Container style={tw`items-center flex-1 gap-4 mb-10`}>
-          <Text
-            variant="displayMedium"
-            style={tw.style('text-center', { color: theme.colors.primary })}>
-            {t('situation.whichDescribesYou')}
-          </Text>
-          {Object.entries(situations).map(([situation, {iconSource, href}]) => (
-            <Button
-              key={situation}
-              onPress={() => setSelectedSituation(situation as keyof typeof situations)}
-              mode="outlined"
-              style={tw.style('w-full border-2', {
-                borderColor: selectedSituation === situation ? theme.colors.secondary : theme.colors.surfaceDisabled,
-                backgroundColor: theme.colors.surface,
-              })}
-              contentStyle={tw`h-20`}
-              labelStyle={tw`flex-1`}>
-              <View style={tw`flex-1 flex-row items-center justify-start gap-2`}>
-                <View style={tw``}>
-                  <Image
-                    style={tw.style('flex-1', { aspectRatio: 1 })}
-                    contentFit="contain"
-                    source={iconSource}
-                  />
-                </View>
-                <Text style={tw.style('flex-1 text-xl', selectedSituation === situation && 'font-medium')}>{t(`situation.${situation}`)}</Text>
-              </View>
-            </Button>
-          ))}
+      <Stack.Screen
+        options={{
+          header: () => (
+            <Image
+              alt="Banner"
+              style={tw.style('w-full', { aspectRatio: 3.2 })}
+              source={require('@/assets/onboarding/picado-banner-2.png')}
+            />
+          ),
+        }}
+      />
+      <Container style={tw`items-center gap-4`}>
+        <Text
+          variant="displayMedium"
+          style={tw.style('text-center', { color: theme.colors.primary })}>
+          {t('situation.whichDescribesYou')}
+        </Text>
+        {Object.entries(situations).map(([situation, { iconSource, href }]) => (
           <Button
-            disabled={!selectedSituation}
-            onPress={() => router.push(situations[selectedSituation!].href)}
-            mode="contained"
-            style={tw`w-full mt-auto`}
-            labelStyle={tw`text-2xl`}>
-            {t('situation.next')}
+            key={situation}
+            onPress={() => setSelectedSituation(situation as keyof typeof situations)}
+            mode="outlined"
+            style={tw.style('w-full border-2', {
+              borderColor:
+                selectedSituation === situation
+                  ? theme.colors.secondary
+                  : theme.colors.surfaceDisabled,
+              backgroundColor: theme.colors.surface,
+            })}
+            contentStyle={tw`h-20`}
+            labelStyle={tw`flex-1`}>
+            <View style={tw`flex-1 flex-row items-center justify-start gap-2`}>
+              <View style={tw``}>
+                <Image
+                  style={tw.style('flex-1', { aspectRatio: 1 })}
+                  contentFit="contain"
+                  source={iconSource}
+                />
+              </View>
+              <Text
+                style={tw.style(
+                  'flex-1 text-xl',
+                  selectedSituation === situation && 'font-medium'
+                )}>
+                {t(`situation.${situation}`)}
+              </Text>
+            </View>
           </Button>
-        </Container>
-      </View>
+        ))}
+        <Button
+          disabled={!selectedSituation}
+          onPress={() => router.push(situations[selectedSituation!].href)}
+          mode="contained"
+          style={tw`w-full mt-auto`}
+          labelStyle={tw`text-2xl`}>
+          {t('situation.next')}
+        </Button>
+      </Container>
     </>
   );
 }
