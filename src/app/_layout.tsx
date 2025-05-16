@@ -23,7 +23,7 @@ export default function RootLayout() {
     <PaperProvider theme={theme}>
       <LanguageProvider>
         <SplashScreenBarrier>
-          <Stack screenOptions={{ headerShown: false }} />
+          <Stack />
         </SplashScreenBarrier>
       </LanguageProvider>
     </PaperProvider>
