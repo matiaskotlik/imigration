@@ -16,7 +16,8 @@
         {
           "launchMode": "most-recent"
         }
-      ]
+      ],
+      "expo-localization"
     ],
     "experiments": {
       "typedRoutes": true,
@@ -35,14 +36,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.matiaskotlik.imigration"
+      "bundleIdentifier": "com.kiltok.imigration"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.matiaskotlik.imigration"
+      "package": "com.kiltok.imigration"
     },
     "extra": {
       "router": {},
