@@ -4,8 +4,8 @@ import { useTheme } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import tw from 'twrnc';
 import Survey from '@/components/survey';
-import { useLayoutEffect, useRef, useState } from 'react';
-import surveyTheme from '@/lib/survey-theme';
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { buildSurveyTheme } from '@/lib/survey-theme';
 import surveyJson from '@/assets/survey.json';
 
 export default function SurveyScreen() {
@@ -14,23 +14,33 @@ export default function SurveyScreen() {
     i18n: { changeLanguage },
   } = useTranslation();
   const theme = useTheme();
+  const surveyTheme = useMemo(() => buildSurveyTheme(theme), [theme]);
   const router = useRouter();
   const [loaded, setLoaded] = useState(false);
   const surveyRef = useRef<View>(null);
-  const spinnerRef = useRef<View>(null);
+  const loadingRef = useRef<View>(null);
 
-  // avoid re render flash on survey load
   useLayoutEffect(() => {
-    surveyRef?.current?.setNativeProps({ opacity: 0 })
-    spinnerRef?.current?.setNativeProps({ opacity: 1 })
+    surveyRef.current?.setNativeProps({ opacity: 0 });
+    loadingRef.current?.setNativeProps({ opacity: 1 });
+
+    if (!loaded) return;
 
     const timeout = setTimeout(() => {
-      surveyRef.current?.setNativeProps({ opacity: loaded ? 1 : 0 });
-      spinnerRef.current?.setNativeProps({ opacity: loaded ? 0 : 1 });
+      surveyRef.current?.setNativeProps({ opacity: 1 });
+      loadingRef.current?.setNativeProps({ opacity: 0 });
     }, 100);
 
     return () => clearTimeout(timeout);
-  });
+  }, [loaded]);
+
+  const handleAfterRenderSurvey = useCallback(async () => {
+    setLoaded(true)
+  }, [setLoaded]);
+
+  const handleBeforeRenderSurvey = useCallback(async () => {
+    setLoaded(false);
+  }, [setLoaded]);
 
   return (
     <>
@@ -38,14 +48,13 @@ export default function SurveyScreen() {
       <SafeAreaView style={tw`flex-1 relative`}>
         <View ref={surveyRef} style={tw`flex-1`}>
           <Survey
-            onAfterRenderSurvey={async () => {
-              setLoaded(true);
-            }}
-            theme={surveyTheme(theme)}
+            onBeforeRenderSurvey={handleBeforeRenderSurvey}
+            onAfterRenderSurvey={handleAfterRenderSurvey}
+            surveyTheme={surveyTheme}
             surveyJson={surveyJson}
           />
         </View>
-        <View ref={spinnerRef} style={tw`absolute inset-0 items-center justify-center`}>
+        <View ref={loadingRef} style={tw`absolute inset-0 items-center justify-center`}>
           <ActivityIndicator size="large" />
         </View>
       </SafeAreaView>

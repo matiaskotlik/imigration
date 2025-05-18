@@ -3,23 +3,41 @@
 import 'survey-core/survey-core.css';
 import { Model, Survey as SurveyJS } from 'survey-react-ui';
 import { ITheme } from 'survey-core';
+import { useMemo, useState } from 'react';
 
 export type SurveyProps = {
-  theme: ITheme;
+  surveyTheme: ITheme;
   surveyJson: any;
   onComplete?: () => Promise<void>;
+  onBeforeRenderSurvey?: () => Promise<void>;
   onAfterRenderSurvey?: () => Promise<void>;
 };
 
 export default function Survey({
-  theme,
+  surveyTheme,
   surveyJson,
-  onComplete,
-  onAfterRenderSurvey,
+  onComplete = async () => {},
+  onBeforeRenderSurvey = async () => {},
+  onAfterRenderSurvey = async () => {},
 }: SurveyProps) {
-  const model = new Model(surveyJson);
-  model.applyTheme(theme);
-  onComplete && model.onComplete.add(onComplete);
-  onAfterRenderSurvey && model.onAfterRenderSurvey.add(() => onAfterRenderSurvey());
+  const [pageIdx, setPageIndex] = useState(0);
+  const model = useMemo(() => {
+    const model = new Model({
+      ...surveyJson,
+      pages: [surveyJson.pages[pageIdx]],
+    });
+    model.applyTheme(surveyTheme);
+    const isLastPage = pageIdx >= surveyJson.pages.length - 1;
+    if (isLastPage) {
+      model.onComplete.add(onComplete);
+    } else {
+      model.onComplete.add(async () => {
+        await onBeforeRenderSurvey();
+        setPageIndex((prev) => prev + 1);
+      })
+    }
+    model.onAfterRenderSurvey.add(() => onAfterRenderSurvey());
+    return model;
+  }, [onAfterRenderSurvey, onComplete, pageIdx, surveyJson, surveyTheme]);
   return <SurveyJS model={model} />;
 }

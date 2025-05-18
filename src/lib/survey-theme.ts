@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 import { MD3Theme } from 'react-native-paper';
 
-export default (theme: MD3Theme) => ({
+export const buildSurveyTheme = (theme: MD3Theme) => ({
   cssVariables: {
     '--sjs-font-family': Platform.OS === 'ios' ? 'sans-serif' : theme.fonts.bodyMedium.fontFamily,
     '--sjs-font-size': `${theme.fonts.bodyLarge.fontSize}px`,
