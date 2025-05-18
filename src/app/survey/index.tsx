@@ -6,7 +6,7 @@ import tw from 'twrnc';
 import Survey from '@/components/survey';
 import { useLayoutEffect, useRef, useState } from 'react';
 import surveyTheme from '@/lib/survey-theme';
-import surveyJson from '@/assets/survey';
+import surveyJson from '@/assets/survey.json';
 
 export default function SurveyScreen() {
   const {
