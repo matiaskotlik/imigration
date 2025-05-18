@@ -1,7 +1,6 @@
-import { Stack, useRouter } from 'expo-router';
+import { Stack } from 'expo-router';
 import { ActivityIndicator, SafeAreaView, View } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { useTranslation } from 'react-i18next';
 import tw from 'twrnc';
 import Survey from '@/components/survey';
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
@@ -9,13 +8,8 @@ import { buildSurveyTheme } from '@/lib/survey-theme';
 import surveyJson from '@/assets/survey.json';
 
 export default function SurveyScreen() {
-  const {
-    t,
-    i18n: { changeLanguage },
-  } = useTranslation();
   const theme = useTheme();
   const surveyTheme = useMemo(() => buildSurveyTheme(theme), [theme]);
-  const router = useRouter();
   const [loaded, setLoaded] = useState(false);
   const surveyRef = useRef<View>(null);
   const loadingRef = useRef<View>(null);
@@ -35,7 +29,7 @@ export default function SurveyScreen() {
   }, [loaded]);
 
   const handleAfterRenderSurvey = useCallback(async () => {
-    setLoaded(true)
+    setLoaded(true);
   }, [setLoaded]);
 
   const handleBeforeRenderSurvey = useCallback(async () => {
