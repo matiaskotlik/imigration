@@ -6,7 +6,7 @@ export function AppStack() {
   const theme = useTheme();
   return (
     <>
-      <StatusBar style='light' backgroundColor={theme.colors.primary} />
+      <StatusBar style='light' translucent={false} backgroundColor={theme.colors.primary} />
       <Stack
         screenOptions={{
           headerTitleStyle: { color: theme.colors.onPrimary },
