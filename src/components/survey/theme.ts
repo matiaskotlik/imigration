@@ -1,5 +1,5 @@
-import { Platform } from 'react-native';
 import { MD3Theme } from 'react-native-paper';
+import { Platform } from 'react-native';
 
 export const buildSurveyTheme = (theme: MD3Theme) => ({
   cssVariables: {
