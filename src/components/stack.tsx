@@ -6,6 +6,7 @@ export function AppStack() {
   const theme = useTheme();
   return (
     <>
+      {/*TODO might be able to omit backgroundColor here since SystemUI.setBackgroundColor is set in root layout*/}
       <StatusBar style='light' translucent={false} backgroundColor={theme.colors.primary} />
       <Stack
         screenOptions={{
