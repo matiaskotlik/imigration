@@ -5,17 +5,17 @@ import { useTheme } from 'react-native-paper';
 import { buildSurveyTheme } from '@/components/survey/theme';
 import { ActivityIndicator, SafeAreaView, View } from 'react-native';
 import tw from 'twrnc';
+import { ITheme } from 'survey-core';
 
 const DOMSurveyWrapper = memo(function DOMSurveyWrapper({
+  theme,
   survey,
   onComplete,
 }: {
+  theme: ITheme,
   survey: any;
-  onComplete: () => Promise<void>;
+  onComplete: (data: any) => Promise<void>;
 }) {
-  const appTheme = useTheme();
-  const theme = useMemo(() => buildSurveyTheme(appTheme), [appTheme]);
-
   const surveyRef = useRef<View>(null);
   const loadingRef = useRef<View>(null);
 
@@ -49,29 +49,42 @@ const DOMSurveyWrapper = memo(function DOMSurveyWrapper({
 
 export function Survey({
   survey,
+  onCompleteSection = async () => {},
   onFinish = async () => {},
 }: {
   survey: any;
+  onCompleteSection: (data: any) => Promise<void>;
   onFinish?: () => Promise<void>;
 }) {
-  const [pageIdx, setPageIndex] = useState(0);
-  const currentPage = useMemo(() => ({
-    ...survey,
-    pages: survey.pages[pageIdx],
-  }), [survey, pageIdx]);
+  const appTheme = useTheme();
+  const theme = useMemo(() => buildSurveyTheme(appTheme), [appTheme]);
 
-  const onComplete = useCallback(async () => {
+  // split survey into pages
+  const pages = useMemo(() => survey.pages.map((page: any) => ({
+    ...survey,
+    pages: [page],
+  })), [survey]);
+
+  const [pageIdx, setPageIndex] = useState(0);
+
+  const onComplete = useCallback(async (data: any) => {
+    await onCompleteSection(data);
+
     if (pageIdx >= survey.pages.length - 1) {
       await onFinish();
       return
     }
 
     setPageIndex((prev) => prev + 1);
-  }, [pageIdx, survey, onFinish]);
+  }, [onCompleteSection, pageIdx, survey, onFinish]);
 
   return (
     <SafeAreaView style={tw`flex-1`}>
-      <DOMSurveyWrapper survey={currentPage} onComplete={onComplete} />
+      <DOMSurveyWrapper
+        theme={theme}
+        survey={pages[pageIdx]}
+        onComplete={onComplete}
+      />
     </SafeAreaView>
   );
 }
