@@ -8,7 +8,6 @@ export default function SurveyScreen() {
       <Stack.Screen options={{ title: 'Survey' }} />
       <Survey
         survey={surveyJson}
-        onFinish={console.log('finished')}
       />
     </>
   );

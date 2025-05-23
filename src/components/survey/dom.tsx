@@ -4,6 +4,7 @@ import 'survey-core/survey-core.css';
 import { Model, Survey as SurveyJS } from 'survey-react-ui';
 import { ITheme } from 'survey-core';
 import { SurveyHandlers } from '@/components/survey/types';
+import { DOMProps } from 'expo/dom';
 
 export default function DOMSurvey({
   survey,
@@ -11,6 +12,7 @@ export default function DOMSurvey({
   onAfterRenderSurvey = async () => {},
   onComplete = async () => {},
 }: {
+  dom?: DOMProps,
   theme: ITheme;
   survey: any;
 } & SurveyHandlers) {

@@ -25,3 +25,8 @@ android
 
 # survey json
 src/assets/survey.json
+
+# Expo
+.expo
+dist/
+web-build/
