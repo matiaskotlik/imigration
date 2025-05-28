@@ -36,7 +36,7 @@ export default function WelcomeScreen() {
           <Text
             variant="displayMedium"
             style={tw.style('text-center', { color: theme.colors.primary })}>
-            {t('welcome.welcome')}
+            {t('welcome.title')}
           </Text>
           <Text
             variant="headlineSmall"

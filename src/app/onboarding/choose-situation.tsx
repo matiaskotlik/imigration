@@ -39,7 +39,7 @@ export default function SituationScreen() {
     <>
       <Stack.Screen
         options={{
-          title: t('situation.title'),
+          title: t('situation.screenTitle'),
           headerStyle: { backgroundColor: theme.colors.primary },
           headerTitleStyle: { color: theme.colors.onPrimary },
         }}

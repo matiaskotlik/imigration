@@ -5,6 +5,9 @@ import { ThemeProp } from 'react-native-paper/lib/typescript/types';
 import tw, { useDeviceContext } from 'twrnc';
 import * as SystemUI from 'expo-system-ui';
 import { AppStack } from '@/components/ui/stack';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useState } from 'react';
+import { QueryProvider } from '@/providers/query';
 
 const theme: ThemeProp = {
   ...MD3LightTheme,
@@ -25,11 +28,13 @@ export default function RootLayout() {
 
   return (
     <PaperProvider theme={theme}>
-      <LanguageProvider>
-        <SplashScreenBarrier>
-          <AppStack />
-        </SplashScreenBarrier>
-      </LanguageProvider>
+      <QueryProvider>
+        <LanguageProvider>
+          <SplashScreenBarrier>
+            <AppStack />
+          </SplashScreenBarrier>
+        </LanguageProvider>
+      </QueryProvider>
     </PaperProvider>
   );
 }

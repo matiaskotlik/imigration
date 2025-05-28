@@ -1,90 +1,75 @@
 import 'survey-core/survey-core.css';
-import { memo, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { memo, PropsWithChildren, useLayoutEffect, useMemo } from 'react';
 import DOMSurvey from '@/components/survey/dom';
+import { type Survey as SurveyType, SurveyJson } from '@/lib/schema/survey';
+import { ActivityIndicator, View } from 'react-native';
+import tw from 'twrnc';
+import { atom, Provider, useAtomValue, useSetAtom } from 'jotai';
 import { useTheme } from 'react-native-paper';
 import { buildSurveyTheme } from '@/components/survey/theme';
-import { ActivityIndicator, SafeAreaView, View } from 'react-native';
-import tw from 'twrnc';
-import { ITheme } from 'survey-core';
+import { SurveyProps } from '@/components/survey/types';
+
+const loadingAtom = atom(true);
+
+const useSurveyTheme = () => {
+  const appTheme = useTheme();
+  return useMemo(() => buildSurveyTheme(appTheme), [appTheme]);
+};
 
 const DOMSurveyWrapper = memo(function DOMSurveyWrapper({
-  theme,
-  survey,
-  onComplete,
-}: {
-  theme: ITheme,
-  survey: any;
-  onComplete: (data: any) => Promise<void>;
+  json,
+  ...props
+}: SurveyProps & {
+  json?: SurveyJson;
 }) {
-  const surveyRef = useRef<View>(null);
-  const loadingRef = useRef<View>(null);
+  const setLoading = useSetAtom(loadingAtom);
+  useLayoutEffect(() => setLoading(true));
 
-  useLayoutEffect(() => {
-    surveyRef.current?.setNativeProps({ opacity: 0 });
-    loadingRef.current?.setNativeProps({ opacity: 1 });
-  });
+  const theme = useSurveyTheme();
+
+  if (!json) return;
 
   return (
+    <DOMSurvey
+      json={json}
+      theme={theme}
+      onAfterRenderSurvey={async () => {
+        setTimeout(() => setLoading(false), 100);
+      }}
+      {...props}
+    />
+  );
+});
+
+function SurveyLoader({ children }: PropsWithChildren) {
+  const loading = useAtomValue(loadingAtom);
+  return (
     <View style={tw`flex-1 relative`}>
-      <View ref={surveyRef} style={tw`flex-1`}>
-        <DOMSurvey
-          survey={survey}
-          theme={theme}
-          onAfterRenderSurvey={async () => {
-            // update opacity after render without re-rendering
-            setTimeout(() => {
-              surveyRef.current?.setNativeProps({ opacity: 1 });
-              loadingRef.current?.setNativeProps({ opacity: 0 });
-            }, 100);
-          }}
-          onComplete={onComplete}
-        />
-      </View>
-      <View ref={loadingRef} style={tw`absolute inset-0 items-center justify-center`}>
+      <View style={tw.style('flex-1', { opacity: loading ? 0 : 1 })}>{children}</View>
+      <View
+        style={tw.style('absolute inset-0 items-center justify-center', {
+          opacity: loading ? 1 : 0,
+        })}>
         <ActivityIndicator size="large" />
       </View>
     </View>
   );
-});
+}
 
 export function Survey({
   survey,
-  onCompleteSection = async () => {},
-  onFinish = async () => {},
+  onComplete,
 }: {
-  survey: any;
-  onCompleteSection: (data: any) => Promise<void>;
-  onFinish?: () => Promise<void>;
+  survey?: SurveyType;
+  onComplete?: (data: any) => Promise<void>;
 }) {
-  const appTheme = useTheme();
-  const theme = useMemo(() => buildSurveyTheme(appTheme), [appTheme]);
-
-  // split survey into pages
-  const pages = useMemo(() => survey.pages.map((page: any) => ({
-    ...survey,
-    pages: [page],
-  })), [survey]);
-
-  const [pageIdx, setPageIndex] = useState(0);
-
-  const onComplete = useCallback(async (data: any) => {
-    await onCompleteSection(data);
-
-    if (pageIdx >= survey.pages.length - 1) {
-      await onFinish();
-      return
-    }
-
-    setPageIndex((prev) => prev + 1);
-  }, [onCompleteSection, pageIdx, survey, onFinish]);
+  console.log('render outer ');
 
   return (
-    <SafeAreaView style={tw`flex-1`}>
-      <DOMSurveyWrapper
-        theme={theme}
-        survey={pages[pageIdx]}
-        onComplete={onComplete}
-      />
-    </SafeAreaView>
+    <Provider>
+      <SurveyLoader>
+        <DOMSurveyWrapper onComplete={onComplete} json={survey?.json} />
+      </SurveyLoader>
+    </Provider>
   );
 }

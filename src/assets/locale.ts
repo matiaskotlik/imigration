@@ -2,14 +2,14 @@ export default {
   en: {
     translation: {
       welcome: {
-        welcome: 'Welcome to iMigration',
+        title: 'Welcome to iMigration',
         chooseLanguage: 'Choose your language to get started.',
         selectEnglish: 'Select English',
         selectSpanish: 'Elige español',
         next: 'Next',
       },
       situation: {
-        title: 'Your Journey',
+        screenTitle: 'Your Journey',
         whichDescribesYou: 'Which describes you best?',
         border: 'I just crossed the border and need safety',
         family: 'My family will arrive soon',
@@ -19,14 +19,24 @@ export default {
       },
       i589: {
         welcome: {
-          title: "Let's get to know you",
+          title: 'Let\'s get to know you',
           description:
             'We’ll ask a few simple questions to better understand your needs.\n' +
             'You can pause and come back anytime.',
           privacyDescription:
-            'Your answers are safe and private. We will never share them without your permission.',
+            'Your answers are <strong>safe and private</strong>. We will <strong>never</strong> share them without your permission.',
           continue: 'Continue',
           learnMore: 'Why are you asking this?',
+        },
+        learnMore: {
+          screenTitle: 'Why all the questions?',
+          title: 'Why do we ask for this information?',
+          content:
+            'Before moving forward, we will ask you some simple questions so that we can give you the right support.\n\n' +
+            'Some questions may feel personal — that’s okay. You can skip any question and come back later.\n\n',
+          privacyContent:
+            'Your answers are <strong>private and safe</strong>. We do <strong>not</strong> share your information unless you give us permission.',
+          continue: 'I\'m ready',
         },
       },
       secureAccount: 'Secure Your Account',
@@ -59,13 +69,22 @@ export default {
       },
       i589: {
         welcome: {
-          title: 'Queremos Conocerte',
+          title: 'Queremos Conocerte!',
           description:
-            'Te haremos algunas preguntas sencillas para poder ayudarte mejor.\n' +
+            'Antes de seguir, te haremos algunas preguntas sencillas para poder ayudarte mejor.\n' +
             'Puedes tomarte tu tiempo y volver cuando quieras.',
           privacyDescription:
-            'Tus respuestas están seguras y son privadas. Nunca las compartiremos sin tu permiso.',
+            'Tus respuestas están <strong>seguras y son privadas</strong>. <strong>Nunca</strong> las compartiremos sin tu permiso.',
           learnMore: '¿Por qué hacen estas preguntas?',
+        },
+        learnMore: {
+          screenTitle: '¿Por Qué Estas Preguntas?',
+          title: '¿Por Qué Preguntamos Esto?',
+          content:
+            'Queremos entender mejor tu situación para poder ayudarte de la mejor manera.\n\n' +
+            'Algunas preguntas pueden parecer personales — está bien. Puedes saltarte cualquier pregunta y volver más tarde.\n\n',
+          privacyContent: 'Tus respuestas son <strong>privadas y seguras</strong>. <strong>No</strong> compartimos tu información sin tu permiso.',
+          continue: 'Estoy listo',
         },
       },
       secureAccount: 'Asegura Tu Cuenta',

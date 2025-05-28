@@ -1,4 +1,3 @@
-export type SurveyHandlers = {
-  onAfterRenderSurvey?: () => Promise<void>;
+export type SurveyProps = {
   onComplete?: (data: any) => Promise<void>;
-}
+};
