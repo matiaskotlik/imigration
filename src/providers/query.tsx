@@ -1,11 +1,10 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { PropsWithChildren, useState } from 'react';
+import { PropsWithChildren } from 'react';
+import { useReactQueryDevTools } from '@dev-plugins/react-query';
 
-function buildQueryClient() {
-  return new QueryClient();
-}
+const queryClient = new QueryClient();
 
 export function QueryProvider({ children }: PropsWithChildren) {
-  const [queryClient] = useState(() => buildQueryClient());
+  useReactQueryDevTools(queryClient);
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 }

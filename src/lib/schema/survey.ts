@@ -1,15 +1,17 @@
 import { z } from 'zod/v4';
 
+export const SurveyPageSchema = z.looseObject({});
+
+export type SurveyPage = z.infer<typeof SurveyPageSchema>;
+
 export const SurveyJsonSchema = z.looseObject({
-  pages: z.array(z.looseObject({}))
+  title: z.string().default(''),
+  pages: z.array(SurveyPageSchema).default([]),
 });
 
 export type SurveyJson = z.infer<typeof SurveyJsonSchema>;
 
 export const SurveySchema = z.object({
-  name: z.string(),
-  description: z.string(),
-  updatedAt: z.date(),
   json: SurveyJsonSchema,
 })
 

@@ -14,9 +14,9 @@
     "lint": "expo lint"
   },
   "dependencies": {
+    "@dev-plugins/react-query": "^0.3.1",
     "@expo/metro-runtime": "~5.0.4",
     "@expo/vector-icons": "^14.1.0",
-    "@react-native-async-storage/async-storage": "2.1.2",
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
@@ -38,13 +38,13 @@
     "expo-system-ui": "~5.0.7",
     "expo-web-browser": "~14.1.6",
     "i18next": "^25.2.0",
-    "jotai": "^2.12.5",
     "jotai-ssr": "^0.2.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-i18next": "^15.5.2",
     "react-native": "0.79.2",
     "react-native-gesture-handler": "~2.24.0",
+    "react-native-mmkv": "^3.2.0",
     "react-native-paper": "^5.14.5",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
@@ -54,7 +54,9 @@
     "survey-core": "^2.0.10",
     "survey-react-ui": "^2.0.10",
     "twrnc": "^4.7.0",
-    "zod": "^3.25.31"
+    "usehooks-ts": "^3.1.1",
+    "zod": "^3.25.31",
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",

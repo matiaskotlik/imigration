@@ -47,6 +47,9 @@ export default {
       privacyPolicy: 'Privacy Policy',
       show: 'Show',
       hide: 'Hide',
+      survey: {
+        progressText: 'Answered {requiredAnsweredQuestionCount}/{requiredQuestionCount} questions',
+      }
     },
   },
   es: {
@@ -95,6 +98,9 @@ export default {
       privacyPolicy: 'Política de privacidad',
       show: 'Mostrar',
       hide: 'Ocultar',
+      survey: {
+        progressText: 'Respondió {requiredAnsweredQuestionCount}/{requiredQuestionCount} preguntas',
+      }
     },
   },
 };
