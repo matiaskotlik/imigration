@@ -1,7 +1,11 @@
-import { PropsWithChildren, useEffect } from 'react';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useEffect } from 'react';
 
-export function SurveyScreenTitleProvider() {
+export const useSurveyTitle = () => useLocalSearchParams().surveyTitle?.toString() ?? '';
 
-  return null;
-}
+export const useSetSurveyTitle = (title: string) => {
+  const router = useRouter();
+  useEffect(() => {
+    router.setParams({ surveyTitle: title });
+  }, [router, title]);
+};

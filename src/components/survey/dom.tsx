@@ -1,15 +1,18 @@
 'use dom';
 
 import 'survey-core/survey-core.css';
-import { Model, Survey } from 'survey-react-ui';
+import { Model, Survey as SurveyJS, SurveyModel } from 'survey-react-ui';
 import { DOMProps } from 'expo/dom';
-import { SurveyProps } from '@/components/survey/types';
 import { GetProgressTextEvent, ITheme } from 'survey-core';
+import { Survey } from '@/lib/schema/survey';
 
 const SURVEY_OPTIONS = {
   showTitle: false,
   showPageTitles: true,
+  showCompletePage: false,
   showQuestionNumbers: 'on',
+  completedBeforeHtml: '',
+  loadingHtml: '',
   showProgressBar: true,
   progressBarType: 'requiredQuestions',
   autoGrowComment: true,
@@ -20,23 +23,46 @@ const SURVEY_OPTIONS = {
   headerView: 'advanced',
 };
 
+interface SavedData {
+  data: unknown;
+  currentPageNo: number;
+}
+
 export default function DOMSurvey({
   survey,
   theme,
+  onSave,
+  onRestore,
   onRender,
+  onComplete,
   progressText,
-  onComplete = async () => {},
 }: {
   dom?: DOMProps;
+  survey: Survey,
   theme: ITheme;
+  onSave: (data: SavedData) => Promise<void>;
+  onRestore: () => Promise<SavedData | undefined>;
   onRender: () => Promise<void>;
+  onComplete: (data: unknown) => Promise<void>;
   progressText: string;
-} & SurveyProps) {
+}) {
   const model = new Model({
     ...SURVEY_OPTIONS,
     pages: survey.json.pages,
+    currenagePageNo: 1,
   });
   model.applyTheme(theme);
+
+  onRestore()
+    .then((savedData) => {
+      if (!savedData) return;
+
+      model.data = savedData.data;
+      model.currentPageNo = savedData.currentPageNo;
+    })
+    .catch((error) => {
+      console.error('Error restoring survey data:', error);
+    });
 
   model.onAfterRenderSurvey.add(async () => {
     await onRender();
@@ -57,5 +83,12 @@ export default function DOMSurvey({
     });
   });
 
-  return <Survey model={model} />;
+  const handleSave = async ({ data, currentPageNo }: SurveyModel) => {
+    await onSave({ data, currentPageNo });
+  };
+
+  model.onValueChanged.add(handleSave);
+  model.onCurrentPageChanged.add(handleSave);
+
+  return <SurveyJS model={model} />;
 }

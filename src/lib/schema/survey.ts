@@ -12,6 +12,7 @@ export const SurveyJsonSchema = z.looseObject({
 export type SurveyJson = z.infer<typeof SurveyJsonSchema>;
 
 export const SurveySchema = z.object({
+  id: z.string(),
   json: SurveyJsonSchema,
 })
 
