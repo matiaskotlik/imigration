@@ -6,6 +6,7 @@ import tw from 'twrnc';
 import { Container } from '@/components/ui/container';
 import { withImageIcon } from '@/lib/with-image-icon';
 import { View } from 'react-native';
+import { Confetti } from 'react-native-fast-confetti';
 
 export default function WelcomeScreen() {
   const {

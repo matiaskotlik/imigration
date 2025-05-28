@@ -8,6 +8,7 @@ import { AppStack } from '@/components/ui/stack';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useState } from 'react';
 import { QueryProvider } from '@/providers/query';
+import { ReducedMotionConfig, ReduceMotion } from 'react-native-reanimated';
 
 const theme: ThemeProp = {
   ...MD3LightTheme,
@@ -28,6 +29,7 @@ export default function RootLayout() {
 
   return (
     <PaperProvider theme={theme}>
+      <ReducedMotionConfig mode={ReduceMotion.Never} />
       <QueryProvider>
         <LanguageProvider>
           <SplashScreenBarrier>

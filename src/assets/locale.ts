@@ -28,6 +28,16 @@ export default {
           continue: 'Continue',
           learnMore: 'Why are you asking this?',
         },
+        complete: {
+          title: 'Let\'s get to know you',
+          description:
+            'We’ll ask a few simple questions to better understand your needs.\n' +
+            'You can pause and come back anytime.',
+          privacyDescription:
+            'Your answers are <strong>safe and private</strong>. We will <strong>never</strong> share them without your permission.',
+          continue: 'Continue',
+          learnMore: 'Why are you asking this?',
+        },
         learnMore: {
           screenTitle: 'Why all the questions?',
           title: 'Why do we ask for this information?',
@@ -72,6 +82,15 @@ export default {
       },
       i589: {
         welcome: {
+          title: 'Queremos Conocerte!',
+          description:
+            'Antes de seguir, te haremos algunas preguntas sencillas para poder ayudarte mejor.\n' +
+            'Puedes tomarte tu tiempo y volver cuando quieras.',
+          privacyDescription:
+            'Tus respuestas están <strong>seguras y son privadas</strong>. <strong>Nunca</strong> las compartiremos sin tu permiso.',
+          learnMore: '¿Por qué hacen estas preguntas?',
+        },
+        complete: {
           title: 'Queremos Conocerte!',
           description:
             'Antes de seguir, te haremos algunas preguntas sencillas para poder ayudarte mejor.\n' +
