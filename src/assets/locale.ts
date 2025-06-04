@@ -59,6 +59,10 @@ export default {
       hide: 'Hide',
       survey: {
         progressText: 'Answered {requiredAnsweredQuestionCount}/{requiredQuestionCount} questions',
+      },
+      documents: {
+        screenTitle: 'Documents',
+        noneMessage: 'You have no saved documents yet.'
       }
     },
   },
@@ -119,6 +123,10 @@ export default {
       hide: 'Ocultar',
       survey: {
         progressText: 'Respondió {requiredAnsweredQuestionCount}/{requiredQuestionCount} preguntas',
+      },
+      documents: {
+        screenTitle: 'Documentos',
+        noneMessage: 'Aún no tienes documentos guardados.'
       }
     },
   },
