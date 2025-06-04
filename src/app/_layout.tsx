@@ -1,12 +1,12 @@
 import { SplashScreenBarrier } from '@/components/SplashScreenBarrier';
 import { LanguageProvider } from '@/providers/language';
-import { PaperProvider } from 'react-native-paper';
+import { PaperProvider, useTheme } from 'react-native-paper';
 import tw, { useDeviceContext } from 'twrnc';
 import * as SystemUI from 'expo-system-ui';
-import { AppStack } from '@/components/ui/stack';
 import { QueryProvider } from '@/providers/query';
 import { ReducedMotionConfig, ReduceMotion } from 'react-native-reanimated';
 import { theme } from '@/lib/paper-theme';
+import { Stack } from 'expo-router';
 
 void SystemUI.setBackgroundColorAsync(theme.colors!.background!);
 
@@ -19,10 +19,26 @@ export default function RootLayout() {
       <QueryProvider>
         <LanguageProvider>
           <SplashScreenBarrier>
-            <AppStack />
+            <StackWrapper />
           </SplashScreenBarrier>
         </LanguageProvider>
       </QueryProvider>
     </PaperProvider>
+  );
+}
+
+/**
+ * Wrap the Stack component so that we can use PaperProvider
+ */
+function StackWrapper() {
+  const theme = useTheme();
+  return (
+    <Stack
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: theme.colors.background,
+        },
+      }}
+    />
   );
 }

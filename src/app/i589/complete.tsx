@@ -1,4 +1,4 @@
-import { Stack, useRouter } from 'expo-router';
+import { Stack, useNavigation, useRouter } from 'expo-router';
 import { Button, Text, useTheme } from 'react-native-paper';
 import tw from 'twrnc';
 import { Container } from '@/components/ui/container';
@@ -52,7 +52,10 @@ export default function I589CompleteScreen() {
             mode="contained"
             style={tw`w-full mt-auto`}
             labelStyle={tw`text-2xl`}
-            onPress={() => router.push('/i589/survey')}>
+            onPress={() => {
+              router.dismissAll();
+              router.replace('/documents');
+            }}>
             <Trans i18nKey="i589.complete.continue" />
           </Button>
         </Container>
