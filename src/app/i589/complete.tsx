@@ -6,6 +6,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { SafeAreaView, useWindowDimensions, View } from 'react-native';
 import { Trans } from '@/components/Trans';
 import { Confetti } from 'react-native-fast-confetti';
+import { FontAwesome } from '@expo/vector-icons';
 
 export default function I589CompleteScreen() {
   const theme = useTheme();
@@ -35,20 +36,17 @@ export default function I589CompleteScreen() {
       />
       <View style={tw`flex-1`}>
         <SafeAreaView />
-        <Container style={tw`flex-1 items-center gap-4`}>
-          <MaterialCommunityIcons name="party-popper" size={96} color={theme.colors.primary} />
+        <Container style={tw`flex-1 items-center gap-8`}>
+          <FontAwesome name="check-circle" size={96} style={tw`text-green-500`} />
           <Text
             variant="displayMedium"
             style={tw.style('text-center', { color: theme.colors.primary })}>
             <Trans i18nKey="i589.complete.title" />
           </Text>
           <Text
-            variant="bodyLarge"
-            style={tw.style('text-center', { color: theme.colors.primary })}>
-            <Trans i18nKey="i589.complete.description" />
-          </Text>
-          <Text variant="bodyLarge" style={tw`text-center`}>
-            <Trans i18nKey="i589.complete.privacyDescription" />
+            variant="titleLarge"
+            style={tw`text-center`}>
+            <Trans i18nKey="i589.complete.message" />
           </Text>
           <Button
             mode="contained"
@@ -56,12 +54,6 @@ export default function I589CompleteScreen() {
             labelStyle={tw`text-2xl`}
             onPress={() => router.push('/i589/survey')}>
             <Trans i18nKey="i589.complete.continue" />
-          </Button>
-          <Button
-            mode="text"
-            onPress={() => router.push('/i589/learn-more')}
-            labelStyle={tw`text-base text-gray-500`}>
-            <Trans i18nKey="i589.complete.learnMore" />
           </Button>
         </Container>
       </View>
