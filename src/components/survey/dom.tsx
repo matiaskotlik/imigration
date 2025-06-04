@@ -49,7 +49,7 @@ export default function DOMSurvey({
   const model = new Model({
     ...SURVEY_OPTIONS,
     pages: survey.json.pages,
-    currenagePageNo: 1,
+    currentPageNo: 1,
   });
   model.applyTheme(theme);
 
