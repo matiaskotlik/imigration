@@ -16,7 +16,12 @@
   },
   "packageManager": "pnpm@10.11.1",
   "devDependencies": {
-    "turbo": "^2.5.4",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/types": "^19.8.1",
+    "conventional-changelog-conventionalcommits": "^9.0.0",
+    "lint-staged": "^16.1.0",
+    "turbo": "^2.5.4"
   }
 }
