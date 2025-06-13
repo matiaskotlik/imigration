@@ -1,0 +1,19 @@
+{
+  "name": "@repo/prettier-config",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./plugins/*": "./plugins/*.js"
+  },
+  "devDependencies": {
+    "prettier-plugin-packagejson": "^2.5.15",
+    "prettier-plugin-sh": "^0.17.4",
+    "prettier-plugin-sql": "^0.19.1",
+    "prettier-plugin-tailwindcss": "^0.6.12",
+    "prettier-plugin-toml": "^2.0.5"
+  },
+  "dependencies": {
+    "eslint": "^9.28.0"
+  }
+}

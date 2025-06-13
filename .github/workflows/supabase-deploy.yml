@@ -1,0 +1,61 @@
+name: Supabase Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'supabase/**'
+      - '.github/workflows/supabase-deploy.yml'
+
+defaults:
+  run:
+    working-directory: 'supabase'
+
+jobs:
+  check:
+    name: Check
+    uses: ./.github/workflows/supabase-check.yml
+    secrets: inherit
+
+  db-push:
+    name: Push database migrations
+    runs-on: ubuntu-latest
+    needs: check
+    concurrency:
+      group: db-push
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm db:push
+        env:
+          SUPABASE_PROJECT_REF: ${{ vars.SUPABASE_PROJECT_REF }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+  config-push:
+    name: Push supabase config
+    runs-on: ubuntu-latest
+    needs: check
+    concurrency:
+      group: config-push
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm config:push
+        env:
+          SUPABASE_PROJECT_REF: ${{ vars.SUPABASE_PROJECT_REF }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}

@@ -1,20 +1,22 @@
 {
   "name": "imigration",
   "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "lint:check": "turbo run lint:check",
+    "check": "turbo run check",
+    "format": "turbo run format",
+    "format:check": "turbo run format:check",
+    "prepare": "husky"
   },
+  "packageManager": "pnpm@10.11.1",
   "devDependencies": {
-    "prettier": "^3.5.3",
     "turbo": "^2.5.4",
-    "typescript": "5.8.2"
-  },
-  "packageManager": "pnpm@9.0.0",
-  "engines": {
-    "node": ">=18"
+    "husky": "^9.1.7"
   }
 }

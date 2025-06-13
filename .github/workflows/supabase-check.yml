@@ -1,0 +1,92 @@
+name: Supabase Check
+
+on:
+  push:
+    paths:
+      - 'supabase/**'
+      - '.github/workflows/supabase-check.yml'
+  pull_request:
+    paths:
+      - 'supabase/**'
+      - '.github/workflows/supabase-check.yml'
+  workflow_call:
+
+defaults:
+  run:
+    working-directory: 'supabase'
+
+jobs:
+  db-lint:
+    name: Database lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm db:start
+      - run: pnpm db:lint
+
+  db-diff:
+    name: Database diff
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm db:start
+      - run: pnpm db:diff:check
+
+  db-dump:
+    name: Database dump
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm db:start
+      - run: pnpm db:dump:check
+
+  db-test:
+    name: Database test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm db:start
+      - run: pnpm db:test
+
+  types:
+    name: Types
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm db:start
+      - run: pnpm types:check

@@ -1,3 +1,13 @@
 packages:
-  - "apps/*"
-  - "packages/*"
+  - apps/*
+  - packages/*
+  - supabase
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - canvas
+  - core-js
+  - core-js-pure
+  - esbuild
+  - sharp
+  - supabase
+  - unrs-resolver
