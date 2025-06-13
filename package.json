@@ -2,9 +2,7 @@
   "name": "imigration",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "check": "prettier --check .",
-    "dev": "turbo run dev",
+    "build:check": "turbo run build:check",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "turbo run lint",
