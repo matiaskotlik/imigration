@@ -6,14 +6,14 @@
     ".": "./index.js",
     "./plugins/*": "./plugins/*.js"
   },
+  "dependencies": {
+    "eslint": "^9.28.0"
+  },
   "devDependencies": {
     "prettier-plugin-packagejson": "^2.5.15",
     "prettier-plugin-sh": "^0.17.4",
     "prettier-plugin-sql": "^0.19.1",
     "prettier-plugin-tailwindcss": "^0.6.12",
     "prettier-plugin-toml": "^2.0.5"
-  },
-  "dependencies": {
-    "eslint": "^9.28.0"
   }
 }

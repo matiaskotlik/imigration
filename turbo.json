@@ -4,8 +4,7 @@
   "tasks": {
     "lint": {},
     "lint:check": {},
-    "format": {},
-    "format:check": {},
     "build:check": {}
-  }
+  },
+  "globalEnv": ["NODE_ENV"]
 }

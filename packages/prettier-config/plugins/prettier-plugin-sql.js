@@ -1,1 +1,1 @@
-export {default} from 'prettier-plugin-sql';
+export { default } from 'prettier-plugin-sql';

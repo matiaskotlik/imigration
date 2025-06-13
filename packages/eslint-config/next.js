@@ -1,8 +1,8 @@
-import { FlatCompat } from "@eslint/eslintrc";
+import { FlatCompat } from '@eslint/eslintrc';
 
-import baseConfig from "./base.js";
-import { fileURLToPath } from "url";
-import path from "path";
+import baseConfig from './base.js';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 // mimic CommonJS variables -- not needed if using CommonJS
 const __filename = fileURLToPath(import.meta.url);
@@ -14,5 +14,5 @@ const compat = new FlatCompat({
 
 export default [
   ...baseConfig,
-  ...compat.extends("plugin:@next/next/core-web-vitals"),
+  ...compat.extends('plugin:@next/next/core-web-vitals'),
 ];
