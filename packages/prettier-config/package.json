@@ -6,9 +6,6 @@
     ".": "./index.js",
     "./plugins/*": "./plugins/*.js"
   },
-  "dependencies": {
-    "eslint": "^9.28.0"
-  },
   "devDependencies": {
     "prettier-plugin-packagejson": "^2.5.15",
     "prettier-plugin-sh": "^0.17.4",

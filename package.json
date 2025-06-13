@@ -6,7 +6,7 @@
     "check": "prettier --check .",
     "dev": "turbo run dev",
     "format": "prettier --write .",
-    "format:check": "turbo run format:check",
+    "format:check": "prettier --check .",
     "lint": "turbo run lint",
     "lint:check": "turbo run lint:check",
     "prepare": "husky"
