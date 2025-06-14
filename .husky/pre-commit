@@ -1,1 +1,3 @@
-pnpx lint-staged
+pnpm lint:check
+pnpm format:check
+pnpm build:check
