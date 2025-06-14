@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build:check": "tsc --noEmit",
-    "clean": "git clean -xdf node_modules .turbo",
+    "clean": "git clean -xdf node_modules .cache .turbo",
     "config:push": "supabase config push ${SUPABASE_PROJECT_REF:+--project-ref=$SUPABASE_PROJECT_REF}",
     "db:clear": "scripts/db-clear.sh",
     "db:diff": "supabase db diff",
@@ -35,7 +35,7 @@
     "types:gen": "supabase gen types typescript --local > gen/database.types.ts && prettier --write gen/database.types.ts"
   },
   "dependencies": {
-    "@repo/eslint": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
     "@repo/tsconfig": "workspace:*",
     "@supabase/supabase-js": "^2.50.0"
   },

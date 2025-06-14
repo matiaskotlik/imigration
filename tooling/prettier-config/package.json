@@ -1,5 +1,5 @@
 {
-  "name": "@repo/prettier",
+  "name": "@repo/prettier-config",
   "version": "0.0.0",
   "type": "module",
   "exports": {
@@ -7,7 +7,7 @@
     "./plugins/*": "./plugins/*.js"
   },
   "scripts": {
-    "clean": "git clean -xdf node_modules"
+    "clean": "git clean -xdf node_modules .cache"
   },
   "devDependencies": {
     "prettier-plugin-packagejson": "^2.5.15",
