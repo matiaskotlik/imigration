@@ -6,5 +6,12 @@
     "lint:check": {},
     "build:check": {}
   },
-  "globalEnv": ["NODE_ENV"]
+  "globalPassThroughEnv": [
+    "NODE_ENV",
+    "CI",
+    "VERCEL",
+    "VERCEL_ENV",
+    "VERCEL_URL",
+    "npm_lifecycle_event"
+  ]
 }

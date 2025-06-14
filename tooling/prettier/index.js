@@ -1,12 +1,12 @@
 /** @type {import('prettier').Config} */
 const prettierConfig = {
   plugins: [
-    '@repo/prettier-config/plugins/prettier-plugin-tailwindcss',
-    '@repo/prettier-config/plugins/prettier-plugin-sql',
-    '@repo/prettier-config/plugins/prettier-plugin-toml',
-    '@repo/prettier-config/plugins/prettier-plugin-packagejson',
-    '@repo/prettier-config/plugins/prettier-plugin-sh',
-    '@repo/prettier-config/plugins/prettier-plugin-black',
+    '@repo/prettier/plugins/prettier-plugin-tailwindcss',
+    '@repo/prettier/plugins/prettier-plugin-sql',
+    '@repo/prettier/plugins/prettier-plugin-toml',
+    '@repo/prettier/plugins/prettier-plugin-packagejson',
+    '@repo/prettier/plugins/prettier-plugin-sh',
+    '@repo/prettier/plugins/prettier-plugin-black',
   ],
   trailingComma: 'es5',
   semi: true,
