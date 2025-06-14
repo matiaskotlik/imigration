@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { Database } from '@/gen/database.types';
+import { Database } from '@repo/supabase/database.types';
 
 // isometric supabase client using supabase-js rather than supabase-ssr
 // don't use for auth! only queries

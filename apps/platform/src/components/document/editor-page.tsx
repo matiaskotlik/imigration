@@ -9,7 +9,7 @@ import {
 import { ChangeEvent, RefObject, useRef, useState } from 'react';
 import { cloneDeep, DesignerProps } from '@pdfme/common';
 import { supabase } from '@/lib/supabase/client';
-import { Json } from '@/gen/database.types';
+import { Json } from '@repo/supabase/database.types';
 import { toast } from 'sonner';
 import { useInterval, useUnmount } from 'usehooks-ts';
 import { Designer } from '@pdfme/ui';

@@ -34,7 +34,7 @@ import {
 import { supabase } from '@/lib/supabase/client';
 import { urlId } from '@/lib/id';
 import { BLANK_A4_PDF } from '@pdfme/common';
-import { Json } from '@/gen/database.types';
+import { Json } from '@repo/supabase/database.types';
 
 export const CreateDocumentFormSchema = z.object({
   description: z.string().min(1).max(255),

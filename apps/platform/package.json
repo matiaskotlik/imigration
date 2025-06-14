@@ -28,6 +28,7 @@
     "@radix-ui/react-tabs": "^1.1.12",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@repo/eslint-config": "workspace:*",
+    "@repo/supabase": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@supabase-cache-helpers/postgrest-core": "^0.12.1",
     "@supabase-cache-helpers/postgrest-react-query": "^1.13.4",

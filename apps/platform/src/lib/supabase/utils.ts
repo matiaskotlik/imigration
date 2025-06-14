@@ -1,4 +1,4 @@
-import { Database } from '@/gen/database.types';
+import { Database } from '@repo/supabase/database.types';
 import {
   AuthTokenResponsePassword,
   PostgrestError,

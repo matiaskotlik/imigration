@@ -9,7 +9,7 @@ import 'survey-creator-core/survey-creator-core.css';
 import 'ace-builds/src-noconflict/ace';
 import 'ace-builds/src-noconflict/ext-searchbox';
 import { supabase } from '@/lib/supabase/client';
-import { Json } from '@/gen/database.types';
+import { Json } from '@repo/supabase/database.types';
 import { CurrentSurvey } from '@/queries/current-survey';
 
 export default function ClientSurveyEditor({
