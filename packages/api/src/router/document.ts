@@ -11,23 +11,30 @@ export const documentRouter = {
   generatePdf: publicProcedure
     .input(
       z.object({
-        data: z.any(),
         documentId: z.uuid(),
+        variables: z.any(),
       })
     )
-    .mutation(async ({ ctx: { supabase }, input: { data, documentId } }) => {
-      const { template } = await supabase
-        .from('documents')
-        .select(`template`)
-        .eq('id', documentId)
-        .single()
-        .then(handleMissing)
-        .then(unwrap);
+    .mutation(
+      async ({ ctx: { supabase }, input: { documentId, variables } }) => {
+        const { template } = await supabase
+          .from('documents')
+          .select(`template`)
+          .eq('id', documentId)
+          .single()
+          .then(handleMissing)
+          .then(unwrap);
 
-      const pdf = await generate({
-        inputs: [data] as GenerateProps['inputs'],
-        plugins,
-        template: template as GenerateProps['template'],
-      });
-    }),
+        const pdf = await generate({
+          inputs: [variables] as GenerateProps['inputs'],
+          plugins,
+          template: template as GenerateProps['template'],
+        });
+
+        const data = btoa(
+          pdf.reduce((data, byte) => data + String.fromCodePoint(byte), '')
+        );
+        return { data };
+      }
+    ),
 } satisfies TRPCRouterRecord;
