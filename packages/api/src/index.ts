@@ -1,24 +1,17 @@
-import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
+import { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 
-import type { AppRouter } from '@/root';
+import { documentRouter } from './router/document';
+import { t } from './trpc';
 
-/**
- * Inference helpers for input types
- * @example
- * type documentByIdInput = RouterInputs['document']['byId']
- *      ^? { id: number }
- **/
-type RouterInputs = inferRouterInputs<AppRouter>;
+export const appRouter = t.router({
+  document: documentRouter,
+});
 
-/**
- * Inference helpers for output types
- * @example
- * type AllDocumentsOutput = RouterOutputs['document']['all']
- *      ^? document[]
- **/
-type RouterOutputs = inferRouterOutputs<AppRouter>;
+// export type definition of API
+export type AppRouter = typeof appRouter;
 
-export type { RouterInputs, RouterOutputs };
+export type RouterInputs = inferRouterInputs<AppRouter>;
 
-export { appRouter, type AppRouter } from '@/root';
-export { type TRPCContext } from '@/trpc';
+export type RouterOutputs = inferRouterOutputs<AppRouter>;
+
+export { type TRPCContext } from './trpc';

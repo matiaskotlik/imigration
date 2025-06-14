@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "build:check": "turbo run build:check",
+    "clean": "git clean -xdf node_modules .turbo",
+    "clean:workspaces": "turbo run clean",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "turbo run lint",

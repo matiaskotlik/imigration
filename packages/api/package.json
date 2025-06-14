@@ -4,10 +4,13 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./trpc": "./src/trpc.ts",
+    "./utils": "./src/utils.ts"
   },
   "scripts": {
     "build:check": "tsc --noEmit",
+    "clean": "git clean -xdf node_modules .turbo",
     "lint": "eslint --fix",
     "lint:check": "eslint"
   },
@@ -17,7 +20,7 @@
     "@repo/eslint": "workspace:*",
     "@repo/pdfme-plugins": "workspace:*",
     "@repo/supabase": "workspace:*",
-    "@repo/typescript": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@supabase/supabase-js": "^2.50.0",
     "@trpc/server": "^11.4.1",
     "superjson": "2.2.2",

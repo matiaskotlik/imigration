@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build:check": "tsc --noEmit",
+    "clean": "git clean -xdf node_modules .turbo",
     "lint": "eslint --fix",
     "lint:check": "eslint"
   },
@@ -17,7 +18,7 @@
     "@pdfme/schemas": "^5.4.0",
     "@repo/eslint": "workspace:*",
     "@repo/supabase": "workspace:*",
-    "@repo/typescript": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@supabase/supabase-js": "^2.50.0",
     "@trpc/server": "^11.4.1",
     "signature_pad": "^5.0.9",

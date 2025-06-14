@@ -4,6 +4,14 @@
   "tasks": {
     "lint": {},
     "lint:check": {},
+    "clean": {
+      "cache": false,
+      "outputs": []
+    },
+    "//#clean": {
+      "cache": false,
+      "outputs": []
+    },
     "build:check": {}
   },
   "globalPassThroughEnv": [

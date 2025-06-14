@@ -59,9 +59,9 @@ importers:
       '@repo/eslint':
         specifier: workspace:*
         version: link:../../tooling/eslint
-      '@repo/typescript':
+      '@repo/tsconfig':
         specifier: workspace:*
-        version: link:../../tooling/typescript
+        version: link:../../tooling/tsconfig
       '@shopify/react-native-skia':
         specifier: ^2.0.3
         version: 2.0.3(react-native-reanimated@3.18.0(@babel/core@7.27.4)(react-native@0.80.0(@babel/core@7.27.4)(@types/react@19.1.8)(react@19.1.0))(react@19.1.0))(react-native@0.80.0(@babel/core@7.27.4)(@types/react@19.1.8)(react@19.1.0))(react@19.1.0)
@@ -252,9 +252,9 @@ importers:
       '@repo/supabase':
         specifier: workspace:*
         version: link:../../supabase
-      '@repo/typescript':
+      '@repo/tsconfig':
         specifier: workspace:*
-        version: link:../../tooling/typescript
+        version: link:../../tooling/tsconfig
       '@supabase-cache-helpers/postgrest-core':
         specifier: ^0.12.1
         version: 0.12.1(@supabase/postgrest-js@1.19.4)
@@ -421,9 +421,9 @@ importers:
       '@repo/supabase':
         specifier: workspace:*
         version: link:../../supabase
-      '@repo/typescript':
+      '@repo/tsconfig':
         specifier: workspace:*
-        version: link:../../tooling/typescript
+        version: link:../../tooling/tsconfig
       '@supabase/supabase-js':
         specifier: ^2.50.0
         version: 2.50.0
@@ -461,9 +461,9 @@ importers:
       '@repo/supabase':
         specifier: workspace:*
         version: link:../../supabase
-      '@repo/typescript':
+      '@repo/tsconfig':
         specifier: workspace:*
-        version: link:../../tooling/typescript
+        version: link:../../tooling/tsconfig
       '@supabase/supabase-js':
         specifier: ^2.50.0
         version: 2.50.0
@@ -492,9 +492,9 @@ importers:
       '@repo/eslint':
         specifier: workspace:*
         version: link:../tooling/eslint
-      '@repo/typescript':
+      '@repo/tsconfig':
         specifier: workspace:*
-        version: link:../tooling/typescript
+        version: link:../tooling/tsconfig
       '@supabase/supabase-js':
         specifier: ^2.50.0
         version: 2.50.0
@@ -605,7 +605,7 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5(prettier@3.5.3)
 
-  tooling/typescript: {}
+  tooling/tsconfig: {}
 
 packages:
 

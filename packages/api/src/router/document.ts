@@ -1,8 +1,8 @@
 import type { TRPCRouterRecord } from '@trpc/server';
 
-import { publicProcedure } from '@/trpc';
+import { publicProcedure } from '@repo/api/trpc';
 import { z } from 'zod/v4';
-import { handleMissing, unwrap } from '@/utils';
+import { handleMissing, unwrap } from '@repo/api/utils';
 import { generate } from '@pdfme/generator';
 import plugins from '@repo/pdfme-plugins';
 import { GenerateProps } from '@pdfme/common';

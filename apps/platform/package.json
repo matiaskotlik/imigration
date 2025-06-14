@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build:check": "tsc --noEmit",
+    "clean": "git clean -xdf node_modules .turbo .next",
     "dev": "next dev --turbopack",
     "env:pull": "vercel env pull --environment=${VERCEL_ENVIRONMENT?} ${VERCEL_TOKEN:+--token=$VERCEL_TOKEN}",
     "lint": "next lint --fix",
@@ -29,7 +30,7 @@
     "@repo/eslint": "workspace:*",
     "@repo/pdfme-plugins": "workspace:*",
     "@repo/supabase": "workspace:*",
-    "@repo/typescript": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@supabase-cache-helpers/postgrest-core": "^0.12.1",
     "@supabase-cache-helpers/postgrest-react-query": "^1.13.4",
     "@supabase/postgrest-js": "^1.19.4",

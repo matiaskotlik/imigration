@@ -24,12 +24,10 @@ export const OPTIONS = () => {
 };
 
 const handler = async (req: NextRequest) => {
-  const supabase = await createServerSupabase();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
   const response = await fetchRequestHandler({
-    createContext: () => ({ user }),
+    createContext: async () => ({
+      supabase: await createServerSupabase(),
+    }),
     endpoint: '/api/trpc',
     onError({ error, path }) {
       console.error(`tRPC Error on '${path}'`, error);

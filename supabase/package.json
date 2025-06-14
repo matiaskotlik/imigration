@@ -14,6 +14,7 @@
   },
   "scripts": {
     "build:check": "tsc --noEmit",
+    "clean": "git clean -xdf node_modules .turbo",
     "config:push": "supabase config push ${SUPABASE_PROJECT_REF:+--project-ref=$SUPABASE_PROJECT_REF}",
     "db:clear": "scripts/db-clear.sh",
     "db:diff": "supabase db diff",
@@ -35,7 +36,7 @@
   },
   "dependencies": {
     "@repo/eslint": "workspace:*",
-    "@repo/typescript": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@supabase/supabase-js": "^2.50.0"
   },
   "devDependencies": {
