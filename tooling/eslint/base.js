@@ -6,8 +6,10 @@ import eslintJS from '@eslint/js';
 import eslintPluginMarkdown from 'eslint-plugin-markdown';
 import eslintPluginNode from 'eslint-plugin-n';
 import eslintPluginPerfectionist from 'eslint-plugin-perfectionist';
+// @ts-ignore
 import eslintPluginPromise from 'eslint-plugin-promise';
 import eslintPluginReact from 'eslint-plugin-react';
+// @ts-ignore
 import eslintPluginReactPerf from 'eslint-plugin-react-perf';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';

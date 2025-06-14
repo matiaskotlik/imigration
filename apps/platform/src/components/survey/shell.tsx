@@ -4,11 +4,11 @@ import { Container } from '@/components/ui/container';
 import { H3, Muted } from '@/components/ui/typography';
 import { useCurrentSurvey } from '@/queries/current-survey';
 import { Skeleton } from '@/components/ui/skeleton';
-import { EditSurveyDialog } from '@/components/survey/modal/edit.tsx';
-import { Button } from '@/components/ui/button.tsx';
+import { EditSurveyDialog } from '@/components/survey/modal/edit';
+import { Button } from '@/components/ui/button';
 import { CopyIcon, EditIcon, TrashIcon } from 'lucide-react';
-import { DuplicateSurveyDialog } from '@/components/survey/modal/duplicate.tsx';
-import { DeleteSurveyDialog } from '@/components/survey/modal/delete.tsx';
+import { DuplicateSurveyDialog } from '@/components/survey/modal/duplicate';
+import { DeleteSurveyDialog } from '@/components/survey/modal/delete';
 
 export function SurveyShellHeader() {
   const survey = useCurrentSurvey();

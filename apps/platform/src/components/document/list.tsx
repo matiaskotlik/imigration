@@ -12,9 +12,9 @@ import {
 import { Container } from '@/components/ui/container';
 import { ChevronRightIcon, FilePlusIcon, PlusIcon } from 'lucide-react';
 import Link from 'next/link';
-import { H3 } from '@/components/ui/typography.tsx';
-import { Skeleton } from '@/components/ui/skeleton.tsx';
-import { Button } from '@/components/ui/button.tsx';
+import { H3 } from '@/components/ui/typography';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
 import {
   DocumentListItem,
   useInfiniteDocumentList,
@@ -23,7 +23,7 @@ import {
   EmptyContainer,
   EmptyDescription,
   EmptyTitle,
-} from '@/components/ui/empty.tsx';
+} from '@/components/ui/empty';
 import { CreateDocumentDialog } from '@/components/document/modal/create';
 import InfiniteFetcher from '@/components/infinite-scroller';
 import { BrandSpinner } from '@/components/brand/logo';

@@ -13,11 +13,11 @@ import { Json } from '@repo/supabase/database.types';
 import { toast } from 'sonner';
 import { useInterval, useUnmount } from 'usehooks-ts';
 import { Designer } from '@pdfme/ui';
-import { Section } from '@/components/ui/section.tsx';
-import { Container } from '@/components/ui/container.tsx';
-import { H3, Muted } from '@/components/ui/typography.tsx';
-import { EditDocumentDialog } from '@/components/document/modal/edit.tsx';
-import { Button } from '@/components/ui/button.tsx';
+import { Section } from '@/components/ui/section';
+import { Container } from '@/components/ui/container';
+import { H3, Muted } from '@/components/ui/typography';
+import { EditDocumentDialog } from '@/components/document/modal/edit';
+import { Button } from '@/components/ui/button';
 import {
   CopyIcon,
   EditIcon,
@@ -25,16 +25,16 @@ import {
   FileScanIcon,
   TrashIcon,
 } from 'lucide-react';
-import { DuplicateDocumentDialog } from '@/components/document/modal/duplicate.tsx';
-import { DeleteDocumentDialog } from '@/components/document/modal/delete.tsx';
+import { DuplicateDocumentDialog } from '@/components/document/modal/duplicate';
+import { DeleteDocumentDialog } from '@/components/document/modal/delete';
 import DocumentDesigner from '@/components/document/designer';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from '@/components/ui/tooltip.tsx';
-import { GenerateDocumentDialog } from '@/components/document/modal/generate.tsx';
-import { zip } from '@/lib/utils.ts';
+} from '@/components/ui/tooltip';
+import { GenerateDocumentDialog } from '@/components/document/modal/generate';
+import { zip } from '@/lib/utils';
 
 export function DocumentEditorPage() {
   const document = useCurrentDocument();

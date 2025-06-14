@@ -5,7 +5,7 @@ import { Section } from '@/components/ui/section';
 import Link from 'next/link';
 import { ChevronLeftIcon } from 'lucide-react';
 import { twc } from 'react-twc';
-import { Button } from '@/components/ui/button.tsx';
+import { Button } from '@/components/ui/button';
 
 export const NotFoundContent = twc(Container)`flex flex-col items-start gap-4`;
 

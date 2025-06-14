@@ -7,7 +7,7 @@ import {
   NotFoundDescription,
   NotFoundTitle,
 } from '@/components/app/not-found';
-import { Button } from '@/components/ui/button.tsx';
+import { Button } from '@/components/ui/button';
 
 export default function NotFoundPage() {
   return (

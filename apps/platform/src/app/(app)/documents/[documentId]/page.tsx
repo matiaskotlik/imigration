@@ -1,4 +1,4 @@
-import { DocumentEditorPage } from '@/components/document/editor-page.tsx';
+import { DocumentEditorPage } from '@/components/document/editor-page';
 
 export const metadata = {
   title: 'Document Editor',
