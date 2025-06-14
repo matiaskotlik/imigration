@@ -1,0 +1,46 @@
+import { H1, P } from '@/components/ui/typography';
+import { Container } from '@/components/ui/container';
+import { titleCase } from '@/lib/utils';
+import { Section } from '@/components/ui/section';
+import Link from 'next/link';
+import { ChevronLeftIcon } from 'lucide-react';
+import { twc } from 'react-twc';
+import { Button } from '@/components/ui/button.tsx';
+
+export const NotFoundContent = twc(Container)`flex flex-col items-start gap-4`;
+
+export const NotFoundCaption = twc(P)`text-primary`;
+
+export const NotFoundTitle = twc(H1)``;
+
+export const NotFoundDescription = twc(P)`text-muted-foreground`;
+
+export const notFoundMetadata = {
+  title: '404',
+};
+
+export function EntityNotFoundPage({
+  entity,
+  href,
+}: {
+  entity: string;
+  href: string;
+}) {
+  return (
+    <Section center viewport>
+      <NotFoundContent>
+        <NotFoundCaption>404</NotFoundCaption>
+        <NotFoundTitle>{titleCase(entity)} not found</NotFoundTitle>
+        <NotFoundDescription>
+          Sorry, we couldn&apos;t find the {entity} you&apos;re looking for.
+        </NotFoundDescription>
+        <Button asChild>
+          <Link href={href}>
+            <ChevronLeftIcon />
+            Back to all {entity}s
+          </Link>
+        </Button>
+      </NotFoundContent>
+    </Section>
+  );
+}

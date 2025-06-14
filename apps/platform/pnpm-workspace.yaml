@@ -1,0 +1,10 @@
+onlyBuiltDependencies:
+  - '@prisma/engines'
+  - '@tailwindcss/oxide'
+  - canvas
+  - core-js
+  - core-js-pure
+  - esbuild
+  - sharp
+  - supabase
+  - unrs-resolver

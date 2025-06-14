@@ -2,15 +2,9 @@
   "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
   "tasks": {
-    "lint": {
-      "dependsOn": ["^lint"]
-    },
-    "lint:check": {
-      "dependsOn": ["^lint:check"]
-    },
-    "build:check": {
-      "dependsOn": ["^build:check"]
-    }
+    "lint": {},
+    "lint:check": {},
+    "build:check": {}
   },
   "globalEnv": ["NODE_ENV"]
 }

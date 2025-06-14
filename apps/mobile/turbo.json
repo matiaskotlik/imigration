@@ -1,0 +1,8 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "outputs": [".expo/**", "!.expo/cache/**"]
+    }
+  }
+}

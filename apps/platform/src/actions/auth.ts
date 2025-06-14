@@ -1,0 +1,106 @@
+'use server';
+
+import { serverSupabase } from '@/lib/supabase/server';
+import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
+import { actionError, createAction } from 'next-extra/action';
+
+export type AuthActionArgs = {
+  afterAuthPath: string;
+};
+
+export type AuthActionParams = AuthActionArgs & AuthFormData;
+
+export type AuthActionResponse =
+  | {
+      data: {
+        message: string;
+      };
+      error: null;
+    }
+  | {
+      data: null;
+      error: string;
+    };
+
+export type AuthFormData = {
+  confirmPassword: string;
+  email: string;
+  password: string;
+};
+
+export const signUpAction = createAction(
+  async ({ afterAuthPath, email, password }: AuthActionParams) => {
+    const supabase = await serverSupabase();
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      options: {
+        emailRedirectTo: afterAuthPath,
+      },
+      password,
+    });
+
+    if (error) {
+      actionError(error.name, error.message);
+    }
+
+    return {
+      message:
+        'Check your email for a verification link to complete your registration.',
+    };
+  }
+);
+
+export const loginAction = createAction(
+  async ({ afterAuthPath, email, password }: AuthActionParams) => {
+    const supabase = await serverSupabase();
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      actionError(error.name, error.message);
+    }
+
+    revalidatePath('/', 'layout');
+    redirect(afterAuthPath);
+  }
+);
+
+export const forgotPasswordAction = createAction(
+  async ({ email }: AuthActionParams) => {
+    const supabase = await serverSupabase();
+
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: '/auth/change-password',
+    });
+
+    if (error) {
+      actionError(error.name, error.message);
+    }
+
+    return {
+      message:
+        'Check your email for a link to reset your password. If you do not receive an email, please check your spam folder.',
+    };
+  }
+);
+
+export const changePasswordAction = createAction(
+  async ({ afterAuthPath, password }: AuthActionParams) => {
+    const supabase = await serverSupabase();
+
+    const { error } = await supabase.auth.updateUser({
+      password,
+    });
+
+    if (error) {
+      actionError(error.name, error.message);
+    }
+
+    redirect(afterAuthPath);
+  }
+);
