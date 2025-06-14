@@ -1,19 +1,20 @@
 import {
   InferInfiniteDataType,
   supabaseInfiniteQueryOptions,
-  TypedSupabaseClient,
 } from '@/lib/supabase/utils';
 import {
   infiniteQueryOptions,
   useSuspenseInfiniteQuery,
 } from '@tanstack/react-query';
+import { SupabaseClient } from '@supabase/supabase-js';
+import { Database } from '@repo/supabase/database.types';
 
 export const surveyListInfiniteQueryOptions = () =>
   infiniteQueryOptions({
     ...supabaseInfiniteQueryOptions({
       getNextPageParam: (lastPage) => lastPage.at(-1)?.updatedAt,
       initialPageParam: null,
-      query: (supabase: TypedSupabaseClient) =>
+      query: (supabase: SupabaseClient<Database>) =>
         supabase
           .from('surveys')
           .select(

@@ -12,7 +12,7 @@ import {
 import { Designer } from '@pdfme/ui';
 import { DesignerProps } from '@pdfme/common';
 import { cssHex, reforwardRef } from '@/lib/utils';
-import { plugins } from '@/components/document/designer/plugins';
+import plugins from '@repo/pdfme-plugins';
 
 export default forwardRef(function ClientDocumentDesigner(
   {

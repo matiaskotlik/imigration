@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "main": "expo-router/entry",
+  "exports": {
+    ".": "./expo-router/entry"
+  },
   "scripts": {
     "android": "expo run:android",
     "build:check": "tsc --noEmit",

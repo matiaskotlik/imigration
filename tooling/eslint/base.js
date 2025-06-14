@@ -31,7 +31,6 @@ export default [
   ...eslintTS.configs.strictTypeChecked,
   ...eslintTS.configs.stylisticTypeChecked,
   eslintPluginNode.configs['flat/recommended-module'],
-  // @ts-expect-error, untyped import
   eslintPluginPromise.configs['flat/recommended'],
   eslintPluginUnicorn.configs.recommended,
   eslintPluginPerfectionist.configs['recommended-alphabetical'],
@@ -51,7 +50,10 @@ export default [
         ecmaFeatures: { jsx: true },
         ecmaVersion: 'latest',
         parser: '@typescript-eslint/parser',
-        project: true,
+        projectService: {
+          allowDefaultProject: ['*.js'],
+          defaultProject: 'tsconfig.json',
+        },
       },
     },
     plugins: {

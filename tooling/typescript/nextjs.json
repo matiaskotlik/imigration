@@ -6,7 +6,6 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "allowJs": true,
-    "jsx": "preserve",
-    "noEmit": true
+    "jsx": "preserve"
   }
 }

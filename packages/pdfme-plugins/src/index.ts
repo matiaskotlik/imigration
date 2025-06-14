@@ -17,7 +17,7 @@ import {
 } from '@pdfme/schemas';
 import { signature } from './signature';
 
-export const plugins = {
+export default {
   Checkbox: checkbox,
   // EAN8: barcodes.ean8,
   // Code39: barcodes.code39,

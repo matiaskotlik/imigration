@@ -2,16 +2,17 @@ import {
   InferDataType,
   redirectMissing,
   supabaseQueryOptions,
-  TypedSupabaseClient,
 } from '@/lib/supabase/utils';
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 import { useDocumentId } from '@/lib/app-context';
 import { DesignerProps } from '@pdfme/common';
+import { SupabaseClient } from '@supabase/supabase-js';
+import { Database } from '@repo/supabase/database.types';
 
 export const currentDocumentQueryOptions = (id: string) =>
   queryOptions({
     ...supabaseQueryOptions({
-      query: (supabase: TypedSupabaseClient) =>
+      query: (supabase: SupabaseClient<Database>) =>
         supabase
           .from('documents')
           .select(

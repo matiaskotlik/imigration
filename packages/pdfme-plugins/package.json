@@ -1,0 +1,31 @@
+{
+  "name": "@repo/pdfme-plugins",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build:check": "tsc --noEmit",
+    "lint": "eslint --fix",
+    "lint:check": "eslint"
+  },
+  "dependencies": {
+    "@pdfme/common": "^5.4.0",
+    "@pdfme/generator": "^5.4.0",
+    "@pdfme/schemas": "^5.4.0",
+    "@repo/eslint": "workspace:*",
+    "@repo/supabase": "workspace:*",
+    "@repo/typescript": "workspace:*",
+    "@supabase/supabase-js": "^2.50.0",
+    "@trpc/server": "^11.4.1",
+    "signature_pad": "^5.0.9",
+    "superjson": "2.2.2",
+    "zod": "^3.25.64"
+  },
+  "devDependencies": {
+    "eslint": "^9.29.0",
+    "typescript": "^5.8.3"
+  }
+}

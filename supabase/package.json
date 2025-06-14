@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "type": "module",
   "exports": {
-    "./database.types": "./gen/database.types.ts"
+    "./database.types": "./gen/database.types.ts",
+    "./*": "./src/*.ts"
   },
   "bin": {
     "bump-filename": "scripts/bump-filename.py",
@@ -12,6 +13,7 @@
     "db-schema-apply": "scripts/db-schema-apply.sh"
   },
   "scripts": {
+    "build:check": "tsc --noEmit",
     "config:push": "supabase config push ${SUPABASE_PROJECT_REF:+--project-ref=$SUPABASE_PROJECT_REF}",
     "db:clear": "scripts/db-clear.sh",
     "db:diff": "supabase db diff",
@@ -25,11 +27,20 @@
     "db:schema:apply": "scripts/db-schema-apply.sh",
     "db:start": "supabase db start",
     "db:test": "supabase db test",
+    "lint": "eslint --fix",
+    "lint:check": "eslint",
     "start": "supabase start",
     "types:check": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts | diff gen/database.types.ts -",
     "types:gen": "supabase gen types typescript --local > gen/database.types.ts && prettier --write gen/database.types.ts"
   },
+  "dependencies": {
+    "@repo/eslint": "workspace:*",
+    "@repo/typescript": "workspace:*",
+    "@supabase/supabase-js": "^2.50.0"
+  },
   "devDependencies": {
-    "supabase": "^2.24.3"
+    "eslint": "^9.29.0",
+    "supabase": "^2.24.3",
+    "typescript": "^5.8.3"
   }
 }

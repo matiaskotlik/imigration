@@ -1,6 +1,6 @@
 'use server';
 
-import { serverSupabase } from '@/lib/supabase/server';
+import { createServerSupabase } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { actionError, createAction } from 'next-extra/action';
@@ -31,7 +31,7 @@ export type AuthFormData = {
 
 export const signUpAction = createAction(
   async ({ afterAuthPath, email, password }: AuthActionParams) => {
-    const supabase = await serverSupabase();
+    const supabase = await createServerSupabase();
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -54,7 +54,7 @@ export const signUpAction = createAction(
 
 export const loginAction = createAction(
   async ({ afterAuthPath, email, password }: AuthActionParams) => {
-    const supabase = await serverSupabase();
+    const supabase = await createServerSupabase();
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -72,7 +72,7 @@ export const loginAction = createAction(
 
 export const forgotPasswordAction = createAction(
   async ({ email }: AuthActionParams) => {
-    const supabase = await serverSupabase();
+    const supabase = await createServerSupabase();
 
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: '/auth/change-password',
@@ -91,7 +91,7 @@ export const forgotPasswordAction = createAction(
 
 export const changePasswordAction = createAction(
   async ({ afterAuthPath, password }: AuthActionParams) => {
-    const supabase = await serverSupabase();
+    const supabase = await createServerSupabase();
 
     const { error } = await supabase.auth.updateUser({
       password,

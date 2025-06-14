@@ -1,18 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "declaration": true,
-  "declarationMap": true,
-  "esModuleInterop": true,
-  "incremental": false,
-  "isolatedModules": true,
   "compilerOptions": {
-    "target": "es2022",
-    "lib": ["dom", "dom.iterable", "es2022"],
+    "declaration": true,
+    "declarationMap": true,
+    "target": "es2023",
+    "lib": ["dom", "dom.iterable", "es2023"],
     "allowJs": true,
-    "skipLibCheck": true,
     "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
     "noUncheckedIndexedAccess": true,
     "module": "nodenext",
     "moduleDetection": "force",
@@ -20,7 +14,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
-    "allowImportingTsExtensions": true
+    "incremental": true
   }
 }

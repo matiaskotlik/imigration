@@ -5,7 +5,7 @@ import {
 } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { PostgrestFilterBuilder } from '@supabase/postgrest-js';
-import { GenericSchema } from '@/lib/supabase/generic-schema';
+import { GenericSchema } from '@repo/supabase';
 
 export function makeQueryClient() {
   return new QueryClient({

@@ -1,4 +1,3 @@
-import { Database } from '@repo/supabase/database.types';
 import {
   AuthTokenResponsePassword,
   PostgrestError,
@@ -9,7 +8,7 @@ import {
 import {
   PG_INVALID_TEXT_REPRESENTATION,
   PGRST_SINGULAR_RESPONSE_ITEM_COUNT_MISMATCH,
-} from '@/lib/supabase/error';
+} from '@repo/supabase/error';
 import { notFound } from 'next/navigation';
 import {
   PostgrestBuilder,
@@ -26,8 +25,9 @@ import {
 import { encode } from '@supabase-cache-helpers/postgrest-react-query';
 import { supabase } from '@/lib/supabase/client';
 import { isPostgrestTransformBuilder } from '@supabase-cache-helpers/postgrest-core';
-import { serverSupabase } from '@/lib/supabase/server';
-import { GenericSchema } from '@/lib/supabase/generic-schema';
+import { createServerSupabase } from '@/lib/supabase/server';
+import { Database } from '@repo/supabase/database.types';
+import { GenericSchema } from '@repo/supabase/generic';
 
 export type InferDataType<T> =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,9 +37,7 @@ export type InferInfiniteDataType<T> =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   T extends UseInfiniteQueryOptions<any, any, infer U, any, any> ? U : never;
 
-export type QueryBuilder<T> = (client: TypedSupabaseClient) => T;
-
-export type TypedSupabaseClient = SupabaseClient<Database>;
+export type QueryBuilder<T> = (client: SupabaseClient<Database>) => T;
 
 export const isMissingError = (err: unknown) => {
   return (
@@ -87,7 +85,7 @@ export const unwrapSignout = ({ error }: { error: Error | null }) => {
 
 export const isomorphicSupabase = async () =>
   // eslint-disable-next-line unicorn/prefer-global-this
-  typeof window === 'undefined' ? await serverSupabase() : supabase;
+  typeof window === 'undefined' ? await createServerSupabase() : supabase;
 
 export const supabaseInfiniteQueryOptions = <
   TPageParam,

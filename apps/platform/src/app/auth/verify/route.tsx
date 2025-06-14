@@ -1,4 +1,4 @@
-import { serverSupabase } from '@/lib/supabase/server';
+import { createServerSupabase } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { createLoader, parseAsString, parseAsStringLiteral } from 'nuqs/server';
 import { NextRequest } from 'next/server';
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
     request.nextUrl.searchParams
   );
 
-  const supabase = await serverSupabase();
+  const supabase = await createServerSupabase();
 
   if (!type || !token_hash) {
     console.log('Missing/invalid type or token_hash');

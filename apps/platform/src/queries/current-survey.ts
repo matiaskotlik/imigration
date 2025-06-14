@@ -2,15 +2,16 @@ import {
   InferDataType,
   redirectMissing,
   supabaseQueryOptions,
-  TypedSupabaseClient,
 } from '@/lib/supabase/utils';
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
 import { useSurveyId } from '@/lib/app-context';
+import { SupabaseClient } from '@supabase/supabase-js';
+import { Database } from '@repo/supabase/database.types';
 
 export const currentSurveyQueryOptions = (id: string) =>
   queryOptions({
     ...supabaseQueryOptions({
-      query: (supabase: TypedSupabaseClient) =>
+      query: (supabase: SupabaseClient<Database>) =>
         supabase
           .from('surveys')
           .select(
