@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "exports": {
-    "./types": "./gen/database.types.ts"
+    "./database.types": "./gen/database.types.ts"
   },
   "bin": {
     "bump-filename": "scripts/bump-filename.py",
