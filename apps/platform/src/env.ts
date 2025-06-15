@@ -22,6 +22,7 @@ export const env = createEnv({
       .enum(['development', 'production', 'test'])
       .default('development'),
   },
-  skipValidation:
-    ['build:check', 'lint', 'lint:check'].includes(process.env.npm_lifecycle_event ?? ''),
+  skipValidation: ['build:check', 'lint', 'lint:check'].includes(
+    process.env.npm_lifecycle_event ?? ''
+  ),
 });
