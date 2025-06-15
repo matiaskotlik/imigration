@@ -7,12 +7,11 @@
     "format": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
     "format:check": "turbo run format --continue -- --check --cache --cache-location .cache/.prettiercache",
     "postinstall": "sherif",
-    "lint": "pnpm with-env turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
-    "lint:check": "pnpm with-env turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
+    "lint": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
+    "lint:check": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
     "lint:ws": "sherif --fix",
-    "platform:dev": "pnpm with-env turbo watch dev -F @repo/platform...",
-    "typecheck": "pnpm with-env turbo run typecheck",
-    "with-env": "dotenvx run --convention nextjs --"
+    "platform:dev": "turbo watch dev -F @repo/platform...",
+    "typecheck": "turbo run typecheck"
   },
   "prettier": "@repo/prettier-config",
   "devDependencies": {

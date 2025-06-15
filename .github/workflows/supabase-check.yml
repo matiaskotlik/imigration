@@ -1,19 +1,7 @@
 name: Supabase Check
 
 on:
-  push:
-    paths:
-      - 'packages/supabase/**'
-      - '.github/workflows/supabase-check.yml'
-  pull_request:
-    paths:
-      - 'packages/supabase/**'
-      - '.github/workflows/supabase-check.yml'
   workflow_call:
-
-defaults:
-  run:
-    working-directory: 'packages/supabase'
 
 jobs:
   db-lint:

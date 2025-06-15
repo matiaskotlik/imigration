@@ -1,0 +1,11 @@
+name: Supabase
+
+on:
+  push:
+    paths:
+      - 'packages/supabase/**'
+      - '.github/workflows/supabase-check.yml'
+  pull_request:
+    paths:
+      - 'packages/supabase/**'
+      - '.github/workflows/supabase-check.yml'
