@@ -1,0 +1,578 @@
+{
+  "title": "Solicitud de Asilo",
+  "description": "Antes de comenzar … sepa que Ud puede corregir y cambiar lo que necesite antes de terminar y mandar el archivo, pero es importante que recuerde que todo lo que diga , documentos, fotos, suplementos, etc que presente o envie tienen que ser verdaderos a su mejor saber y entender .",
+  "pages": [
+    {
+      "name": "page1",
+      "title": "Parte 1: Informacion Personal",
+      "description": "Por favor, primero necesitamos su Informacion Personal",
+      "elements": [
+        {
+          "type": "text",
+          "name": "AI4_last_name",
+          "title": "Apellido completo"
+        },
+        {
+          "type": "text",
+          "name": "AI5_first_name",
+          "title": "Primer Nombre"
+        },
+        {
+          "type": "text",
+          "name": "AI6_middle_name",
+          "title": "Segundo nombre"
+        },
+        {
+          "type": "text",
+          "name": "AI7_maiden_name",
+          "title": "Apellido de soltera"
+        },
+        {
+          "type": "text",
+          "name": "AI7_other_names",
+          "title": "¿Qué otros nombres o apellidos ha tenido o utilizado?"
+        },
+        {
+          "type": "radiogroup",
+          "name": "AI7_used_alias",
+          "title": "¿Ha utilizado un alias?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "text",
+          "name": "AI7_alias_name",
+          "visibleIf": "{AI7_used_alias} = 'Sí'",
+          "title": "¿Cuál es o fue su alias?"
+        },
+        {
+          "type": "radiogroup",
+          "name": "AI10_sex",
+          "title": "Sexo",
+          "choices": ["Masculino", "Femenino"]
+        },
+        {
+          "type": "text",
+          "name": "AI12_dob",
+          "title": "Fecha de nacimiento (mm/dd/aaaa - por ejemplo: 05/18/1990)"
+        },
+        {
+          "type": "text",
+          "name": "AI13_birth_country",
+          "title": "¿En qué país nació?"
+        },
+        {
+          "type": "text",
+          "name": "AI13_birth_city",
+          "title": "¿En qué ciudad nació?"
+        },
+        {
+          "type": "text",
+          "name": "AI14_nationality_current",
+          "title": "¿Cuál es su nacionalidad (ciudadanía) actual?"
+        },
+        {
+          "type": "text",
+          "name": "AI15_nationality_birth",
+          "title": "¿Cuál fue su nacionalidad (ciudadanía) de nacimiento?"
+        },
+        {
+          "type": "text",
+          "name": "AI16_ethnicity",
+          "title": "Raza, etnia o tribu (grupo tribal)",
+          "description": "Puede no contestar"
+        },
+        {
+          "type": "text",
+          "name": "AI17_religion",
+          "title": "Religión",
+          "description": "Puede no contestar"
+        }
+      ]
+    },
+    {
+      "name": "page3",
+      "description": "Solo un poquito mas de informacion sobre los idiomas que habla...",
+      "elements": [
+        {
+          "type": "text",
+          "name": "AI23_native_language",
+          "title": "¿Cuál es su lengua materna (incluya el dialecto, si corresponde)?"
+        },
+        {
+          "type": "radiogroup",
+          "name": "AI24_speak_english",
+          "title": "¿Habla inglés con fluidez?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "radiogroup",
+          "name": "AI24_read_write_english",
+          "visibleIf": "{AI24_speak_english} = 'Sí'",
+          "title": "¿Escribe y lee inglés con fluidez?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "radiogroup",
+          "name": "AI25_speak_spanish",
+          "title": "¿Habla español con fluidez?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "radiogroup",
+          "name": "AI25_read_write_spanish",
+          "visibleIf": "{AI25_speak_spanish} = 'Sí'",
+          "title": "¿Escribe y lee español con fluidez?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "text",
+          "name": "AI26_other_languages",
+          "title": "¿Qué otros idiomas habla con fluidez?"
+        }
+      ]
+    },
+    {
+      "name": "page4_address",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "current_us_residence",
+          "title": "¿Vive actualmente en los EE.UU?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "html",
+          "name": "current_us_required",
+          "visibleIf": "{current_us_residence} = 'No'",
+          "html": "<p>Debe estar viviendo en los Estados Unidos para presentar este formulario.</p>"
+        },
+        {
+          "type": "text",
+          "name": "AI8_street_address",
+          "title": "Número y nombre de la calle donde vive actualmente en EE. UU."
+        },
+        {
+          "type": "radiogroup",
+          "name": "AI8_apartment_unit",
+          "title": "¿Es un Departamento/apartamento o una unidad?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "text",
+          "name": "AI8_apartment_number",
+          "visibleIf": "{AI8_apartment_unit} = 'Sí'",
+          "title": "Número de la unidad"
+        },
+        {
+          "type": "text",
+          "name": "AI8_city",
+          "title": "Ciudad"
+        },
+        {
+          "type": "text",
+          "name": "AI8_state",
+          "title": "Estado"
+        },
+        {
+          "type": "text",
+          "name": "AI8_zip",
+          "title": "Código postal"
+        }
+      ]
+    },
+    {
+      "name": "page5_education",
+      "elements": [
+        {
+          "type": "text",
+          "name": "AIII3_school_name",
+          "title": "Nombre de la Escuela/Colegio"
+        },
+        {
+          "type": "dropdown",
+          "name": "AIII3_school_level",
+          "title": "Tipo (Nivel) de la Escuela/Colegio",
+          "choices": [
+            "Primaria o elemental",
+            "Secundaria",
+            "Terciario o Técnica",
+            "Universidad"
+          ]
+        },
+        {
+          "type": "text",
+          "name": "AIII3_school_city",
+          "title": "Ciudad"
+        },
+        {
+          "type": "text",
+          "name": "AIII3_school_state",
+          "title": "Estado"
+        },
+        {
+          "type": "text",
+          "name": "AIII3_school_country",
+          "title": "País"
+        },
+        {
+          "type": "text",
+          "name": "AIII3_school_from",
+          "title": "Desde cuándo asistió a clases (mm/aaaa)"
+        },
+        {
+          "type": "text",
+          "name": "AIII3_school_to",
+          "title": "Hasta cuándo asistió a clases (mm/aaaa)"
+        }
+      ]
+    },
+    {
+      "name": "page6_employment",
+      "elements": [
+        {
+          "type": "text",
+          "name": "AIII4_employer_name",
+          "title": "Nombre del empleador / empresa / negocio"
+        },
+        {
+          "type": "text",
+          "name": "AIII4_employer_address",
+          "title": "Número y calle del lugar de trabajo"
+        },
+        {
+          "type": "text",
+          "name": "AIII4_employer_city",
+          "title": "Ciudad"
+        },
+        {
+          "type": "text",
+          "name": "AIII4_employer_state",
+          "title": "Estado"
+        },
+        {
+          "type": "text",
+          "name": "AIII4_employer_country",
+          "title": "País"
+        },
+        {
+          "type": "text",
+          "name": "AIII4_occupation",
+          "title": "¿Cuál era / es su ocupación?"
+        },
+        {
+          "type": "text",
+          "name": "AIII4_work_from",
+          "title": "Desde cuándo trabajó en ese lugar (mm/aaaa)"
+        },
+        {
+          "type": "text",
+          "name": "AIII4_work_to",
+          "title": "Hasta cuándo trabajó en ese lugar (mm/aaaa)"
+        }
+      ]
+    },
+    {
+      "name": "page7_marital_status",
+      "elements": [
+        {
+          "type": "dropdown",
+          "name": "AI11_marital_status",
+          "title": "¿Cuál es su estado civil?",
+          "choices": ["Soltero(a)", "Casado(a)", "Divorciado(a)", "Viudo(a)"]
+        },
+        {
+          "type": "radiogroup",
+          "name": "AII_has_children",
+          "title": "¿Tiene hijos (independientemente de su edad, ubicación o estado civil)?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "text",
+          "name": "AII_number_of_children",
+          "visibleIf": "{AII_has_children} = 'Sí'",
+          "title": "¿Cuántos hijos tiene?"
+        }
+      ]
+    },
+    {
+      "name": "page8_spouse_info",
+      "elements": [
+        {
+          "type": "text",
+          "name": "AII9_spouse_marriage_date",
+          "visibleIf": "{AI11_marital_status} = 'Casado(a)'",
+          "title": "Fecha del casamiento / matrimonio (mm/dd/aaaa)"
+        },
+        {
+          "type": "text",
+          "name": "AII10_spouse_city_marriage",
+          "visibleIf": "{AI11_marital_status} = 'Casado(a)'",
+          "title": "Ciudad donde se casó"
+        },
+        {
+          "type": "text",
+          "name": "AII10_spouse_country_marriage",
+          "visibleIf": "{AI11_marital_status} = 'Casado(a)'",
+          "title": "País donde se casó"
+        },
+        {
+          "type": "text",
+          "name": "AII5_spouse_last_name",
+          "visibleIf": "{AI11_marital_status} = 'Casado(a)'",
+          "title": "Apellido completo del esposo(a)"
+        },
+        {
+          "type": "text",
+          "name": "AII6_spouse_first_name",
+          "visibleIf": "{AI11_marital_status} = 'Casado(a)'",
+          "title": "Primer nombre del esposo(a)"
+        },
+        {
+          "type": "text",
+          "name": "AII7_spouse_middle_name",
+          "visibleIf": "{AI11_marital_status} = 'Casado(a)'",
+          "title": "Segundo nombre del esposo(a)"
+        }
+      ]
+    },
+    {
+      "name": "page9_children_info",
+      "elements": [
+        {
+          "type": "paneldynamic",
+          "name": "children_info",
+          "visibleIf": "{AII_has_children} = 'Sí'",
+          "title": "Información de sus hijos",
+          "templateElements": [
+            {
+              "type": "text",
+              "name": "child_last_name",
+              "title": "Apellido completo"
+            },
+            {
+              "type": "text",
+              "name": "child_first_name",
+              "title": "Primer nombre"
+            },
+            {
+              "type": "text",
+              "name": "child_middle_name",
+              "title": "Segundo nombre"
+            },
+            {
+              "type": "radiogroup",
+              "name": "child_sex",
+              "title": "Sexo",
+              "choices": ["Masculino", "Femenino"]
+            },
+            {
+              "type": "text",
+              "name": "child_dob",
+              "title": "Fecha de nacimiento (mm/dd/aaaa)"
+            },
+            {
+              "type": "text",
+              "name": "child_birth_city",
+              "title": "Ciudad de nacimiento"
+            },
+            {
+              "type": "text",
+              "name": "child_birth_country",
+              "title": "País de nacimiento"
+            },
+            {
+              "type": "text",
+              "name": "child_nationality",
+              "title": "Nacionalidad"
+            },
+            {
+              "type": "text",
+              "name": "child_ethnicity",
+              "title": "Raza, etnia o tribu"
+            },
+            {
+              "type": "radiogroup",
+              "name": "child_lives_in_us",
+              "title": "¿Vive actualmente en los EE.UU?",
+              "choices": ["Sí", "No"]
+            }
+          ],
+          "panelCount": 1,
+          "addPanelText": "Agregar otro hijo"
+        }
+      ]
+    },
+    {
+      "name": "page10_passport_info",
+      "elements": [
+        {
+          "type": "text",
+          "name": "AI20_passport_country",
+          "title": "¿Qué país expidió su último pasaporte o documento de viaje?"
+        },
+        {
+          "type": "text",
+          "name": "AI21_passport_number",
+          "title": "Número de pasaporte / documento de viaje"
+        },
+        {
+          "type": "text",
+          "name": "AI22_passport_expiration",
+          "title": "Fecha de vencimiento (mm/dd/aaaa)"
+        }
+      ]
+    },
+    {
+      "name": "page11_ids_info",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "has_alien_number",
+          "title": "¿Tiene Número de Registro de Extranjero (Número A)?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "text",
+          "name": "AI1_alien_number",
+          "visibleIf": "{has_alien_number} = 'Sí'",
+          "title": "Número de Registro de Extranjero"
+        },
+        {
+          "type": "radiogroup",
+          "name": "has_ssn",
+          "title": "¿Tiene Número de Seguro Social de los EE. UU.?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "text",
+          "name": "AI2_ssn",
+          "visibleIf": "{has_ssn} = 'Sí'",
+          "title": "Número de Seguro Social"
+        },
+        {
+          "type": "radiogroup",
+          "name": "has_uscis_account",
+          "title": "¿Tiene Número de cuenta en línea del USCIS?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "text",
+          "name": "AI3_uscis_account",
+          "visibleIf": "{has_uscis_account} = 'Sí'",
+          "title": "Número de cuenta en línea del USCIS"
+        }
+      ]
+    },
+    {
+      "name": "page12_asylum_reason",
+      "elements": [
+        {
+          "type": "checkbox",
+          "name": "B1_asylum_reasons",
+          "title": "¿Cuáles son los motivos por los que Ud está solicitando asilo? (marque todos los que apliquen)",
+          "defaultValue": ["Convención contra la Tortura"],
+          "choices": [
+            "Religión",
+            "Nacionalidad",
+            "Raza",
+            "Opinión política",
+            "Pertenencia a un determinado grupo social",
+            "Convención contra la Tortura"
+          ]
+        },
+        {
+          "type": "comment",
+          "name": "BA_harm_details",
+          "title": "¿Usted, su familia, amigos cercanos o compañeros de trabajo han sufrido algún daño, maltrato o amenaza?",
+          "description": "Explique con mucho detalle lo que pasó, quién fue responsable, cuándo y por qué."
+        },
+        {
+          "type": "comment",
+          "name": "BB_fear_of_return",
+          "title": "¿Tiene miedo de volver a su país?",
+          "description": "Explique con detalle por qué tiene miedo, quién podría hacerle daño y qué podría pasar."
+        }
+      ]
+    },
+    {
+      "name": "page13_legal_history",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "B2_accused_outside_us",
+          "title": "¿Usted o algún miembro de su familia han sido acusados, arrestados o encarcelados en algún país distinto a EE.UU.?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "comment",
+          "name": "B2_accused_details",
+          "visibleIf": "{B2_accused_outside_us} = 'Sí'",
+          "title": "Explique qué pasó, las circunstancias y razones"
+        },
+        {
+          "type": "radiogroup",
+          "name": "B3A_org_association",
+          "title": "¿Usted o su familia han estado asociados a algún grupo u organización?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "comment",
+          "name": "B3A_org_association_details",
+          "visibleIf": "{B3A_org_association} = 'Sí'",
+          "title": "Describa la participación, cargos y duración"
+        },
+        {
+          "type": "radiogroup",
+          "name": "B3B_still_participating",
+          "title": "¿Usted o su familia siguen participando en estos grupos?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "comment",
+          "name": "B3B_current_participation_details",
+          "visibleIf": "{B3B_still_participating} = 'Sí'",
+          "title": "Describa el nivel actual de participación"
+        },
+        {
+          "type": "radiogroup",
+          "name": "C4_returned_to_country",
+          "title": "¿Volvió a su país después de salir por daño o temor?",
+          "choices": ["Sí", "No"]
+        },
+        {
+          "type": "comment",
+          "name": "C4_return_details",
+          "visibleIf": "{C4_returned_to_country} = 'Sí'",
+          "title": "Explique cuándo y por qué volvió, y cuánto tiempo estuvo"
+        }
+      ]
+    },
+    {
+      "name": "page14_final_declaration",
+      "elements": [
+        {
+          "type": "html",
+          "name": "final_disclaimer",
+          "html": "<p>Juro (afirmo) que conozco el contenido de esta solicitud que estoy firmando, incluidos los documentos y suplementos adjuntos, que son todos verdaderos a mi leal saber y entender.</p><p>Además, soy consciente de que si se determina que he presentado a sabiendas una solicitud de asilo frívola seré permanentemente inelegible para cualquier beneficio bajo la Ley de Inmigración y Nacionalidad.</p>"
+        },
+        {
+          "type": "radiogroup",
+          "name": "agree_to_declaration",
+          "title": "¿Está de acuerdo con la declaración anterior?",
+          "choices": ["Sí", "No"]
+        }
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression"
+    }
+  ],
+  "showTitle": false,
+  "autoAdvanceEnabled": true,
+  "autoAdvanceAllowComplete": false,
+  "questionsOnPageMode": "questionPerPage",
+  "showPreviewBeforeComplete": true,
+  "headerView": "advanced"
+}
