@@ -1,0 +1,4 @@
+{
+  "baseBranches": ["staging"],
+  "extends": ["config:recommended"]
+}
