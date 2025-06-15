@@ -7,10 +7,10 @@
     "build:check": "next lint --ignore-path . && tsc -noEmit",
     "clean": "git clean -xdf node_modules .cache .turbo .next",
     "dev": "next dev --turbopack",
-    "format": "prettier . --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
-    "format:check": "prettier . --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
-    "lint": "next lint . --fix --cache-location .cache/.eslintcache",
-    "lint:check": "next lint . --cache-location .cache/.eslintcache"
+    "format": "prettier --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
+    "format:check": "prettier --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
+    "lint": "ESLINT_NO_DEV_ERRORS=true eslint --fix --cache --cache-location .cache/.eslintcache",
+    "lint:check": "eslint --cache --cache-location .cache/.eslintcache"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {
