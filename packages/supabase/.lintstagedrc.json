@@ -1,0 +1,6 @@
+{
+  "**": [
+    "prettier --ignore-path ../../.gitignore --ignore-unknown --write",
+    "eslint --no-warn-ignored"
+  ]
+}
