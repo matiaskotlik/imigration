@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/tsconfig/next.json",
+  "extends": "@repo/tsconfig/base.json",
   "compilerOptions": {
     "lib": ["ES2022", "dom", "dom.iterable"],
     "jsx": "preserve",
@@ -12,5 +12,5 @@
     }
   },
   "include": [".", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", ".next"]
+  "exclude": ["node_modules"]
 }

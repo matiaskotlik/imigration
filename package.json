@@ -2,21 +2,14 @@
   "name": "imigration",
   "private": true,
   "scripts": {
-    "android": "expo run:android",
-    "build": "turbo run build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo run clean",
-    "dev": "turbo watch dev --continue",
-    "dev:platform": "turbo watch dev -F @repo/platform...",
     "format": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
     "format:check": "turbo run format --continue -- --check --cache --cache-location .cache/.prettiercache",
     "postinstall": "sherif",
-    "ios": "expo run:ios",
     "lint": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
     "lint:check": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
     "lint:ws": "sherif --fix",
-    "supabase:config:push": "turbo -F @repo/supabase config:push",
-    "supabase:db:push": "turbo -F @repo/supabase db:push",
     "typecheck": "turbo run typecheck"
   },
   "prettier": "@repo/prettier-config",
@@ -34,7 +27,7 @@
     "turbo": "^2.5.4",
     "typescript": "catalog:"
   },
-  "packageManager": "pnpm@10.11.1",
+  "packageManager": "pnpm@10.12.1",
   "engines": {
     "node": ">=22.14.0",
     "pnpm": ">=10.11.1"

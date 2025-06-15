@@ -34,8 +34,8 @@ jobs:
       - run: pnpm install
       - run: pnpm format:check
 
-  build:
-    name: Build
+  typecheck:
+    name: Types
     runs-on: ubuntu-latest
 
     steps:
@@ -46,4 +46,4 @@ jobs:
           node-version-file: 'package.json'
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm build:check
+      - run: pnpm typecheck

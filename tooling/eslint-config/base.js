@@ -37,6 +37,12 @@ export default defineConfig([
   // @ts-expect-error typescript-eslint types do not match eslint
   tseslint.configs.stylisticTypeChecked,
   {
+    ignores: ['**/env.ts'],
+    rules: {
+      'n/no-process-env': 'error',
+    },
+  },
+  {
     languageOptions: {
       parserOptions: { projectService: true },
     },
@@ -65,6 +71,7 @@ export default defineConfig([
       ],
       '@typescript-eslint/require-await': 'off',
       '@typescript-eslint/restrict-template-expressions': 'off',
+      'canonical/destructuring-property-newline': 'off',
       'canonical/id-match': 'off',
       'canonical/import-specifier-newline': 'off',
       curly: 'error',
