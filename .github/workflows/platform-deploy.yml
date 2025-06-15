@@ -37,6 +37,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm exec vercel -- pull --environment ${{ inputs.environment }} --yes --token ${{ secrets.VERCEL_TOKEN }}
-      - run: pnpm exec vercel -- build --target ${{ inputs.environment }} --token ${{ secrets.VERCEL_TOKEN }}
-      - run: pnpm exec vercel -- deploy --target ${{ inputs.environment }} --prebuilt --archive tgz --token ${{ secrets.VERCEL_TOKEN }}
+      - run: pnpm exec vercel pull --environment ${{ inputs.environment }} --yes --token ${{ secrets.VERCEL_TOKEN }}
+      - run: pnpm exec vercel build --target ${{ inputs.environment }} --token ${{ secrets.VERCEL_TOKEN }}
+      - run: pnpm exec vercel deploy --target ${{ inputs.environment }} --prebuilt --archive tgz --token ${{ secrets.VERCEL_TOKEN }}
