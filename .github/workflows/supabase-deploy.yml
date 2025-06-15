@@ -2,15 +2,24 @@ name: Supabase Deploy
 
 on:
   workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
 
 defaults:
   run:
     working-directory: 'packages/supabase'
 
+concurrency:
+  cancel-in-progress: true
+  group: supabase-deploy
+
 jobs:
   migrations:
     name: Migrations
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     concurrency:
       group: supabase-migrations-deploy
       cancel-in-progress: true
@@ -26,6 +35,7 @@ jobs:
   config:
     name: Config
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     concurrency:
       group: supabase-config-deploy
       cancel-in-progress: true
