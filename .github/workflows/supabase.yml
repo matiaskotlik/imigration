@@ -23,7 +23,6 @@ jobs:
     uses: ./.github/workflows/supabase-deploy.yml
     with:
       environment: production
-    secrets: inherit
 
   deploy-staging:
     name: Staging Deploy
@@ -32,4 +31,3 @@ jobs:
     uses: ./.github/workflows/supabase-deploy.yml
     with:
       environment: preview
-    secrets: inherit
