@@ -8,26 +8,26 @@ defaults:
     working-directory: 'packages/supabase'
 
 jobs:
-  db-push:
-    name: Push database migrations
+  migrations:
+    name: Migrations
     runs-on: ubuntu-latest
     concurrency:
-      group: supabase-db-push
+      group: supabase-migrations-deploy
       cancel-in-progress: true
 
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm db:push
+      - run: pnpm migrations:push
         env:
           SUPABASE_PROJECT_REF: ${{ vars.SUPABASE_PROJECT_REF }}
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
 
-  config-push:
-    name: Push supabase config
+  config:
+    name: Config
     runs-on: ubuntu-latest
     concurrency:
-      group: supabase-config-push
+      group: supabase-config-deploy
       cancel-in-progress: true
 
     steps:

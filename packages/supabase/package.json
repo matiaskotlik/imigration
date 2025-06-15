@@ -23,7 +23,6 @@
     "db:dump:check": "scripts/db-dump-check.sh",
     "db:lint": "supabase db lint | tee /dev/stderr | jq -e 'all(all(.issues[]; .level != \"error\"))'",
     "db:lint:check": "supabase db lint | tee /dev/stderr | jq -e 'all(all(.issues[]; .level != \"error\"))'",
-    "db:push": "${SUPABASE_PROJECT_REF:+supabase link --project-ref=$SUPABASE_PROJECT_REF &&} supabase db push ",
     "db:reset": "supabase db reset",
     "db:schema:apply": "scripts/db-schema-apply.sh",
     "db:start": "supabase db start",
@@ -33,6 +32,7 @@
     "format:check": "prettier . --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
     "lint": "eslint . --fix --cache --cache-location .cache/.eslintcache",
     "lint:check": "eslint . --cache --cache-location .cache/.eslintcache",
+    "migrations:push": "${SUPABASE_PROJECT_REF:+supabase link --project-ref=$SUPABASE_PROJECT_REF &&} supabase db push",
     "start": "supabase start",
     "types:check": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts | diff - gen/database.types.ts",
     "types:gen": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts > gen/database.types.ts"
