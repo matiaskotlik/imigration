@@ -16,6 +16,7 @@ import {
   MultilineCode,
   MultilineCodeCopy,
 } from '@/components/ui/typography';
+import { env } from '@/env';
 
 export function ErrorFallback({
   message,
@@ -36,7 +37,7 @@ export function ErrorFallback({
 
       <div className='flex gap-4'>
         {message ? (
-          <Dialog defaultOpen={process.env.NODE_ENV === 'development'}>
+          <Dialog defaultOpen={env.NODE_ENV === 'development'}>
             <DialogTrigger asChild>
               <Button variant='outline'>More Details</Button>
             </DialogTrigger>

@@ -7,6 +7,8 @@ import {
 } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
+import { env } from '@/env';
+
 export function makeQueryClient() {
   return new QueryClient({
     defaultOptions: {
@@ -25,7 +27,7 @@ export function makeQueryClient() {
         },
       },
       queries: {
-        retry: process.env.NODE_ENV === 'development' ? false : 2,
+        retry: env.NODE_ENV === 'development' ? false : 2,
         // With SSR, we usually want to set some default staleTime
         // above 0 to avoid refetching immediately on the client
         staleTime: 60 * 1000,

@@ -3,10 +3,11 @@ import type { NextRequest } from 'next/server';
 import { appRouter } from '@repo/api';
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 
+import { env } from '@/env';
 import { createServerSupabase } from '@/lib/supabase/server';
 
 const setCorsHeaders = (res: Response) => {
-  if (process.env.NODE_ENV === 'development') {
+  if (env.NODE_ENV === 'development') {
     res.headers.set('Access-Control-Allow-Origin', '*');
     res.headers.set('Access-Control-Request-Method', '*');
     res.headers.set('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
