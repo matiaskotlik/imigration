@@ -10,12 +10,11 @@ export const config = {
   matcher: [
     /*
      * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
+     * - _next/ (Next.js static files)
      * - favicon.ico (favicon file)
      * - alerts (sentry)
-     * Feel free to modify this pattern to include more paths.
+     * - images (image files)
      */
-    String.raw`/((?!_next/static|_next/image|favicon.ico|alerts|.*\.(?:svg|png|jpg|jpeg|gif|webp)$).*)`,
+    String.raw`/((?!_next|favicon.ico|alerts|.*\.(?:svg|png|jpg|jpeg|gif|webp)$).*)`,
   ],
 };

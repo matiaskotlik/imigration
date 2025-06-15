@@ -27,6 +27,7 @@ const formTypes = [
 type FormType = (typeof formTypes)[number];
 
 export const dynamic = 'error';
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return formTypes.map((type) => ({ type }));
