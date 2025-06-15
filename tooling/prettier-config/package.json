@@ -6,12 +6,12 @@
     ".": "./index.js"
   },
   "scripts": {
+    "build:check": "tsc --noEmit --emitDeclarationOnly false",
     "clean": "git clean -xdf .cache .turbo node_modules",
     "format": "prettier . --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
     "format:check": "prettier . --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
-    "lint:check": "eslint . --cache --cache-location .cache/.eslintcache",
     "lint": "eslint . --fix --cache --cache-location .cache/.eslintcache",
-    "build:check": "tsc --noEmit --emitDeclarationOnly false"
+    "lint:check": "eslint . --cache --cache-location .cache/.eslintcache"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {

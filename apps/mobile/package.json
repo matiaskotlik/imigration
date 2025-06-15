@@ -7,16 +7,16 @@
   },
   "scripts": {
     "android": "expo run:android",
+    "build:check": "tsc --noEmit",
     "clean": "git clean -xdf .cache .expo .turbo android ios node_modules",
     "dev": "expo start",
     "dev:android": "expo start --android",
     "dev:ios": "expo start --ios",
-    "ios": "expo run:ios",
-    "format:check": "prettier . --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
     "format": "prettier . --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
-    "lint:check": "expo lint -- --cache --cache-location .cache/.eslintcache",
+    "format:check": "prettier . --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
+    "ios": "expo run:ios",
     "lint": "expo lint -- --fix --cache --cache-location .cache/.eslintcache",
-    "build:check": "tsc --noEmit"
+    "lint:check": "expo lint -- --cache --cache-location .cache/.eslintcache"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {

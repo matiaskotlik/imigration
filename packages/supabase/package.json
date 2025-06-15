@@ -13,6 +13,7 @@
     "db-schema-apply": "scripts/db-schema-apply.sh"
   },
   "scripts": {
+    "build:check": "tsc --noEmit --emitDeclarationOnly false",
     "clean": "git clean -xdf .cache .turbo node_modules",
     "config:push": "supabase config push ${SUPABASE_PROJECT_REF:+--project-ref=$SUPABASE_PROJECT_REF}",
     "db:clear": "scripts/db-clear.sh",
@@ -30,10 +31,9 @@
     "db:test": "supabase db test",
     "format": "prettier . --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
     "format:check": "prettier . --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
-    "lint:check": "eslint . --cache --cache-location .cache/.eslintcache",
     "lint": "eslint . --fix --cache --cache-location .cache/.eslintcache",
+    "lint:check": "eslint . --cache --cache-location .cache/.eslintcache",
     "start": "supabase start",
-    "build:check": "tsc --noEmit --emitDeclarationOnly false",
     "types:check": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts | diff gen/database.types.ts -",
     "types:gen": "supabase gen types typescript --local > gen/database.types.ts && prettier --write gen/database.types.ts"
   },
