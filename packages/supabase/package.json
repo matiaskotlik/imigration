@@ -34,8 +34,8 @@
     "lint": "eslint . --fix --cache --cache-location .cache/.eslintcache",
     "lint:check": "eslint . --cache --cache-location .cache/.eslintcache",
     "start": "supabase start",
-    "types:check": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts | diff gen/database.types.ts -",
-    "types:gen": "supabase gen types typescript --local > gen/database.types.ts && prettier --write gen/database.types.ts"
+    "types:check": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts | diff - gen/database.types.ts",
+    "types:gen": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts > gen/database.types.ts"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {

@@ -19,7 +19,7 @@ import tseslint from 'typescript-eslint';
 export default defineConfig([
   includeIgnoreFile(path.join(import.meta.dirname, '../../.gitignore')),
   {
-    ignores: ['**/*.config.*', '**/gen'],
+    ignores: ['**/*.config.*'],
   },
   {
     languageOptions: {

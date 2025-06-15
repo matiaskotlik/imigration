@@ -1,1 +1,3 @@
-export { default } from '@repo/eslint-config/base';
+import baseConfig from '@repo/eslint-config/base';
+
+export default [{ ignores: ['**/gen'] }, ...baseConfig];

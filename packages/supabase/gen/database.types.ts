@@ -1,33 +1,15 @@
-export type CompositeTypes<
-  PublicCompositeTypeNameOrOptions extends
-    | keyof DefaultSchema['CompositeTypes']
-    | { schema: keyof Database },
-  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
-    schema: keyof Database;
-  }
-    ? keyof Database[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes']
-    : never = never,
-> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes'][CompositeTypeName]
-  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema['CompositeTypes']
-    ? DefaultSchema['CompositeTypes'][PublicCompositeTypeNameOrOptions]
-    : never;
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[];
 
-export interface Database {
+export type Database = {
   public: {
-    CompositeTypes: Record<never, never>;
-    Enums: Record<never, never>;
-    Functions: Record<never, never>;
     Tables: {
       documents: {
-        Insert: {
-          description?: string;
-          id?: string;
-          name?: string;
-          template?: Json;
-          updated_at?: string;
-        };
-        Relationships: [];
         Row: {
           description: string;
           id: string;
@@ -35,6 +17,13 @@ export interface Database {
           template: Json;
           updated_at: string;
         };
+        Insert: {
+          description?: string;
+          id?: string;
+          name?: string;
+          template?: Json;
+          updated_at?: string;
+        };
         Update: {
           description?: string;
           id?: string;
@@ -42,16 +31,9 @@ export interface Database {
           template?: Json;
           updated_at?: string;
         };
+        Relationships: [];
       };
       surveys: {
-        Insert: {
-          description?: string;
-          id?: string;
-          json?: Json;
-          name?: string;
-          updated_at?: string;
-        };
-        Relationships: [];
         Row: {
           description: string;
           id: string;
@@ -59,6 +41,13 @@ export interface Database {
           name: string;
           updated_at: string;
         };
+        Insert: {
+          description?: string;
+          id?: string;
+          json?: Json;
+          name?: string;
+          updated_at?: string;
+        };
         Update: {
           description?: string;
           id?: string;
@@ -66,52 +55,43 @@ export interface Database {
           name?: string;
           updated_at?: string;
         };
+        Relationships: [];
       };
       users: {
-        Insert: {
-          avatar_url?: null | string;
-          id: string;
-          name?: string;
-        };
-        Relationships: [];
         Row: {
-          avatar_url: null | string;
+          avatar_url: string | null;
           id: string;
           name: string;
         };
+        Insert: {
+          avatar_url?: string | null;
+          id: string;
+          name?: string;
+        };
         Update: {
-          avatar_url?: null | string;
+          avatar_url?: string | null;
           id?: string;
           name?: string;
         };
+        Relationships: [];
       };
     };
-    Views: Record<never, never>;
+    Views: {
+      [_ in never]: never;
+    };
+    Functions: {
+      [_ in never]: never;
+    };
+    Enums: {
+      [_ in never]: never;
+    };
+    CompositeTypes: {
+      [_ in never]: never;
+    };
   };
-}
+};
 
-export type Enums<
-  DefaultSchemaEnumNameOrOptions extends
-    | keyof DefaultSchema['Enums']
-    | { schema: keyof Database },
-  EnumName extends DefaultSchemaEnumNameOrOptions extends {
-    schema: keyof Database;
-  }
-    ? keyof Database[DefaultSchemaEnumNameOrOptions['schema']]['Enums']
-    : never = never,
-> = DefaultSchemaEnumNameOrOptions extends { schema: keyof Database }
-  ? Database[DefaultSchemaEnumNameOrOptions['schema']]['Enums'][EnumName]
-  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema['Enums']
-    ? DefaultSchema['Enums'][DefaultSchemaEnumNameOrOptions]
-    : never;
-
-export type Json =
-  | boolean
-  | Json[]
-  | null
-  | number
-  | string
-  | { [key: string]: Json | undefined };
+type DefaultSchema = Database[Extract<keyof Database, 'public'>];
 
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
@@ -186,7 +166,35 @@ export type TablesUpdate<
       : never
     : never;
 
-type DefaultSchema = Database[Extract<keyof Database, 'public'>];
+export type Enums<
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema['Enums']
+    | { schema: keyof Database },
+  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof Database;
+  }
+    ? keyof Database[DefaultSchemaEnumNameOrOptions['schema']]['Enums']
+    : never = never,
+> = DefaultSchemaEnumNameOrOptions extends { schema: keyof Database }
+  ? Database[DefaultSchemaEnumNameOrOptions['schema']]['Enums'][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema['Enums']
+    ? DefaultSchema['Enums'][DefaultSchemaEnumNameOrOptions]
+    : never;
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema['CompositeTypes']
+    | { schema: keyof Database },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof Database;
+  }
+    ? keyof Database[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes']
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
+  ? Database[PublicCompositeTypeNameOrOptions['schema']]['CompositeTypes'][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema['CompositeTypes']
+    ? DefaultSchema['CompositeTypes'][PublicCompositeTypeNameOrOptions]
+    : never;
 
 export const Constants = {
   public: {
