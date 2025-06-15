@@ -2,9 +2,9 @@
 
 import { includeIgnoreFile } from '@eslint/compat';
 import eslintJs from '@eslint/js';
+import tsParser from '@typescript-eslint/parser';
 import eslintPluginCanonical from 'eslint-plugin-canonical';
 import eslintPluginImportX from 'eslint-plugin-import-x';
-import eslintPluginJsxA11Y from 'eslint-plugin-jsx-a11y';
 import eslintPluginMarkdown from 'eslint-plugin-markdown';
 import eslintPluginNode from 'eslint-plugin-n';
 import eslintPluginPerfectionist from 'eslint-plugin-perfectionist';
@@ -21,6 +21,15 @@ export default defineConfig([
   {
     ignores: ['**/*.config.*', '**/gen'],
   },
+  {
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: { projectService: true },
+    },
+    linterOptions: {
+      reportUnusedDisableDirectives: true,
+    },
+  },
   eslintPluginMarkdown.configs.recommended,
   eslintPluginPerfectionist.configs['recommended-natural'],
   eslintPluginImportX.flatConfigs.recommended,
@@ -30,7 +39,6 @@ export default defineConfig([
   eslintPluginUnicorn.configs.recommended,
   eslintPluginTurbo.configs['flat/recommended'],
   eslintPluginCanonical.configs['flat/recommended'],
-  eslintPluginJsxA11Y.flatConfigs.strict,
   eslintJs.configs.recommended,
   // @ts-expect-error typescript-eslint types do not match eslint
   tseslint.configs.strictTypeChecked,
@@ -43,12 +51,6 @@ export default defineConfig([
     },
   },
   {
-    languageOptions: {
-      parserOptions: { projectService: true },
-    },
-    linterOptions: {
-      reportUnusedDisableDirectives: true,
-    },
     rules: {
       '@typescript-eslint/no-misused-promises': [
         'error',
@@ -72,6 +74,7 @@ export default defineConfig([
       '@typescript-eslint/require-await': 'off',
       '@typescript-eslint/restrict-template-expressions': 'off',
       'canonical/destructuring-property-newline': 'off',
+      'canonical/export-specifier-newline': 'off',
       'canonical/id-match': 'off',
       'canonical/import-specifier-newline': 'off',
       curly: 'error',

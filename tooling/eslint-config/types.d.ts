@@ -8,10 +8,6 @@ declare module 'eslint-plugin-import-x' {
   };
 }
 
-declare module 'eslint-config-expo' {
-  export default {};
-}
-
 declare module 'eslint-plugin-canonical' {
   import type { Linter } from 'eslint';
 
@@ -33,27 +29,5 @@ declare module 'eslint-plugin-promise' {
 
   export const configs: {
     'flat/recommended': { rules: Linter.RulesRecord };
-  };
-}
-
-declare module 'eslint-plugin-react' {
-  import type { Linter } from 'eslint';
-
-  export const configs: {
-    flat: {
-      recommended: {
-        languageOptions: Linter.LanguageOptions;
-        rules: Linter.RulesRecord;
-      };
-    };
-  };
-}
-
-declare module 'eslint-plugin-jsx-a11y' {
-  import type { Linter } from 'eslint';
-
-  export const flatConfigs: {
-    'react-native': { rules: Linter.RulesRecord };
-    strict: { rules: Linter.RulesRecord };
   };
 }

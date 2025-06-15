@@ -1,4 +1,14 @@
-import base from '@repo/eslint-config/base';
-import expo from '@repo/eslint-config/expo';
+import baseConfig from '@repo/eslint-config/base';
 
-export default [...base, ...expo];
+import { FlatCompat } from '@eslint/eslintrc';
+
+const compat = new FlatCompat({
+  baseDirectory: import.meta.dirname,
+});
+
+export default [
+  ...baseConfig,
+  ...compat.config({
+    extends: ['expo'],
+  }),
+];
