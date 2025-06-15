@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build",
+    "build": "next build --no-lint",
     "clean": "git clean -xdf node_modules .cache .turbo .next",
     "dev": "next dev --turbopack",
     "format": "prettier . --ignore-path ../../.gitignore",
