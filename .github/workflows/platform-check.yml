@@ -9,7 +9,7 @@ defaults:
 
 jobs:
   check:
-    name: Code check
+    name: Code
     runs-on: ubuntu-latest
 
     steps:
