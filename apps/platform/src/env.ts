@@ -23,5 +23,5 @@ export const env = createEnv({
       .default('development'),
   },
   skipValidation:
-    !!process.env.CI || process.env.npm_lifecycle_event === 'lint',
+    ['build:check', 'lint', 'lint:check'].includes(process.env.npm_lifecycle_event ?? ''),
 });
