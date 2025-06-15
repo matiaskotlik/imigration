@@ -9,7 +9,7 @@
     "format:check": "turbo run format:check format:root:check -- .",
     "format:root": "prettier --write --cache --cache-location .cache/.prettiercache",
     "format:root:check": "prettier --check --cache --cache-location .cache/.prettiercache",
-    "postinstall": "sherif",
+    "postinstall": "sherif && prettier --write pnpm-lock.yaml",
     "lint": "turbo run lint --continue",
     "lint:check": "turbo run lint:check"
   },
