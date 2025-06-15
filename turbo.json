@@ -32,7 +32,7 @@
       "outputs": [".cache/.prettiercache"],
       "outputLogs": "new-only"
     },
-    "typecheck": {
+    "build:check": {
       "dependsOn": ["build"],
       "outputs": [".cache/tsbuildinfo.json"]
     },

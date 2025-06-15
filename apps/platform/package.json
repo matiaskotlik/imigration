@@ -10,7 +10,7 @@
     "format": "prettier . --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
     "lint:check": "next lint . --cache-location .cache/.eslintcache",
     "lint": "next lint . --fix --cache-location .cache/.eslintcache",
-    "typecheck": "tsc --noEmit"
+    "build:check": "tsc --noEmit"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {

@@ -12,7 +12,7 @@ jobs:
     name: Push database migrations
     runs-on: ubuntu-latest
     concurrency:
-      group: db-push
+      group: supabase-db-push
       cancel-in-progress: true
 
     steps:
@@ -32,7 +32,7 @@ jobs:
     name: Push supabase config
     runs-on: ubuntu-latest
     concurrency:
-      group: config-push
+      group: supabase-config-push
       cancel-in-progress: true
 
     steps:

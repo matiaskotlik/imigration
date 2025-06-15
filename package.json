@@ -2,6 +2,7 @@
   "name": "imigration",
   "private": true,
   "scripts": {
+    "build:check": "turbo run build:check",
     "clean": "turbo run clean clean:root",
     "clean:root": "git clean -xdf node_modules",
     "format": "turbo run format format:root",
@@ -12,8 +13,7 @@
     "lint": "turbo run lint --continue",
     "lint:check": "turbo run lint:check",
     "lint:ws": "sherif --fix",
-    "platform:dev": "turbo watch dev -F @repo/platform...",
-    "typecheck": "turbo run typecheck"
+    "platform:dev": "turbo watch dev -F @repo/platform..."
   },
   "prettier": "@repo/prettier-config",
   "devDependencies": {
