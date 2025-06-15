@@ -9,8 +9,8 @@
     "dev": "next dev --turbopack",
     "format": "prettier --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
     "format:check": "prettier --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
-    "lint": "next lint --ignore-path . && ESLINT_NO_DEV_ERRORS=true eslint --fix --cache --cache-location .cache/.eslintcache",
-    "lint:check": "next lint --ignore-path . && eslint --cache --cache-location .cache/.eslintcache"
+    "lint": "ESLINT_NO_DEV_ERRORS=true next lint --fix --cache-location .cache/.eslintcache",
+    "lint:check": "next lint --cache-location .cache/.eslintcache"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {
