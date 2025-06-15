@@ -7,7 +7,7 @@
     "clean": "git clean -xdf node_modules .cache .turbo .next",
     "dev": "next dev --turbopack",
     "format": "prettier . --ignore-path ../../.gitignore",
-    "lint": "eslint",
+    "lint": "next lint --ignore-path * && eslint",
     "typecheck": "tsc --noEmit"
   },
   "prettier": "@repo/prettier-config",
@@ -69,6 +69,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@next/env": "^15.3.3",
     "@repo/eslint-config": "workspace:*",
     "@repo/prettier-config": "workspace:*",
     "@repo/tsconfig": "workspace:*",

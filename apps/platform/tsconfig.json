@@ -12,5 +12,5 @@
     }
   },
   "include": [".", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": [".next", "node_modules"]
 }
