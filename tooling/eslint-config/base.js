@@ -90,6 +90,7 @@ export default defineConfig([
       'prefer-template': 'error',
       'unicorn/no-array-reduce': 'off',
       'unicorn/no-null': 'off',
+      'unicorn/prefer-string-raw': 'off',
       'unicorn/prevent-abbreviations': 'off',
     },
   },
