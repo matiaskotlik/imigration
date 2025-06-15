@@ -13,16 +13,13 @@ defaults:
 
 concurrency:
   cancel-in-progress: true
-  group: supabase-deploy
+  group: ${{ inputs.environment }}-supabase-deploy
 
 jobs:
   migrations:
     name: Migrations
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
-    concurrency:
-      group: supabase-migrations-deploy
-      cancel-in-progress: true
 
     steps:
       - uses: actions/checkout@v4
@@ -36,9 +33,6 @@ jobs:
     name: Config
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
-    concurrency:
-      group: supabase-config-deploy
-      cancel-in-progress: true
 
     steps:
       - uses: actions/checkout@v4
