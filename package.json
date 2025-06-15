@@ -12,7 +12,7 @@
     "lint:ws": "sherif --fix",
     "platform:dev": "pnpm with-env turbo watch dev -F @repo/platform...",
     "typecheck": "pnpm with-env turbo run typecheck",
-    "with-env": "dotenvx run --strict --convention nextjs --"
+    "with-env": "dotenvx run --convention nextjs --"
   },
   "prettier": "@repo/prettier-config",
   "devDependencies": {
