@@ -15,4 +15,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpx turbo run lint:check format:check build:check
+      - run: pnpm exec turbo -- run lint:check format:check build:check
