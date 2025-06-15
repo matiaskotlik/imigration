@@ -24,7 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: 'echo Deploying to: ${{ vars.SUPABASE_PROJECT_REF }}'
       - run: pnpm migrations:push
         env:
           SUPABASE_PROJECT_REF: ${{ vars.SUPABASE_PROJECT_REF }}
