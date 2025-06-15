@@ -52,6 +52,7 @@ export function CreateSurveyDialog({ children }: PropsWithChildren) {
   const {
     formState: { isSubmitSuccessful, isSubmitting },
     handleSubmit,
+    reset,
   } = context;
   const handleCreate = async (
     formData: z.output<typeof CreateSurveyFormSchema>
@@ -68,6 +69,7 @@ export function CreateSurveyDialog({ children }: PropsWithChildren) {
     if (error) {
       console.error(error);
       toast.error('Failed to create survey');
+      reset({}, { keepValues: true });
       return;
     }
 

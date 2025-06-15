@@ -54,6 +54,7 @@ export function CreateDocumentDialog({ children }: PropsWithChildren) {
   const {
     formState: { isSubmitSuccessful, isSubmitting },
     handleSubmit,
+    reset,
   } = context;
   const handleCreate = async (
     formData: z.output<typeof CreateDocumentFormSchema>
@@ -74,6 +75,7 @@ export function CreateDocumentDialog({ children }: PropsWithChildren) {
     if (error) {
       console.error(error);
       toast.error('Failed to create document');
+      reset({}, { keepValues: true });
       return;
     }
 

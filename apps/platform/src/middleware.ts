@@ -16,6 +16,6 @@ export const config = {
      * - alerts (sentry)
      * - top-level static image files
      */
-    '/((?!_next|api|favicon.ico|alerts|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/((?!_next|api|favicon.ico|alerts|.*\\.(?:svg|png|jpg|jpeg|gif|webp)(?:\\?|\\/|$)).*)',
   ],
 };
