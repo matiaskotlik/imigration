@@ -19,9 +19,11 @@
       "outputLogs": "new-only"
     },
     "lint:check": {
+      "dependsOn": ["^build"],
       "outputs": [".cache/.eslintcache"]
     },
     "lint": {
+      "dependsOn": ["^build"],
       "outputs": [".cache/.eslintcache"]
     },
     "//#format:root": {
@@ -33,7 +35,7 @@
       "outputLogs": "new-only"
     },
     "build:check": {
-      "dependsOn": ["build"],
+      "dependsOn": ["^build"],
       "outputs": [".cache/tsbuildinfo.json"]
     },
     "clean": {
