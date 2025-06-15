@@ -1,6 +1,12 @@
 name: Supabase Deploy
 
 on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment to deploy to
+        required: true
+        type: environment
   workflow_call:
     inputs:
       environment:
