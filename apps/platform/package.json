@@ -85,8 +85,7 @@
     "prettier": "catalog:",
     "tailwindcss": "catalog:",
     "tw-animate-css": "^1.3.4",
-    "typescript": "catalog:",
-    "vercel": "==33.2.0"
+    "typescript": "catalog:"
   },
   "engines": {
     "node": " ^22.14.0"

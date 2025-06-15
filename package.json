@@ -28,7 +28,8 @@
     "prettier": "catalog:",
     "sherif": "latest",
     "turbo": "^2.5.4",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vercel": "^43.1.0"
   },
   "packageManager": "pnpm@10.12.1",
   "engines": {
