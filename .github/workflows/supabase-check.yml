@@ -8,18 +8,20 @@ defaults:
     working-directory: 'packages/supabase'
 
 jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: ./.github/actions/setup
+      - run: turbo run lint:check
+
   db-lint:
     name: Database lint
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: 'package.json'
-          cache: 'pnpm'
-      - run: pnpm install
+      - uses: ./.github/actions/setup
       - run: pnpm db:start
       - run: pnpm db:lint
 
@@ -28,13 +30,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: 'package.json'
-          cache: 'pnpm'
-      - run: pnpm install
+      - uses: ./.github/actions/setup
       - run: pnpm db:start
       - run: pnpm db:diff:check
 
@@ -43,13 +39,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: 'package.json'
-          cache: 'pnpm'
-      - run: pnpm install
+      - uses: ./.github/actions/setup
       - run: pnpm db:start
       - run: pnpm db:dump:check
 
@@ -58,13 +48,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: 'package.json'
-          cache: 'pnpm'
-      - run: pnpm install
+      - uses: ./.github/actions/setup
       - run: pnpm db:start
       - run: pnpm db:test
 
@@ -73,12 +57,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: 'package.json'
-          cache: 'pnpm'
-      - run: pnpm install
+      - uses: ./.github/actions/setup
       - run: pnpm db:start
       - run: pnpm types:check

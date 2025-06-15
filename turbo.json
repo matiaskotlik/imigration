@@ -11,12 +11,26 @@
       "cache": false,
       "persistent": false
     },
+    "format:check": {
+      "outputs": [".cache/.prettiercache"]
+    },
     "format": {
       "outputs": [".cache/.prettiercache"],
       "outputLogs": "new-only"
     },
+    "lint:check": {
+      "outputs": [".cache/.eslintcache"]
+    },
     "lint": {
       "outputs": [".cache/.eslintcache"]
+    },
+    "//#format:root": {
+      "outputs": [".cache/.prettiercache"],
+      "outputLogs": "new-only"
+    },
+    "//#format:root:check": {
+      "outputs": [".cache/.prettiercache"],
+      "outputLogs": "new-only"
     },
     "typecheck": {
       "dependsOn": ["build"],
@@ -25,7 +39,7 @@
     "clean": {
       "cache": false
     },
-    "//#clean": {
+    "//#clean:root": {
       "cache": false
     }
   },

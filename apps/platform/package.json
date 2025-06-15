@@ -6,8 +6,10 @@
     "build": "next build --no-lint",
     "clean": "git clean -xdf node_modules .cache .turbo .next",
     "dev": "next dev --turbopack",
-    "format": "prettier . --ignore-path ../../.gitignore",
-    "lint": "next lint --ignore-path * && eslint",
+    "format:check": "prettier . --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
+    "format": "prettier . --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
+    "lint:check": "next lint . --cache-location .cache/.eslintcache",
+    "lint": "next lint . --fix --cache-location .cache/.eslintcache",
     "typecheck": "tsc --noEmit"
   },
   "prettier": "@repo/prettier-config",

@@ -7,9 +7,11 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "format": "prettier . --ignore-path ../../.gitignore",
-    "lint": "eslint",
+    "clean": "git clean -xdf .cache .turbo node_modules",
+    "format:check": "prettier . --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
+    "format": "prettier . --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
+    "lint:check": "eslint . --cache --cache-location .cache/.eslintcache",
+    "lint": "eslint . --fix --cache --cache-location .cache/.eslintcache",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "prettier": "@repo/prettier-config",

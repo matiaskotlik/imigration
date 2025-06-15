@@ -38,3 +38,29 @@ dist/
 
 # turbo
 .turbo
+
+# husky
+.husky/_
+
+# next
+.next/
+out/
+next-env.d.ts
+
+# expo
+.expo/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+expo-env.d.ts
+ios
+android
+.metro-health-check*
+
+# supabase
+.branches/
+.temp/

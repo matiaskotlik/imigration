@@ -1,0 +1,4 @@
+# root-level prettier should ignore packages
+apps/*
+packages/*
+tooling/*
