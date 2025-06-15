@@ -21,13 +21,14 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: check
     uses: ./.github/workflows/supabase-deploy.yml
+    secrets: inherit
     with:
       environment: production
 
   deploy-staging:
     name: Staging Deploy
     if: github.ref == 'refs/heads/staging'
-    #    needs: check
+    needs: check
     uses: ./.github/workflows/supabase-deploy.yml
     secrets: inherit
     with:
