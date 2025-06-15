@@ -11,9 +11,7 @@
     "format:root:check": "prettier --check --cache --cache-location .cache/.prettiercache",
     "postinstall": "sherif",
     "lint": "turbo run lint --continue",
-    "lint:check": "turbo run lint:check",
-    "lint:ws": "sherif --fix",
-    "platform:dev": "turbo watch dev -F @repo/platform..."
+    "lint:check": "turbo run lint:check"
   },
   "prettier": "@repo/prettier-config",
   "devDependencies": {
