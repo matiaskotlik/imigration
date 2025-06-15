@@ -5,7 +5,18 @@ on:
     paths:
       - 'packages/supabase/**'
       - '.github/workflows/supabase-check.yml'
+
   pull_request:
     paths:
       - 'packages/supabase/**'
       - '.github/workflows/supabase-check.yml'
+
+jobs:
+  check:
+    uses: ./.github/workflows/supabase-check.yml
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: check
+    uses: ./.github/workflows/supabase-deploy.yml
+    secrets: inherit

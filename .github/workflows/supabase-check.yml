@@ -3,6 +3,10 @@ name: Supabase Check
 on:
   workflow_call:
 
+defaults:
+  run:
+    working-directory: 'packages/supabase'
+
 jobs:
   db-lint:
     name: Database lint
