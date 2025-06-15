@@ -1,3 +1,15 @@
+import { Database } from '@repo/supabase/database.types';
+import {
+  PG_INVALID_TEXT_REPRESENTATION,
+  PGRST_SINGULAR_RESPONSE_ITEM_COUNT_MISMATCH,
+} from '@repo/supabase/error';
+import { GenericSchema } from '@repo/supabase/generic';
+import { isPostgrestTransformBuilder } from '@supabase-cache-helpers/postgrest-core';
+import { encode } from '@supabase-cache-helpers/postgrest-react-query';
+import {
+  PostgrestBuilder,
+  PostgrestFilterBuilder,
+} from '@supabase/postgrest-js';
 import {
   AuthTokenResponsePassword,
   PostgrestError,
@@ -6,15 +18,6 @@ import {
   UserResponse,
 } from '@supabase/supabase-js';
 import {
-  PG_INVALID_TEXT_REPRESENTATION,
-  PGRST_SINGULAR_RESPONSE_ITEM_COUNT_MISMATCH,
-} from '@repo/supabase/error';
-import { notFound } from 'next/navigation';
-import {
-  PostgrestBuilder,
-  PostgrestFilterBuilder,
-} from '@supabase/postgrest-js';
-import {
   GetNextPageParamFunction,
   GetPreviousPageParamFunction,
   infiniteQueryOptions,
@@ -22,12 +25,10 @@ import {
   UseInfiniteQueryOptions,
   UseQueryOptions,
 } from '@tanstack/react-query';
-import { encode } from '@supabase-cache-helpers/postgrest-react-query';
+import { notFound } from 'next/navigation';
+
 import { supabase } from '@/lib/supabase/client';
-import { isPostgrestTransformBuilder } from '@supabase-cache-helpers/postgrest-core';
 import { createServerSupabase } from '@/lib/supabase/server';
-import { Database } from '@repo/supabase/database.types';
-import { GenericSchema } from '@repo/supabase/generic';
 
 export type InferDataType<T> =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -124,8 +125,8 @@ export const supabaseInfiniteQueryOptions = <
       let result;
       try {
         result = await query.throwOnError();
-      } catch (err) {
-        return transformError(err);
+      } catch (error) {
+        return transformError(error);
       }
 
       return transform(result.data, pageParam as TPageParam);
@@ -159,9 +160,9 @@ export const supabaseQueryOptions = <
       let result;
       try {
         result = await query.throwOnError();
-      } catch (err) {
-        console.log('query fail', query, err);
-        return transformError(err);
+      } catch (error) {
+        console.log('query fail', query, error);
+        return transformError(error);
       }
       return transform(result.data);
     },

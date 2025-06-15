@@ -1,5 +1,10 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+import { PropsWithChildren } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -10,22 +15,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { FormProvider, useForm } from 'react-hook-form';
-import { toast } from 'sonner';
-import { PropsWithChildren } from 'react';
-import { useRouter } from 'next/navigation';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { CurrentSurvey } from '@/queries/current-survey';
 import { supabase } from '@/lib/supabase/client';
+import { CurrentSurvey } from '@/queries/current-survey';
 
 export function DeleteSurveyDialog({
   children,
   survey,
-}: PropsWithChildren<{ survey: CurrentSurvey }>) {
+}: PropsWithChildren<{ readonly survey: CurrentSurvey }>) {
   const router = useRouter();
   const context = useForm();
   const {
@@ -54,18 +55,25 @@ export function DeleteSurveyDialog({
         <TooltipTrigger asChild>
           <DialogTrigger asChild>{children}</DialogTrigger>
         </TooltipTrigger>
+
         <TooltipContent>Delete</TooltipContent>
       </Tooltip>
+
       <FormProvider {...context}>
         <DialogContent>
           <form>
             <DialogHeader>
-              <DialogTitle>Delete {survey.name}</DialogTitle>
+              <DialogTitle>
+                Delete
+                {survey.name}
+              </DialogTitle>
+
               <DialogDescription>
                 Are you sure you want to delete this survey? This action cannot
                 be undone.
               </DialogDescription>
             </DialogHeader>
+
             <DialogFooter>
               <Button
                 loading={isSubmitting || isSubmitSuccessful}

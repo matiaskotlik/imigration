@@ -1,11 +1,12 @@
-import { Stack, useRouter } from 'expo-router';
-import { Button, Text, useTheme } from 'react-native-paper';
-import { useTranslation } from 'react-i18next';
-import tw from 'twrnc';
-import { Container } from '@/components/ui/container';
-import { SafeAreaView, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { Stack, useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
+import { SafeAreaView, View } from 'react-native';
+import { Button, Text, useTheme } from 'react-native-paper';
+import tw from 'twrnc';
+
 import { Trans } from '@/components/trans';
+import { Container } from '@/components/ui/container';
 
 export default function I589LearnMoreScreen() {
   const { t } = useTranslation();

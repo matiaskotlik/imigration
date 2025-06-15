@@ -1,8 +1,8 @@
 'use client';
 
-import * as React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -33,6 +33,7 @@ function DropdownMenuCheckboxItem({
           <CheckIcon className='size-4' />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
+
       {children}
     </DropdownMenuPrimitive.CheckboxItem>
   );
@@ -71,10 +72,10 @@ function DropdownMenuItem({
   inset,
   variant = 'default',
   ...props
-}: {
-  inset?: boolean;
-  variant?: 'default' | 'destructive';
-} & React.ComponentProps<typeof DropdownMenuPrimitive.Item>) {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
+  readonly inset?: boolean;
+  readonly variant?: 'default' | 'destructive';
+}) {
   return (
     <DropdownMenuPrimitive.Item
       className={cn(
@@ -93,9 +94,9 @@ function DropdownMenuLabel({
   className,
   inset,
   ...props
-}: {
-  inset?: boolean;
-} & React.ComponentProps<typeof DropdownMenuPrimitive.Label>) {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.Label> & {
+  readonly inset?: boolean;
+}) {
   return (
     <DropdownMenuPrimitive.Label
       className={cn(
@@ -147,6 +148,7 @@ function DropdownMenuRadioItem({
           <CircleIcon className='size-2 fill-current' />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
+
       {children}
     </DropdownMenuPrimitive.RadioItem>
   );
@@ -208,9 +210,9 @@ function DropdownMenuSubTrigger({
   className,
   inset,
   ...props
-}: {
-  inset?: boolean;
-} & React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger>) {
+}: React.ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
+  readonly inset?: boolean;
+}) {
   return (
     <DropdownMenuPrimitive.SubTrigger
       className={cn(
@@ -222,6 +224,7 @@ function DropdownMenuSubTrigger({
       {...props}
     >
       {children}
+
       <ChevronRightIcon className='ml-auto size-4' />
     </DropdownMenuPrimitive.SubTrigger>
   );

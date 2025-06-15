@@ -1,17 +1,17 @@
-import { cookies } from 'next/headers';
 import {
   dehydrate,
   HydrationBoundary as QueryHydrationBoundary,
 } from '@tanstack/react-query';
-import { SidebarProvider } from '@/components/ui/sidebar';
-
-import { AppShellSidebar } from '@/components/app/sidebar';
-import { AppShellHeader } from '@/components/app/shell';
+import { cookies } from 'next/headers';
 import { PropsWithChildren } from 'react';
-import { makeQueryClient } from '@/lib/query';
-import { getSessionOrRedirect } from '@/lib/auth';
-import { currentUserQueryOptions } from '@/queries/current-user';
+
+import { AppShellHeader } from '@/components/app/shell';
+import { AppShellSidebar } from '@/components/app/sidebar';
+import { SidebarProvider } from '@/components/ui/sidebar';
 import { UserIdProvider } from '@/lib/app-context';
+import { getSessionOrRedirect } from '@/lib/auth';
+import { makeQueryClient } from '@/lib/query';
+import { currentUserQueryOptions } from '@/queries/current-user';
 
 export default async function AppLayout({ children }: PropsWithChildren) {
   // shadcn sidebar state cookie
@@ -32,8 +32,10 @@ export default async function AppLayout({ children }: PropsWithChildren) {
           defaultOpen={sidebarOpen}
         >
           <AppShellSidebar />
+
           <div className='flex min-w-0 flex-1 flex-col'>
             <AppShellHeader />
+
             <main className='@container/main flex min-w-0 flex-1 flex-col overflow-hidden'>
               {children}
             </main>

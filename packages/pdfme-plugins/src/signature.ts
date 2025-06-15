@@ -1,8 +1,8 @@
 import { Plugin, Schema, ZOOM } from '@pdfme/common';
-import SignaturePad from 'signature_pad';
 import { image } from '@pdfme/schemas';
+import SignaturePad from 'signature_pad';
 
-type Signature = {} & Schema;
+type Signature = Schema & {};
 
 const getEffectiveScale = (element: HTMLElement | null) => {
   let scale = 1;
@@ -34,8 +34,8 @@ export const signature: Plugin<Signature> = {
     },
     schema: {},
   },
-  ui: async (arg) => {
-    const { i18n, mode, onChange, rootElement, schema, value } = arg;
+  ui: async (argument) => {
+    const { i18n, mode, onChange, rootElement, schema, value } = argument;
 
     const canvas = document.createElement('canvas');
     canvas.width = schema.width * ZOOM;
@@ -47,8 +47,8 @@ export const signature: Plugin<Signature> = {
     if (value) {
       await signaturePad
         .fromDataURL(value, { ratio: resetScale })
-        .catch((err: unknown) => {
-          console.log('Error loading signature:', err);
+        .catch((error: unknown) => {
+          console.log('Error loading signature:', error);
         });
     } else {
       signaturePad.clear();

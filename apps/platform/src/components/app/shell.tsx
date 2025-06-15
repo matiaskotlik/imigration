@@ -2,6 +2,10 @@
 
 import { ChevronDownIcon, LogOutIcon, SidebarIcon } from 'lucide-react';
 import Link from 'next/link';
+import { Suspense } from 'react';
+
+import { Breadcrumbs } from '@/components/app/breadcrumbs';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,15 +13,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useSidebar } from '@/components/ui/sidebar';
-import { Suspense } from 'react';
 import {
   CurrentNamedAvatar,
   NamedAvatarSkeleton,
 } from '@/components/user/avatar';
-import { Breadcrumbs } from '@/components/app/breadcrumbs';
 
 const userMenu = [
   {
@@ -35,11 +36,15 @@ export function AppShellHeader() {
       <Button onClick={toggleSidebar} size='icon-sm' variant='ghost'>
         <SidebarIcon />
       </Button>
+
       <div className='h-full py-3'>
         <Separator orientation='vertical' />
       </div>
+
       <Breadcrumbs />
-      <div className='flex-1'></div>
+
+      <div className='flex-1' />
+
       <UserMenu />
     </header>
   );
@@ -53,15 +58,18 @@ function UserMenu() {
           <Suspense fallback={<NamedAvatarSkeleton />}>
             <CurrentNamedAvatar />
           </Suspense>
+
           <ChevronDownIcon />
         </Button>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent className='w-56' collisionPadding={4}>
         <DropdownMenuGroup>
           {userMenu.map((item) => (
             <DropdownMenuItem asChild key={item.name}>
               <Link href={item.href}>
                 <item.icon className='size-5' />
+
                 {item.name}
               </Link>
             </DropdownMenuItem>

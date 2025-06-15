@@ -1,17 +1,17 @@
+import { Image } from 'expo-image';
 import { Stack, useRouter } from 'expo-router';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 import { Button, Text, useTheme } from 'react-native-paper';
-import { Image } from 'expo-image';
-import { useTranslation } from 'react-i18next';
 import tw from 'twrnc';
-import { Container } from '@/components/ui/container';
-import { useState } from 'react';
 
-import passportIcon from '@/assets/icons/passport.png';
-import familyIcon from '@/assets/icons/family.png';
-import calendarIcon from '@/assets/icons/calendar.png';
 import briefcaseIcon from '@/assets/icons/briefcase.png';
+import calendarIcon from '@/assets/icons/calendar.png';
+import familyIcon from '@/assets/icons/family.png';
+import passportIcon from '@/assets/icons/passport.png';
 import banner from '@/assets/onboarding/usa-banner-2.png';
+import { Container } from '@/components/ui/container';
 
 const situations = {
   border: {

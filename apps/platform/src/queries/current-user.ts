@@ -1,8 +1,9 @@
-import { InferDataType, supabaseQueryOptions } from '@/lib/supabase/utils';
-import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
-import { useUserId } from '@/lib/app-context';
-import { SupabaseClient } from '@supabase/supabase-js';
 import { Database } from '@repo/supabase/database.types';
+import { SupabaseClient } from '@supabase/supabase-js';
+import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
+
+import { useUserId } from '@/lib/app-context';
+import { InferDataType, supabaseQueryOptions } from '@/lib/supabase/utils';
 
 export const currentUserQueryOptions = (id: string) =>
   queryOptions({

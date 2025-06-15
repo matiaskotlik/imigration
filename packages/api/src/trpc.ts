@@ -1,12 +1,12 @@
+import { Database } from '@repo/supabase/database.types';
+import { SupabaseClient } from '@supabase/supabase-js';
 import { initTRPC, TRPCError } from '@trpc/server';
 import superjson from 'superjson';
 import { z, ZodError } from 'zod/v4';
-import { SupabaseClient } from '@supabase/supabase-js';
-import { Database } from '@repo/supabase/database.types';
 
-export type TRPCContext = {
+export interface TRPCContext {
   supabase: SupabaseClient<Database>;
-};
+}
 
 export const t = initTRPC.context<TRPCContext>().create({
   errorFormatter: ({ error, shape }) => ({

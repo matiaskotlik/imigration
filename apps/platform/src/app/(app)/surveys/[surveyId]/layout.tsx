@@ -1,24 +1,25 @@
-import { PropsWithChildren, Suspense } from 'react';
 import {
   dehydrate,
   HydrationBoundary as QueryHydrationBoundary,
 } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
-import { dbId, validId } from '@/lib/id';
-import { makeQueryClient } from '@/lib/query';
-import { currentSurveyQueryOptions } from '@/queries/current-survey';
-import { Section } from '@/components/ui/section';
+import { PropsWithChildren, Suspense } from 'react';
+
 import {
   SurveyShellHeader,
   SurveyShellHeaderSkeleton,
 } from '@/components/survey/shell';
+import { Section } from '@/components/ui/section';
 import { SurveyIdProvider } from '@/lib/app-context';
+import { dbId, validId } from '@/lib/id';
+import { makeQueryClient } from '@/lib/query';
+import { currentSurveyQueryOptions } from '@/queries/current-survey';
 
 export default async function SurveyLayout({
   children,
   params,
 }: PropsWithChildren<{
-  params: Promise<{ surveyId: string }>;
+  readonly params: Promise<{ surveyId: string }>;
 }>) {
   const { surveyId } = await params;
 
@@ -38,6 +39,7 @@ export default async function SurveyLayout({
             <SurveyShellHeader />
           </Suspense>
         </Section>
+
         {children}
       </SurveyIdProvider>
     </QueryHydrationBoundary>

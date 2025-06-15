@@ -6,7 +6,7 @@ import { Temporal } from 'temporal-polyfill';
 
 export type Assign<T, U> = Omit<T, keyof U> & U;
 
-export type StyledProps<T = object> = { className?: string } & T;
+export type StyledProps<T = object> = T & { className?: string };
 
 export type StyledPropsWithChildren<T = object> = PropsWithChildren<
   StyledProps & T
@@ -30,7 +30,7 @@ export const titleCase = (str: string, pattern: RegExp | string = ' ') =>
 export function cssHex(variable: string) {
   // eslint-disable-next-line unicorn/prefer-global-this
   if (typeof window === 'undefined') {
-    return undefined;
+    return;
   }
 
   return formatHex(
@@ -115,10 +115,10 @@ export function reforwardRef<T>(ref: ForwardedRef<T>, value: T) {
 export function split<T extends object>(array: T[]) {
   return array.reduce(
     (acc, obj) => {
-      Object.entries(obj).forEach(([key, value]) => {
+      for (const [key, value] of Object.entries(obj)) {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         (acc[key as keyof T] ||= []).push(value as T[keyof T]);
-      });
+      }
       return acc;
     },
     {} as Record<keyof T, T[keyof T][]>

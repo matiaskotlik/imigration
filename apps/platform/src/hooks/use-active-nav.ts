@@ -2,14 +2,14 @@
 
 import { useSelectedLayoutSegment } from 'next/navigation';
 
-export type NavItemIn<T> = {
+export type NavItemIn<T> = T & {
   segment: null | string;
-} & T;
+};
 
-export type NavItemOut<T> = {
+export type NavItemOut<T> = NavItemIn<T> & {
   current: boolean;
   href: string;
-} & NavItemIn<T>;
+};
 
 export function useActiveNav<T>(
   nav: NavItemIn<T>[],

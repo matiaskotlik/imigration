@@ -1,13 +1,11 @@
 'use client';
 
-import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, VariantProps } from 'class-variance-authority';
-import { PanelLeftIcon } from 'lucide-react';
 import { setCookie } from 'cookies-next';
+import { PanelLeftIcon } from 'lucide-react';
+import * as React from 'react';
 
-import { useIsMobile } from '@/hooks/use-mobile';
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
@@ -25,10 +23,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { useIsMobile } from '@/hooks/use-mobile';
 import {
   createRequiredContext,
   useRequiredContext,
 } from '@/lib/required-context';
+import { cn } from '@/lib/utils';
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state';
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -37,7 +37,7 @@ const SIDEBAR_WIDTH_MOBILE = '18rem';
 const SIDEBAR_WIDTH_ICON = '3rem';
 const SIDEBAR_KEYBOARD_SHORTCUT = 'b';
 
-type SidebarContextProps = {
+interface SidebarContextProps {
   isMobile: boolean;
   open: boolean;
   openMobile: boolean;
@@ -45,7 +45,7 @@ type SidebarContextProps = {
   setOpenMobile: (open: boolean) => void;
   state: 'collapsed' | 'expanded';
   toggleSidebar: () => void;
-};
+}
 
 const SidebarContext = createRequiredContext<SidebarContextProps>();
 
@@ -58,11 +58,11 @@ function Sidebar({
   side = 'left',
   variant = 'sidebar',
   ...props
-}: {
-  collapsible?: 'icon' | 'none' | 'offcanvas';
-  side?: 'left' | 'right';
-  variant?: 'floating' | 'inset' | 'sidebar';
-} & React.ComponentProps<'div'>) {
+}: React.ComponentProps<'div'> & {
+  readonly collapsible?: 'icon' | 'none' | 'offcanvas';
+  readonly side?: 'left' | 'right';
+  readonly variant?: 'floating' | 'inset' | 'sidebar';
+}) {
   const { isMobile, openMobile, setOpenMobile, state } = useSidebar();
 
   if (collapsible === 'none') {
@@ -97,8 +97,10 @@ function Sidebar({
         >
           <SheetHeader className='sr-only'>
             <SheetTitle>Sidebar</SheetTitle>
+
             <SheetDescription>Displays the mobile sidebar.</SheetDescription>
           </SheetHeader>
+
           <div className='flex h-full w-full flex-col'>{children}</div>
         </SheetContent>
       </Sheet>
@@ -126,6 +128,7 @@ function Sidebar({
         )}
         data-slot='sidebar-gap'
       />
+
       <div
         className={cn(
           'w-(--sidebar-width) fixed inset-y-0 z-10 hidden h-svh transition-[left,right,width] duration-200 ease-linear md:flex',
@@ -193,7 +196,7 @@ function SidebarGroupAction({
   asChild = false,
   className,
   ...props
-}: { asChild?: boolean } & React.ComponentProps<'button'>) {
+}: React.ComponentProps<'button'> & { readonly asChild?: boolean }) {
   const Comp = asChild ? Slot : 'button';
 
   return (
@@ -230,7 +233,7 @@ function SidebarGroupLabel({
   asChild = false,
   className,
   ...props
-}: { asChild?: boolean } & React.ComponentProps<'div'>) {
+}: React.ComponentProps<'div'> & { readonly asChild?: boolean }) {
   const Comp = asChild ? Slot : 'div';
 
   return (
@@ -316,11 +319,11 @@ function SidebarProvider({
   open: openProp,
   style,
   ...props
-}: {
-  defaultOpen?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  open?: boolean;
-} & React.ComponentProps<'div'>) {
+}: React.ComponentProps<'div'> & {
+  readonly defaultOpen?: boolean;
+  readonly onOpenChange?: (open: boolean) => void;
+  readonly open?: boolean;
+}) {
   const isMobile = useIsMobile();
   const [openMobile, setOpenMobile] = React.useState(false);
 
@@ -471,6 +474,7 @@ function SidebarTrigger({
       {...props}
     >
       <PanelLeftIcon />
+
       <span className='sr-only'>Toggle Sidebar</span>
     </Button>
   );
@@ -503,10 +507,10 @@ function SidebarMenuAction({
   className,
   showOnHover = false,
   ...props
-}: {
-  asChild?: boolean;
-  showOnHover?: boolean;
-} & React.ComponentProps<'button'>) {
+}: React.ComponentProps<'button'> & {
+  readonly asChild?: boolean;
+  readonly showOnHover?: boolean;
+}) {
   const Comp = asChild ? Slot : 'button';
 
   return (
@@ -560,12 +564,12 @@ function SidebarMenuButton({
   tooltip,
   variant = 'default',
   ...props
-}: {
-  asChild?: boolean;
-  isActive?: boolean;
-  tooltip?: React.ComponentProps<typeof TooltipContent> | string;
-} & React.ComponentProps<'button'> &
-  VariantProps<typeof sidebarMenuButtonVariants>) {
+}: React.ComponentProps<'button'> &
+  VariantProps<typeof sidebarMenuButtonVariants> & {
+    readonly asChild?: boolean;
+    readonly isActive?: boolean;
+    readonly tooltip?: React.ComponentProps<typeof TooltipContent> | string;
+  }) {
   const Comp = asChild ? Slot : 'button';
   const { isMobile, state } = useSidebar();
 
@@ -593,6 +597,7 @@ function SidebarMenuButton({
   return (
     <Tooltip>
       <TooltipTrigger asChild>{button}</TooltipTrigger>
+
       <TooltipContent
         align='center'
         hidden={state !== 'collapsed' || isMobile}
@@ -607,9 +612,9 @@ function SidebarMenuSkeleton({
   className,
   showIcon = false,
   ...props
-}: {
-  showIcon?: boolean;
-} & React.ComponentProps<'div'>) {
+}: React.ComponentProps<'div'> & {
+  readonly showIcon?: boolean;
+}) {
   // Random width between 50 to 90%.
   const width = React.useMemo(() => {
     return `${Math.floor(Math.random() * 40) + 50}%`;
@@ -622,12 +627,13 @@ function SidebarMenuSkeleton({
       data-slot='sidebar-menu-skeleton'
       {...props}
     >
-      {showIcon && (
+      {showIcon ? (
         <Skeleton
           className='size-4 rounded-md'
           data-sidebar='menu-skeleton-icon'
         />
-      )}
+      ) : null}
+
       <Skeleton
         className='max-w-(--skeleton-width) h-4 flex-1'
         data-sidebar='menu-skeleton-text'
@@ -662,11 +668,11 @@ function SidebarMenuSubButton({
   isActive = false,
   size = 'md',
   ...props
-}: {
-  asChild?: boolean;
-  isActive?: boolean;
-  size?: 'md' | 'sm';
-} & React.ComponentProps<'a'>) {
+}: React.ComponentProps<'a'> & {
+  readonly asChild?: boolean;
+  readonly isActive?: boolean;
+  readonly size?: 'md' | 'sm';
+}) {
   const Comp = asChild ? Slot : 'a';
 
   return (

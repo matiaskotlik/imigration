@@ -1,16 +1,16 @@
-import { Stack, useRouter } from 'expo-router';
-import { Button, Text, useTheme } from 'react-native-paper';
 import { Image } from 'expo-image';
+import { Stack, useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import tw from 'twrnc';
-import { Container } from '@/components/ui/container';
-import { withImageIcon } from '@/lib/with-image-icon';
 import { View } from 'react-native';
+import { Button, Text, useTheme } from 'react-native-paper';
+import tw from 'twrnc';
 
 import mxFlag from '@/assets/flags/mx.png';
 import usFlag from '@/assets/flags/us.png';
-import banner from '@/assets/onboarding/usa-banner.png';
 import personPassport from '@/assets/onboarding/person-passport.png';
+import banner from '@/assets/onboarding/usa-banner.png';
+import { Container } from '@/components/ui/container';
+import { withImageIcon } from '@/lib/with-image-icon';
 
 export default function WelcomeScreen() {
   const { i18n, t } = useTranslation();

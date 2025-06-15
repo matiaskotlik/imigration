@@ -1,13 +1,14 @@
-import {
-  InferInfiniteDataType,
-  supabaseInfiniteQueryOptions,
-} from '@/lib/supabase/utils';
+import { Database } from '@repo/supabase/database.types';
+import { SupabaseClient } from '@supabase/supabase-js';
 import {
   infiniteQueryOptions,
   useSuspenseInfiniteQuery,
 } from '@tanstack/react-query';
-import { SupabaseClient } from '@supabase/supabase-js';
-import { Database } from '@repo/supabase/database.types';
+
+import {
+  InferInfiniteDataType,
+  supabaseInfiniteQueryOptions,
+} from '@/lib/supabase/utils';
 
 export const surveyListInfiniteQueryOptions = () =>
   infiniteQueryOptions({

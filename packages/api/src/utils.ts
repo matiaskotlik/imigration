@@ -1,8 +1,8 @@
-import { PostgrestError, PostgrestSingleResponse } from '@supabase/supabase-js';
 import {
   PG_INVALID_TEXT_REPRESENTATION,
   PGRST_SINGULAR_RESPONSE_ITEM_COUNT_MISMATCH,
 } from '@repo/supabase/error';
+import { PostgrestError, PostgrestSingleResponse } from '@supabase/supabase-js';
 import { TRPCError } from '@trpc/server';
 
 export const handleMissing = <T>(response: PostgrestSingleResponse<T>) => {

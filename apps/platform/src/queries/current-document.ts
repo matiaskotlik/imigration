@@ -1,13 +1,14 @@
+import { DesignerProps } from '@pdfme/common';
+import { Database } from '@repo/supabase/database.types';
+import { SupabaseClient } from '@supabase/supabase-js';
+import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
+
+import { useDocumentId } from '@/lib/app-context';
 import {
   InferDataType,
   redirectMissing,
   supabaseQueryOptions,
 } from '@/lib/supabase/utils';
-import { queryOptions, useSuspenseQuery } from '@tanstack/react-query';
-import { useDocumentId } from '@/lib/app-context';
-import { DesignerProps } from '@pdfme/common';
-import { SupabaseClient } from '@supabase/supabase-js';
-import { Database } from '@repo/supabase/database.types';
 
 export const currentDocumentQueryOptions = (id: string) =>
   queryOptions({

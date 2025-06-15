@@ -1,19 +1,52 @@
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.org/schema.json",
   "ui": "tui",
   "tasks": {
-    "lint": {},
-    "lint:check": {},
-    "clean": {
+    "topo": {
+      "dependsOn": ["^topo"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".cache/tsbuildinfo.json", "dist/**"]
+    },
+    "dev": {
+      "dependsOn": ["^dev"],
       "cache": false,
-      "outputs": []
+      "persistent": false
+    },
+    "format": {
+      "dependsOn": ["^topo", "^build"],
+      "outputs": [".cache/.prettiercache"],
+      "outputLogs": "new-only"
+    },
+    "lint": {
+      "dependsOn": ["^topo", "^build"],
+      "outputs": [".cache/.eslintcache"]
+    },
+    "typecheck": {
+      "dependsOn": ["^topo", "^build"],
+      "outputs": [".cache/tsbuildinfo.json"]
+    },
+    "clean": {
+      "cache": false
     },
     "//#clean": {
-      "cache": false,
-      "outputs": []
+      "cache": false
     },
-    "build:check": {}
+    "push": {
+      "cache": false,
+      "interactive": true
+    },
+    "studio": {
+      "cache": false,
+      "persistent": true
+    },
+    "ui-add": {
+      "cache": false,
+      "interactive": true
+    }
   },
+  "globalEnv": ["PORT"],
   "globalPassThroughEnv": [
     "NODE_ENV",
     "CI",

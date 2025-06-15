@@ -1,0 +1,49 @@
+{
+  "name": "@repo/supabase",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./database.types": "./gen/database.types.ts",
+    "./*": "./src/*.ts"
+  },
+  "bin": {
+    "bump-filename": "scripts/bump-filename.py",
+    "db-clear": "scripts/db-clear.sh",
+    "db-dump-check": "scripts/db-dump-check.sh",
+    "db-schema-apply": "scripts/db-schema-apply.sh"
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "config:push": "supabase config push ${SUPABASE_PROJECT_REF:+--project-ref=$SUPABASE_PROJECT_REF}",
+    "db:clear": "scripts/db-clear.sh",
+    "db:diff": "supabase db diff",
+    "db:diff:check": "supabase db diff | tee /dev/stderr | [ $(wc -c) -eq 0 ]",
+    "db:dump": "supabase db dump --local",
+    "db:dump:check": "scripts/db-dump-check.sh",
+    "db:lint": "supabase db lint | tee /dev/stderr | jq -e 'all(all(.issues[]; .level != \"error\"))'",
+    "db:lint:check": "supabase db lint | tee /dev/stderr | jq -e 'all(all(.issues[]; .level != \"error\"))'",
+    "db:push": "${SUPABASE_PROJECT_REF:+supabase link --project-ref=$SUPABASE_PROJECT_REF &&} supabase db push ",
+    "db:reset": "supabase db reset",
+    "db:schema:apply": "scripts/db-schema-apply.sh",
+    "db:start": "supabase db start",
+    "db:test": "supabase db test",
+    "format": "prettier . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "start": "supabase start",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "types:check": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts | diff gen/database.types.ts -",
+    "types:gen": "supabase gen types typescript --local > gen/database.types.ts && prettier --write gen/database.types.ts"
+  },
+  "prettier": "@repo/prettier-config",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.50.0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/prettier-config": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  }
+}

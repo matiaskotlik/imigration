@@ -1,12 +1,13 @@
 'use dom';
 
 import 'survey-core/survey-core.css';
-import { Model, Survey as SurveyJS, SurveyModel } from 'survey-react-ui';
 import { DOMProps } from 'expo/dom';
 import { GetProgressTextEvent, ITheme } from 'survey-core';
-import { Survey } from '@/lib/schema/survey';
-import { SurveyDataSchema } from '@/components/survey/types';
+import { Model, Survey as SurveyJS, SurveyModel } from 'survey-react-ui';
 import { z } from 'zod/v4';
+
+import { SurveyDataSchema } from '@/components/survey/types';
+import { Survey } from '@/lib/schema/survey';
 
 const SURVEY_OPTIONS = {
   allowResizeComment: false,

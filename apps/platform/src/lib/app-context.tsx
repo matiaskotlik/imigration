@@ -1,10 +1,11 @@
 'use client';
 
+import { ProviderProps } from 'react';
+
 import {
   createRequiredContext,
   useRequiredContext,
 } from '@/lib/required-context';
-import { ProviderProps } from 'react';
 
 const UserIdContext = createRequiredContext<string>();
 export const useUserId = () => useRequiredContext(UserIdContext);

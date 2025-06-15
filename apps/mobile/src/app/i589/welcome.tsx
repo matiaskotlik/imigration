@@ -1,10 +1,11 @@
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { Stack, useRouter } from 'expo-router';
+import { SafeAreaView, View } from 'react-native';
 import { Button, Text, useTheme } from 'react-native-paper';
 import tw from 'twrnc';
-import { Container } from '@/components/ui/container';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { SafeAreaView, View } from 'react-native';
+
 import { Trans } from '@/components/trans';
+import { Container } from '@/components/ui/container';
 
 export default function I589WelcomeScreen() {
   const theme = useTheme();

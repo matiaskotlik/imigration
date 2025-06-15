@@ -1,7 +1,8 @@
-import { cache } from 'react';
-import { createServerSupabase } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
 import { pathname } from 'next-extra/pathname';
+import { redirect } from 'next/navigation';
+import { cache } from 'react';
+
+import { createServerSupabase } from '@/lib/supabase/server';
 
 export const getSession = cache(async () => {
   // get userId from session to avoid waiting for auth to complete

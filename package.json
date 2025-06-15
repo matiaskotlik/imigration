@@ -2,29 +2,41 @@
   "name": "imigration",
   "private": true,
   "scripts": {
-    "build:check": "turbo run build:check",
-    "clean": "git clean -xdf node_modules .turbo",
+    "android": "expo run:android",
+    "build": "turbo run build",
+    "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo run clean",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "lint": "turbo run lint",
-    "lint:check": "turbo run lint:check",
-    "prepare": "husky"
+    "dev": "turbo watch dev --continue",
+    "dev:platform": "turbo watch dev -F @repo/platform...",
+    "format": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
+    "format:check": "turbo run format --continue -- --check --cache --cache-location .cache/.prettiercache",
+    "postinstall": "sherif",
+    "ios": "expo run:ios",
+    "lint": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
+    "lint:check": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
+    "lint:ws": "sherif --fix",
+    "supabase:config:push": "turbo -F @repo/supabase config:push",
+    "supabase:db:push": "turbo -F @repo/supabase db:push",
+    "typecheck": "turbo run typecheck"
   },
-  "prettier": "@repo/prettier",
+  "prettier": "@repo/prettier-config",
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@commitlint/types": "^19.8.1",
-    "@repo/prettier": "workspace:*",
-    "conventional-changelog-conventionalcommits": "^9.0.0",
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "@commitlint/types": "latest",
+    "@repo/prettier-config": "workspace:*",
+    "@turbo/gen": "^2.5.4",
+    "conventional-changelog-conventionalcommits": "latest",
     "husky": "^9.1.7",
-    "lint-staged": "^16.1.0",
-    "prettier": "^3.5.3",
-    "turbo": "^2.5.4"
+    "lint-staged": "^16.1.1",
+    "prettier": "catalog:",
+    "sherif": "latest",
+    "turbo": "^2.5.4",
+    "typescript": "catalog:"
   },
   "packageManager": "pnpm@10.11.1",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.14.0",
+    "pnpm": ">=10.11.1"
   }
 }

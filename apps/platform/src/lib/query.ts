@@ -1,11 +1,11 @@
+import { GenericSchema } from '@repo/supabase/generic';
+import { PostgrestFilterBuilder } from '@supabase/postgrest-js';
 import {
   defaultShouldDehydrateQuery,
   QueryCache,
   QueryClient,
 } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import { PostgrestFilterBuilder } from '@supabase/postgrest-js';
-import { GenericSchema } from '@repo/supabase/generic';
 
 export function makeQueryClient() {
   return new QueryClient({

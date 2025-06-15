@@ -1,11 +1,12 @@
+import { FontAwesome } from '@expo/vector-icons';
 import { Stack, useRouter } from 'expo-router';
+import { SafeAreaView, useWindowDimensions, View } from 'react-native';
+import { Confetti } from 'react-native-fast-confetti';
 import { Button, Text, useTheme } from 'react-native-paper';
 import tw from 'twrnc';
-import { Container } from '@/components/ui/container';
-import { SafeAreaView, useWindowDimensions, View } from 'react-native';
+
 import { Trans } from '@/components/trans';
-import { Confetti } from 'react-native-fast-confetti';
-import { FontAwesome } from '@expo/vector-icons';
+import { Container } from '@/components/ui/container';
 
 export default function I589CompleteScreen() {
   const theme = useTheme();

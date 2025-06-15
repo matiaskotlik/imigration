@@ -1,5 +1,6 @@
-import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
+import * as React from 'react';
+
 import { cn, StyledPropsWithChildren } from '@/lib/utils';
 
 const sectionVariants = cva('not-first-of-type:pt-0 w-full', {

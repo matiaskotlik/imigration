@@ -1,33 +1,34 @@
 'use server';
 
-import { createServerSupabase } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
 import { actionError, createAction } from 'next-extra/action';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
-export type AuthActionArgs = {
+import { createServerSupabase } from '@/lib/supabase/server';
+
+export interface AuthActionArgs {
   afterAuthPath: string;
-};
+}
 
 export type AuthActionParams = AuthActionArgs & AuthFormData;
 
 export type AuthActionResponse =
   | {
+      data: null;
+      error: string;
+    }
+  | {
       data: {
         message: string;
       };
       error: null;
-    }
-  | {
-      data: null;
-      error: string;
     };
 
-export type AuthFormData = {
+export interface AuthFormData {
   confirmPassword: string;
   email: string;
   password: string;
-};
+}
 
 export const signUpAction = createAction(
   async ({ afterAuthPath, email, password }: AuthActionParams) => {

@@ -1,15 +1,16 @@
 import { Stack } from 'expo-router';
-import { Button, Text, useTheme } from 'react-native-paper';
-import { Linking, View } from 'react-native';
-import { Container } from '@/components/ui/container';
-import { useMMKVObject } from 'react-native-mmkv';
 import { useTranslation } from 'react-i18next';
+import { Linking, View } from 'react-native';
+import { useMMKVObject } from 'react-native-mmkv';
+import { Button, Text, useTheme } from 'react-native-paper';
 import tw from 'twrnc';
 
-type StoredDocument = {
+import { Container } from '@/components/ui/container';
+
+interface StoredDocument {
   title: string;
   uri: string;
-};
+}
 
 export default function DocumentsScreen() {
   const theme = useTheme();

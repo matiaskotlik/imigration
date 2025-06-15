@@ -1,5 +1,5 @@
-import { createBrowserClient } from '@supabase/ssr';
 import { Database } from '@repo/supabase/database.types';
+import { createBrowserClient } from '@supabase/ssr';
 
 export const supabase = createBrowserClient<Database>(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,

@@ -1,19 +1,20 @@
-import { PropsWithChildren } from 'react';
 import {
   dehydrate,
   HydrationBoundary as QueryHydrationBoundary,
 } from '@tanstack/react-query';
 import { notFound } from 'next/navigation';
+import { PropsWithChildren } from 'react';
+
+import { DocumentIdProvider } from '@/lib/app-context';
 import { dbId, validId } from '@/lib/id';
 import { makeQueryClient } from '@/lib/query';
 import { currentDocumentQueryOptions } from '@/queries/current-document';
-import { DocumentIdProvider } from '@/lib/app-context';
 
 export default async function DocumentLayout({
   children,
   params,
 }: PropsWithChildren<{
-  params: Promise<{ documentId: string }>;
+  readonly params: Promise<{ documentId: string }>;
 }>) {
   const { documentId } = await params;
 

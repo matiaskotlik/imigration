@@ -1,3 +1,4 @@
+import { type Plugins } from '@pdfme/common';
 import {
   barcodes,
   checkbox,
@@ -15,6 +16,7 @@ import {
   text,
   time,
 } from '@pdfme/schemas';
+
 import { signature } from './signature';
 
 export default {
@@ -45,4 +47,4 @@ export default {
   // UPCE: barcodes.upce,
   // GS1DataMatrix: barcodes.gs1datamatrix,
   // PDF417: barcodes.pdf417,
-};
+} as Plugins;

@@ -1,5 +1,5 @@
-import { ThemeProp } from 'react-native-paper/lib/typescript/types';
 import { MD3LightTheme } from 'react-native-paper';
+import { ThemeProp } from 'react-native-paper/lib/typescript/types';
 
 export const theme: ThemeProp = {
   ...MD3LightTheme,

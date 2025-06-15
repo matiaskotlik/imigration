@@ -1,23 +1,9 @@
 'use client';
 import { PDFDocument } from '@cantoo/pdf-lib';
-import { pdf2size } from '@pdfme/converter';
-
-import {
-  CurrentDocument,
-  useCurrentDocument,
-} from '@/queries/current-document';
-import { ChangeEvent, RefObject, useRef, useState } from 'react';
 import { cloneDeep, DesignerProps } from '@pdfme/common';
-import { supabase } from '@/lib/supabase/client';
-import { Json } from '@repo/supabase/database.types';
-import { toast } from 'sonner';
-import { useInterval, useUnmount } from 'usehooks-ts';
+import { pdf2size } from '@pdfme/converter';
 import { Designer } from '@pdfme/ui';
-import { Section } from '@/components/ui/section';
-import { Container } from '@/components/ui/container';
-import { H3, Muted } from '@/components/ui/typography';
-import { EditDocumentDialog } from '@/components/document/modal/edit';
-import { Button } from '@/components/ui/button';
+import { Json } from '@repo/supabase/database.types';
 import {
   CopyIcon,
   EditIcon,
@@ -25,16 +11,30 @@ import {
   FileScanIcon,
   TrashIcon,
 } from 'lucide-react';
-import { DuplicateDocumentDialog } from '@/components/document/modal/duplicate';
-import { DeleteDocumentDialog } from '@/components/document/modal/delete';
+import { ChangeEvent, RefObject, useRef, useState } from 'react';
+import { toast } from 'sonner';
+import { useInterval, useUnmount } from 'usehooks-ts';
+
 import DocumentDesigner from '@/components/document/designer';
+import { DeleteDocumentDialog } from '@/components/document/modal/delete';
+import { DuplicateDocumentDialog } from '@/components/document/modal/duplicate';
+import { EditDocumentDialog } from '@/components/document/modal/edit';
+import { GenerateDocumentDialog } from '@/components/document/modal/generate';
+import { Button } from '@/components/ui/button';
+import { Container } from '@/components/ui/container';
+import { Section } from '@/components/ui/section';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { GenerateDocumentDialog } from '@/components/document/modal/generate';
+import { H3, Muted } from '@/components/ui/typography';
+import { supabase } from '@/lib/supabase/client';
 import { zip } from '@/lib/utils';
+import {
+  CurrentDocument,
+  useCurrentDocument,
+} from '@/queries/current-document';
 
 export function DocumentEditorPage() {
   const document = useCurrentDocument();
@@ -77,6 +77,7 @@ export function DocumentEditorPage() {
       <Section size='xs'>
         <DocumentHeader designerRef={designerRef} document={document} />
       </Section>
+
       <Section className='pb-0' size='xs' viewport>
         <DocumentDesigner
           className='h-full w-full'
@@ -103,8 +104,8 @@ function DocumentHeader({
   designerRef,
   document,
 }: {
-  designerRef: RefObject<Designer | null>;
-  document: CurrentDocument;
+  readonly designerRef: RefObject<Designer | null>;
+  readonly document: CurrentDocument;
 }) {
   const onChangeBasePDF = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!designerRef.current) {
@@ -201,14 +202,17 @@ function DocumentHeader({
     <Container className='flex flex-row justify-between gap-8' size='full'>
       <div>
         <H3>{document.name}</H3>
+
         <Muted>{document.description}</Muted>
       </div>
+
       <div className='flex flex-row gap-2'>
         <GenerateDocumentDialog document={document}>
           <Button size='icon'>
             <FileJsonIcon />
           </Button>
         </GenerateDocumentDialog>
+
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
@@ -218,14 +222,15 @@ function DocumentHeader({
               size='icon'
             >
               <FileScanIcon />
+
               <input
                 accept='application/pdf'
                 className='hidden'
                 onChange={(e) => {
                   toast.promise(
-                    onChangeBasePDF(e).catch((err: unknown) => {
-                      console.error('Error loading PDF:', err);
-                      throw err;
+                    onChangeBasePDF(e).catch((error: unknown) => {
+                      console.error('Error loading PDF:', error);
+                      throw error;
                     }),
                     {
                       error: 'Error loading PDF',
@@ -239,18 +244,22 @@ function DocumentHeader({
               />
             </Button>
           </TooltipTrigger>
+
           <TooltipContent>Change base PDF</TooltipContent>
         </Tooltip>
+
         <EditDocumentDialog document={document}>
           <Button size='icon'>
             <EditIcon />
           </Button>
         </EditDocumentDialog>
+
         <DuplicateDocumentDialog document={document}>
           <Button size='icon'>
             <CopyIcon />
           </Button>
         </DuplicateDocumentDialog>
+
         <DeleteDocumentDialog document={document}>
           <Button size='icon' variant='destructive'>
             <TrashIcon />

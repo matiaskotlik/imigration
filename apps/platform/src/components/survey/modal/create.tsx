@@ -1,5 +1,12 @@
 'use client';
 
+import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
+import { useRouter } from 'next/navigation';
+import { PropsWithChildren } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { z } from 'zod/v4';
+
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -10,10 +17,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { z } from 'zod/v4';
-import { FormProvider, useForm } from 'react-hook-form';
-import { ZodFormContext } from '@/lib/form';
 import {
   FormControl,
   FormField,
@@ -21,18 +24,16 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useRouter } from 'next/navigation';
-import { toast } from 'sonner';
-import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
-import { PropsWithChildren } from 'react';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { supabase } from '@/lib/supabase/client';
+import { ZodFormContext } from '@/lib/form';
 import { urlId } from '@/lib/id';
+import { supabase } from '@/lib/supabase/client';
 
 export const CreateSurveyFormSchema = z.object({
   description: z.string().min(1).max(255),
@@ -80,41 +81,51 @@ export function CreateSurveyDialog({ children }: PropsWithChildren) {
         <TooltipTrigger asChild>
           <DialogTrigger asChild>{children}</DialogTrigger>
         </TooltipTrigger>
+
         <TooltipContent>Create a new survey</TooltipContent>
       </Tooltip>
+
       <FormProvider {...context}>
         <DialogContent>
           <form>
             <DialogHeader>
               <DialogTitle>New Survey</DialogTitle>
+
               <DialogDescription>Create a new survey.</DialogDescription>
             </DialogHeader>
+
             <div className='grid gap-4 py-4'>
               <FormField
                 name='name'
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Name</FormLabel>
+
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
+
                     <FormMessage />
                   </FormItem>
                 )}
               />
+
               <FormField
                 name='description'
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Description</FormLabel>
+
                     <FormControl>
                       <Textarea {...field} />
                     </FormControl>
+
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
+
             <DialogFooter>
               <Button
                 loading={isSubmitting || isSubmitSuccessful}

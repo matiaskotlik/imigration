@@ -1,17 +1,17 @@
 'use client';
 
-import { ExternalToast, Toaster as Sonner, ToasterProps } from 'sonner';
 import { CSSProperties, ReactNode } from 'react';
+import { ExternalToast, Toaster as Sonner, ToasterProps } from 'sonner';
 
-export type ToastOptions = {
+export type ToastOptions = ExternalToast & {
   title: (() => ReactNode) | ReactNode;
-} & ExternalToast;
+};
 
-const Toaster = ({ ...props }: ToasterProps) => {
+function Toaster({ ...props }: ToasterProps) {
   return (
     <Sonner
       className='toaster group'
-      richColors={true}
+      richColors
       style={
         {
           '--normal-bg': 'var(--popover)',
@@ -23,6 +23,6 @@ const Toaster = ({ ...props }: ToasterProps) => {
       {...props}
     />
   );
-};
+}
 
 export { Toaster };

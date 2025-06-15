@@ -5,13 +5,14 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
-import { PropsWithChildren } from 'react';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { PropsWithChildren } from 'react';
+
 import { makeQueryClient } from '@/lib/query';
 
 // https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr
 
-let browserQueryClient: QueryClient | undefined = undefined;
+let browserQueryClient: QueryClient | undefined;
 
 export default function QueryProvider({ children }: PropsWithChildren) {
   // NOTE: Avoid useState when initializing the query client if you don't
@@ -23,6 +24,7 @@ export default function QueryProvider({ children }: PropsWithChildren) {
   return (
     <QueryClientProvider client={queryClient}>
       {children}
+
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

@@ -1,5 +1,8 @@
 'use client';
 
+import { DesignerProps } from '@pdfme/common';
+import { Designer } from '@pdfme/ui';
+import plugins from '@repo/pdfme-plugins';
 import {
   ComponentProps,
   ForwardedRef,
@@ -9,10 +12,8 @@ import {
   useRef,
   useState,
 } from 'react';
-import { Designer } from '@pdfme/ui';
-import { DesignerProps } from '@pdfme/common';
+
 import { cssHex, reforwardRef } from '@/lib/utils';
-import plugins from '@repo/pdfme-plugins';
 
 export default forwardRef(function ClientDocumentDesigner(
   {
@@ -21,12 +22,12 @@ export default forwardRef(function ClientDocumentDesigner(
     onSaveTemplate,
     template,
     ...props
-  }: {
-    containerRef?: RefObject<HTMLDivElement | null>;
-    onChangeTemplate?: (template: DesignerProps['template']) => void;
-    onSaveTemplate?: (template: DesignerProps['template']) => void;
-    template: DesignerProps['template'];
-  } & ComponentProps<'div'>,
+  }: ComponentProps<'div'> & {
+    readonly containerRef?: RefObject<HTMLDivElement | null>;
+    readonly onChangeTemplate?: (template: DesignerProps['template']) => void;
+    readonly onSaveTemplate?: (template: DesignerProps['template']) => void;
+    readonly template: DesignerProps['template'];
+  },
   ref: ForwardedRef<Designer>
 ) {
   const containerRef = useRef<HTMLDivElement | null>(null);

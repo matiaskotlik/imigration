@@ -2,9 +2,10 @@ import {
   dehydrate,
   HydrationBoundary as QueryHydrationBoundary,
 } from '@tanstack/react-query';
+import { PropsWithChildren } from 'react';
+
 import { makeQueryClient } from '@/lib/query';
 import { documentListInfiniteQueryOptions } from '@/queries/document-list';
-import { PropsWithChildren } from 'react';
 
 export default function DocumentListLayout({ children }: PropsWithChildren) {
   // prefetch queries

@@ -1,6 +1,6 @@
+import { useMemo } from 'react';
 import { MD3Theme, useTheme } from 'react-native-paper';
 import { DoubleBorderLightPanelless } from 'survey-core/themes';
-import { useMemo } from 'react';
 
 export const buildSurveyTheme = (theme: MD3Theme) => ({
   colorPalette: 'light',

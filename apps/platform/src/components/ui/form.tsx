@@ -1,8 +1,8 @@
 'use client';
 
-import * as React from 'react';
 import * as LabelPrimitive from '@radix-ui/react-label';
 import { Slot } from '@radix-ui/react-slot';
+import * as React from 'react';
 import {
   Controller,
   type ControllerProps,
@@ -13,39 +13,37 @@ import {
   useFormContext,
   useFormState,
 } from 'react-hook-form';
-
-import { cn } from '@/lib/utils';
-import { Label } from '@/components/ui/label';
 import { twc } from 'react-twc';
+
+import { Label } from '@/components/ui/label';
 import {
   createRequiredContext,
   useRequiredContext,
 } from '@/lib/required-context';
+import { cn } from '@/lib/utils';
 
 const Form = FormProvider;
 
-type FormFieldContextValue<
+interface FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> = {
+> {
   name: TName;
-};
+}
 
 const FormFieldContext = createRequiredContext<FormFieldContextValue>();
 
-const FormField = <
+function FormField<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({
-  ...props
-}: ControllerProps<TFieldValues, TName>) => {
+>({ ...props }: ControllerProps<TFieldValues, TName>) {
   const { control } = useFormContext<TFieldValues>();
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller control={control} {...props} />
     </FormFieldContext.Provider>
   );
-};
+}
 
 const useFormField = () => {
   const fieldContext = useRequiredContext(FormFieldContext);
@@ -66,9 +64,9 @@ const useFormField = () => {
   };
 };
 
-type FormItemContextValue = {
+interface FormItemContextValue {
   id: string;
-};
+}
 
 const FormItemContext = createRequiredContext<FormItemContextValue>();
 
@@ -140,7 +138,9 @@ export function FormGlobalMessage<
 >({
   name,
   ...props
-}: { name: keyof FieldErrors<TFieldValues> } & React.ComponentProps<'p'>) {
+}: React.ComponentProps<'p'> & {
+  readonly name: keyof FieldErrors<TFieldValues>;
+}) {
   const {
     formState: { errors },
   } = useFormContext();

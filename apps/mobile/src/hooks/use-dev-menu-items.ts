@@ -2,11 +2,11 @@ import { isDevelopmentBuild, registerDevMenuItems } from 'expo-dev-client';
 import { useCallback, useEffect } from 'react';
 import { useMMKVObject } from 'react-native-mmkv';
 
-type DevMenuItem = {
+interface DevMenuItem {
   callback?: () => void;
   key: string;
   title: string;
-};
+}
 
 const ITEMS: DevMenuItem[] = [] as const;
 

@@ -1,5 +1,15 @@
+import { MenuIcon } from 'lucide-react';
 import Link from 'next/link';
+import { ReactNode } from 'react';
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionIcon,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,38 +18,28 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
-import { cn, StyledProps } from '@/lib/utils';
-import { ReactNode } from 'react';
-import { Button } from '@/components/ui/button';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionIcon,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
 import {
   Sheet,
   SheetContent,
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { MenuIcon } from 'lucide-react';
+import { cn, StyledProps } from '@/lib/utils';
 
-type NavItem = {
+interface NavItem {
   children: NavItemChild[];
   collapsibleTitle?: string; // defaults to title
   icon: ReactNode;
   segment: null | string;
   subtitle: string;
   title: string;
-};
+}
 
-type NavItemChild = {
+interface NavItemChild {
   segment: null | string;
   subtitle: string;
   title: string;
-};
+}
 
 export default function NavMenu({
   base = '',
@@ -82,6 +82,7 @@ export default function NavMenu({
                   {item.collapsibleTitle ?? item.title}
                 </Link>
               </NavigationMenuTrigger>
+
               <NavigationMenuContent className='grid w-full grid-cols-2 gap-2'>
                 <NavigationMenuLink
                   asChild
@@ -92,12 +93,15 @@ export default function NavMenu({
                 >
                   <Link href={resolve(item)}>
                     {item.icon}
+
                     <h4 className='text-lg font-medium'>{item.title}</h4>
+
                     <p className='text-muted-foreground text-sm leading-tight'>
                       {item.subtitle}
                     </p>
                   </Link>
                 </NavigationMenuLink>
+
                 {item.children.map((child, i) => (
                   <NavigationMenuLink
                     asChild
@@ -106,6 +110,7 @@ export default function NavMenu({
                   >
                     <Link href={resolve(child)}>
                       <p className='text-foreground'>{child.title}</p>
+
                       <p className='text-muted-foreground leading-tight'>
                         {child.subtitle}
                       </p>
@@ -117,14 +122,17 @@ export default function NavMenu({
           ))}
         </NavigationMenuList>
       </NavigationMenu>
+
       <Sheet>
         <SheetTrigger asChild className='sm:hidden'>
           <Button size='icon' variant='ghost'>
             <MenuIcon className='size-5' />
           </Button>
         </SheetTrigger>
+
         <SheetContent className='w-xs'>
           <SheetTitle className='mt-3 text-center'>{title}</SheetTitle>
+
           <Accordion className='divide-y' type='single'>
             {navigation.map((item, i) => (
               <AccordionItem key={i} value={item.title}>
@@ -135,9 +143,11 @@ export default function NavMenu({
                     variant='ghost'
                   >
                     {item.collapsibleTitle ?? item.title}
+
                     <AccordionIcon className='ml-auto' />
                   </Button>
                 </AccordionTrigger>
+
                 <AccordionContent>
                   <Button
                     asChild
@@ -147,6 +157,7 @@ export default function NavMenu({
                   >
                     <Link href={resolve(item)}>{item.title}</Link>
                   </Button>
+
                   {item.children.map((child, i) => (
                     <Button
                       asChild

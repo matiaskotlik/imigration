@@ -1,7 +1,8 @@
-import { createServerSupabase } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import { createLoader, parseAsString, parseAsStringLiteral } from 'nuqs/server';
 import { NextRequest } from 'next/server';
+import { createLoader, parseAsString, parseAsStringLiteral } from 'nuqs/server';
+
+import { createServerSupabase } from '@/lib/supabase/server';
 
 const otpTypes = ['invite', 'recovery', 'email_change', 'email'] as const;
 

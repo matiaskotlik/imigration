@@ -1,7 +1,7 @@
 'use client';
 
-import { useIntersectionObserver } from 'usehooks-ts';
 import { useEffect } from 'react';
+import { useIntersectionObserver } from 'usehooks-ts';
 
 export default function InfiniteScroller({
   count,
@@ -9,10 +9,10 @@ export default function InfiniteScroller({
   hasNextPage,
   isFetchingNextPage,
 }: {
-  count: number;
-  fetchNextPage: () => void;
-  hasNextPage: boolean;
-  isFetchingNextPage: boolean;
+  readonly count: number;
+  readonly fetchNextPage: () => void;
+  readonly hasNextPage: boolean;
+  readonly isFetchingNextPage: boolean;
 }) {
   const { isIntersecting, ref } = useIntersectionObserver();
 

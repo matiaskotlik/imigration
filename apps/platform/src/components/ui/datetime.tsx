@@ -1,13 +1,14 @@
 import { memo } from 'react';
-import Rehydrate from '@/components/rehydrate';
 import { ErrorBoundary, withErrorBoundary } from 'react-error-boundary';
 import { Temporal } from 'temporal-polyfill';
-import { dayjs } from '@/lib/dayjs';
+
+import Rehydrate from '@/components/rehydrate';
 import {
   CopyTooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { dayjs } from '@/lib/dayjs';
 import { StyledProps } from '@/lib/utils';
 
 const LocalizedDurationInner = memo(function LocalizedDurationInner({
@@ -30,14 +31,15 @@ export function Duration({
   value,
   verbose = false,
 }: {
-  value?: string;
-  verbose?: boolean;
+  readonly value?: string;
+  readonly verbose?: boolean;
 }) {
   return (
     <CopyTooltip copyValue={value}>
       <TooltipTrigger>
         <LocalizedDuration value={value} verbose={verbose} />
       </TooltipTrigger>
+
       <TooltipContent>
         <LocalizedDuration value={value} verbose />
       </TooltipContent>
@@ -49,8 +51,8 @@ function LocalizedDuration({
   value,
   verbose,
 }: {
-  value?: string;
-  verbose: boolean;
+  readonly value?: string;
+  readonly verbose: boolean;
 }) {
   return (
     <Rehydrate>
@@ -65,10 +67,10 @@ const LocalizedDatetimeInner = memo(function LocalizedDatetimeInner({
   local = false,
   value,
   ...format
-}: {
+}: Intl.DateTimeFormatOptions & {
   local?: boolean;
   value: string | undefined;
-} & Intl.DateTimeFormatOptions) {
+}) {
   if (!value) {
     return '-';
   }
@@ -113,6 +115,7 @@ export function Date({
           value={value}
         />
       </TooltipTrigger>
+
       <TooltipContent>
         <LocalizedDatetime
           format={{
@@ -136,7 +139,10 @@ export function Date({
 export function Datetime({
   tz = true,
   value,
-}: { tz?: boolean; value?: string } & Intl.DateTimeFormatOptions) {
+}: Intl.DateTimeFormatOptions & {
+  readonly tz?: boolean;
+  readonly value?: string;
+}) {
   return (
     <CopyTooltip copyValue={value}>
       <TooltipTrigger>
@@ -153,6 +159,7 @@ export function Datetime({
           value={value}
         />
       </TooltipTrigger>
+
       <TooltipContent>
         <LocalizedDatetime
           format={{
@@ -177,9 +184,9 @@ function LocalizedDatetime({
   local,
   value,
 }: {
-  format: Intl.DateTimeFormatOptions;
-  local?: boolean;
-  value?: string;
+  readonly format: Intl.DateTimeFormatOptions;
+  readonly local?: boolean;
+  readonly value?: string;
 }) {
   return (
     <time dateTime={value}>
@@ -219,6 +226,7 @@ export const DateRange = withErrorBoundary(
           <TooltipTrigger className='inline'>
             <LocalizedDatetime format={format} value={start} />
           </TooltipTrigger>
+
           <TooltipContent>
             <LocalizedDatetime
               format={{
@@ -229,11 +237,14 @@ export const DateRange = withErrorBoundary(
             />
           </TooltipContent>
         </CopyTooltip>
+
         {' - '}
+
         <CopyTooltip copyValue={end}>
           <TooltipTrigger className='inline'>
             <LocalizedDatetime format={format} value={end} />
           </TooltipTrigger>
+
           <TooltipContent>
             <LocalizedDatetime
               format={{

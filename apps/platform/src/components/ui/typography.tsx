@@ -1,7 +1,8 @@
-import { twc } from 'react-twc';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { CopyIcon } from 'lucide-react';
+import Link from 'next/link';
+import { twc } from 'react-twc';
+
+import { Button } from '@/components/ui/button';
 
 export const H1 = twc.h1`lg::text-5xl' text-4xl font-extrabold tracking-tight`;
 
@@ -25,7 +26,11 @@ export const InlineCode = twc.code`bg-muted relative rounded px-[0.3rem] py-[0.2
 
 export const MultilineCode = twc.pre`bg-muted group relative overflow-x-auto rounded p-4 font-mono text-sm font-semibold`;
 
-export function MultilineCodeCopy({ value }: { value: null | string }) {
+export function MultilineCodeCopy({
+  value,
+}: {
+  readonly value: null | string;
+}) {
   return (
     <Button
       className='absolute right-2 top-2 hidden group-hover:block'

@@ -1,5 +1,11 @@
 'use client';
 
+import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
+import { PropsWithChildren, useEffect, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { z } from 'zod/v4';
+
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -9,10 +15,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
-import { z } from 'zod/v4';
-import { FormProvider, useForm } from 'react-hook-form';
-import { ZodFormContext } from '@/lib/form';
 import {
   FormControl,
   FormField,
@@ -20,17 +22,16 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { toast } from 'sonner';
-import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
-import { PropsWithChildren, useEffect, useState } from 'react';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { CurrentSurvey } from '@/queries/current-survey';
+import { ZodFormContext } from '@/lib/form';
 import { supabase } from '@/lib/supabase/client';
+import { CurrentSurvey } from '@/queries/current-survey';
 
 export const EditSurveyFormSchema = z.object({
   description: z.string().min(1).max(255),
@@ -40,7 +41,7 @@ export const EditSurveyFormSchema = z.object({
 export function EditSurveyDialog({
   children,
   survey,
-}: PropsWithChildren<{ survey: CurrentSurvey }>) {
+}: PropsWithChildren<{ readonly survey: CurrentSurvey }>) {
   const [isOpen, setIsOpen] = useState(false);
   const context: ZodFormContext<typeof EditSurveyFormSchema> = useForm({
     resolver: standardSchemaResolver(EditSurveyFormSchema),
@@ -85,40 +86,49 @@ export function EditSurveyDialog({
         <TooltipTrigger asChild>
           <DialogTrigger asChild>{children}</DialogTrigger>
         </TooltipTrigger>
+
         <TooltipContent>Edit details</TooltipContent>
       </Tooltip>
+
       <FormProvider {...context}>
         <DialogContent>
           <form>
             <DialogHeader>
               <DialogTitle>Edit Survey</DialogTitle>
             </DialogHeader>
+
             <div className='grid gap-4 py-4'>
               <FormField
                 name='name'
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Name</FormLabel>
+
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
+
                     <FormMessage />
                   </FormItem>
                 )}
               />
+
               <FormField
                 name='description'
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Description</FormLabel>
+
                     <FormControl>
                       <Textarea {...field} />
                     </FormControl>
+
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
+
             <DialogFooter>
               <Button
                 loading={isSubmitting}

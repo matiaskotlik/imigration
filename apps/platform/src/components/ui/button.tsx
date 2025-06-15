@@ -1,12 +1,12 @@
 'use client';
 
-import * as React from 'react';
-import { useLayoutEffect, useRef, useState } from 'react';
 import { Slot, Slottable } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { Loader2 } from 'lucide-react';
+import * as React from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 import { cn } from '@/lib/utils';
-import { Loader2 } from 'lucide-react';
 
 const buttonVariants = cva(
   "focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap text-sm font-medium outline-none transition-all focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
@@ -62,16 +62,16 @@ function Button({
   style,
   variant,
   ...props
-}: {
-  asChild?: boolean;
-  loading?: boolean;
-  preventShrink?: boolean;
-} & React.ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants>) {
+}: React.ComponentProps<'button'> &
+  VariantProps<typeof buttonVariants> & {
+    readonly asChild?: boolean;
+    readonly loading?: boolean;
+    readonly preventShrink?: boolean;
+  }) {
   const Comp = asChild ? Slot : 'button';
 
   const ref = useRef<HTMLButtonElement>(null);
-  const [width, setWidth] = useState<number | undefined>(undefined);
+  const [width, setWidth] = useState<number | undefined>();
 
   // capture button size after first render
   useLayoutEffect(() => {
@@ -89,7 +89,8 @@ function Button({
       style={{ ...style, minWidth: width }}
       {...props}
     >
-      {loading && <Loader2 className='animate-spin' />}
+      {loading ? <Loader2 className='animate-spin' /> : null}
+
       <Slottable>{children}</Slottable>
     </Comp>
   );

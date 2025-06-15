@@ -1,7 +1,4 @@
 {
-  "extends": "@repo/tsconfig/dom.json",
-  "compilerOptions": {
-    "rootDir": "src"
-  },
+  "extends": "@repo/tsconfig/internal-dom.json",
   "include": ["src"]
 }

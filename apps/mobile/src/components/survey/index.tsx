@@ -1,16 +1,17 @@
 import 'survey-core/survey-core.css';
+import { useMutation } from '@tanstack/react-query';
 import { memo, useLayoutEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod/v4';
+
+import { useSetLoading } from '@/components/survey/context';
 import DOMSurvey from '@/components/survey/dom';
 import { useSurveyTheme } from '@/components/survey/theme';
-import { useSetLoading } from '@/components/survey/context';
-import { useTranslation } from 'react-i18next';
 import { useSetSurveyTitle } from '@/components/survey/title';
-import { type Survey as SurveyType } from '@/lib/schema/survey';
-import { useMutation } from '@tanstack/react-query';
-import { sleep } from '@/lib/utils';
 import { SurveyDataSchema } from '@/components/survey/types';
 import { useStoredObjectOnce } from '@/hooks/use-storage';
-import { z } from 'zod/v4';
+import { type Survey as SurveyType } from '@/lib/schema/survey';
+import { sleep } from '@/lib/utils';
 
 export const Survey = memo(function Survey({
   onComplete,

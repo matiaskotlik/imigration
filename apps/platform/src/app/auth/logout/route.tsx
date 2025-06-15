@@ -1,7 +1,8 @@
-import { createServerSupabase } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import { createLoader, parseAsString } from 'nuqs/server';
 import { NextRequest } from 'next/server';
+import { createLoader, parseAsString } from 'nuqs/server';
+
+import { createServerSupabase } from '@/lib/supabase/server';
 
 const searchParams = {
   next: parseAsString.withDefault('/auth/login'),

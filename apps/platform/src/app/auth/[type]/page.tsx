@@ -1,20 +1,21 @@
-import { BrandLogo } from '@/components/brand/logo';
-import { H3 } from '@/components/ui/typography';
 import React from 'react';
-import {
-  AuthAlert,
-  AuthContextProvider,
-  AuthFooter,
-  AuthForm,
-} from '@/components/auth/ui';
+
 import {
   changePasswordAction,
   forgotPasswordAction,
   loginAction,
   signUpAction,
 } from '@/actions/auth';
-import { Section } from '@/components/ui/section';
+import {
+  AuthAlert,
+  AuthContextProvider,
+  AuthFooter,
+  AuthForm,
+} from '@/components/auth/ui';
+import { BrandLogo } from '@/components/brand/logo';
 import { Container } from '@/components/ui/container';
+import { Section } from '@/components/ui/section';
+import { H3 } from '@/components/ui/typography';
 
 const formTypes = [
   // 'signup',
@@ -113,7 +114,7 @@ const pageVariants = {
 export default async function Page({
   params,
 }: {
-  params: Promise<{ type: FormType }>;
+  readonly params: Promise<{ type: FormType }>;
 }) {
   const { type } = await params;
   const { footer, form, title } = pageVariants[type];
@@ -124,6 +125,7 @@ export default async function Page({
         <Container size='narrow'>
           <div className='mb-10 flex flex-col items-center gap-2 text-center'>
             <BrandLogo className='size-10' />
+
             <H3>{title}</H3>
           </div>
 

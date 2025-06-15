@@ -1,6 +1,5 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import * as React from 'react';
 import {
@@ -10,6 +9,8 @@ import {
   useRef,
   useState,
 } from 'react';
+
+import { cn } from '@/lib/utils';
 
 const Tabs = TabsPrimitive.Root;
 
@@ -83,6 +84,7 @@ const TabsList = React.forwardRef<
         ref={ref}
         {...props}
       />
+
       <div
         className='bg-background absolute rounded-md shadow-sm transition-all duration-300 ease-in-out'
         style={indicatorStyle}

@@ -1,14 +1,16 @@
 'use client';
 
-import { Fragment, ReactNode, Suspense } from 'react';
 import {
   QueryKey,
   useSuspenseQuery,
   UseSuspenseQueryOptions,
 } from '@tanstack/react-query';
 import { HomeIcon } from 'lucide-react';
-import { titleCase } from '@/lib/utils';
+import Link from 'next/link';
 import { useParams, useSelectedLayoutSegments } from 'next/navigation';
+import { Fragment, ReactNode, Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -18,11 +20,10 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import { Skeleton } from '@/components/ui/skeleton';
-import Link from 'next/link';
 import { dbId } from '@/lib/id';
-import { ErrorBoundary } from 'react-error-boundary';
-import { currentSurveyQueryOptions } from '@/queries/current-survey';
+import { titleCase } from '@/lib/utils';
 import { currentDocumentQueryOptions } from '@/queries/current-document';
+import { currentSurveyQueryOptions } from '@/queries/current-survey';
 
 type BreadcrumbConfig = Record<string, ((val: string) => ReactNode) | null>;
 
@@ -30,8 +31,8 @@ function BreadcrumbItemQuery<Q, E, D, K extends QueryKey>({
   queryOptions,
   select,
 }: {
-  queryOptions: UseSuspenseQueryOptions<Q, E, D, K>;
-  select: (data: D) => ReactNode;
+  readonly queryOptions: UseSuspenseQueryOptions<Q, E, D, K>;
+  readonly select: (data: D) => ReactNode;
 }) {
   const { data } = useSuspenseQuery(queryOptions);
   return (
@@ -113,6 +114,7 @@ export function Breadcrumbs() {
             // TODO is this the right key to use?
             <Fragment key={`${href}-${idx}`}>
               {idx > 0 && <BreadcrumbSeparator key={idx} />}
+
               <BreadcrumbItem key={href}>
                 {idx === crumbs.length - 1 ? (
                   <BreadcrumbPage>{crumb}</BreadcrumbPage>

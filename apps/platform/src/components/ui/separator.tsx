@@ -1,7 +1,7 @@
 'use client';
 
-import * as React from 'react';
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
+import * as React from 'react';
 
 import { cn, StyledPropsWithChildren } from '@/lib/utils';
 
@@ -29,7 +29,9 @@ function SeparatorLabel({ children, className }: StyledPropsWithChildren) {
   return (
     <div className={cn('flex items-center gap-4', className)}>
       <Separator className='flex-1' />
+
       <span className='text-muted-foreground'>{children}</span>
+
       <Separator className='flex-1' />
     </div>
   );

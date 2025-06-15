@@ -10,8 +10,8 @@ export default function ErrorPage({
   error,
   reset,
 }: {
-  error?: { digest?: string } & Error;
-  reset?: () => void;
+  readonly error?: Error & { digest?: string };
+  readonly reset?: () => void;
 }) {
   const message = `${error?.name}:\n${error?.message}\n\nCaused by: ${error?.cause}\n\nStack Trace:\n${error?.stack}\n\nDigest: ${error?.digest}`;
 

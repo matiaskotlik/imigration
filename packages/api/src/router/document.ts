@@ -1,11 +1,12 @@
 import type { TRPCRouterRecord } from '@trpc/server';
 
-import { publicProcedure } from '@repo/api/trpc';
-import { z } from 'zod/v4';
-import { handleMissing, unwrap } from '@repo/api/utils';
+import { GenerateProps } from '@pdfme/common';
 import { generate } from '@pdfme/generator';
 import plugins from '@repo/pdfme-plugins';
-import { GenerateProps } from '@pdfme/common';
+import { z } from 'zod/v4';
+
+import { publicProcedure } from '../trpc';
+import { handleMissing, unwrap } from '../utils';
 
 export const documentRouter = {
   generatePdf: publicProcedure

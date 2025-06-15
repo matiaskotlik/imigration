@@ -1,15 +1,16 @@
 'use client';
 
+import { useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { useCopyToClipboard } from 'usehooks-ts';
-import { useRef, useState } from 'react';
+
 import { ToastOptions } from '@/components/ui/sonner';
 
-type CopyProps = {
+interface CopyProps {
   delay?: number;
   failureToast?: null | ToastOptions;
   successToast?: null | ToastOptions;
-};
+}
 
 type Value = null | string | undefined;
 

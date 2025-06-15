@@ -1,4 +1,5 @@
 import { PropsWithChildren, Suspense } from 'react';
+
 import { useHydration } from '@/hooks/use-hydration';
 
 /**

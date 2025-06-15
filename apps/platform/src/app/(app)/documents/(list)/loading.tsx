@@ -1,8 +1,8 @@
-import { Section } from '@/components/ui/section';
 import {
   DocumentListHeaderSkeleton,
   DocumentListSkeleton,
 } from '@/components/document/list';
+import { Section } from '@/components/ui/section';
 
 export default function DocumentListLoading() {
   return (
@@ -10,6 +10,7 @@ export default function DocumentListLoading() {
       <Section>
         <DocumentListHeaderSkeleton />
       </Section>
+
       <Section viewport>
         <DocumentListSkeleton />
       </Section>

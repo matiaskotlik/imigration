@@ -1,7 +1,9 @@
 'use client';
 
-import { useActiveNav } from '@/hooks/use-active-nav';
+import { FileQuestionIcon, FolderIcon, HomeIcon } from 'lucide-react';
 import Link from 'next/link';
+
+import { BrandLogo, BrandTitle } from '@/components/brand/logo';
 import {
   Sidebar,
   SidebarContent,
@@ -13,16 +15,17 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { FileQuestionIcon, FolderIcon, HomeIcon } from 'lucide-react';
-import { BrandLogo, BrandTitle } from '@/components/brand/logo';
+import { useActiveNav } from '@/hooks/use-active-nav';
 
 export function AppShellSidebar() {
   return (
     <Sidebar collapsible='icon'>
       <Header />
+
       <SidebarContent>
         <Nav />
       </SidebarContent>
+
       <SidebarFooter />
     </Sidebar>
   );
@@ -36,6 +39,7 @@ function Header() {
           <SidebarMenuButton asChild>
             <Link href='/'>
               <BrandLogo className='size-4' />
+
               <BrandTitle />
             </Link>
           </SidebarMenuButton>
@@ -69,6 +73,7 @@ function Nav() {
               >
                 <Link href={item.href}>
                   <item.icon />
+
                   {item.name}
                 </Link>
               </SidebarMenuButton>

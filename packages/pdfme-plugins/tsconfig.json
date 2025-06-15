@@ -1,4 +1,4 @@
 {
-  "extends": "@repo/tsconfig/dom.json",
+  "extends": "@repo/tsconfig/internal-dom.json",
   "include": ["src"]
 }

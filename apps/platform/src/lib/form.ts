@@ -1,5 +1,5 @@
-import { z } from 'zod/v4';
 import { UseFormReturn } from 'react-hook-form';
+import { z } from 'zod/v4';
 
 export const NumberSchema = z
   .string()
@@ -21,7 +21,7 @@ export const NonEmptyStringSchema = z.string().min(1, {
 });
 
 export const PairSchema = NonEmptyStringSchema.regex(
-  /^[A-Z0-9]+[/-][A-Z0-9]+$/,
+  /^[\dA-Z]+[/-][\dA-Z]+$/,
   'Invalid Pair'
 );
 

@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import tw from 'twrnc';
+
 import { useIsLoading } from '@/components/survey/context';
 
 export function SurveyLoader({ children }: PropsWithChildren) {

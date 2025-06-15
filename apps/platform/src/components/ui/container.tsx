@@ -1,5 +1,6 @@
-import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
+import * as React from 'react';
+
 import { StyledPropsWithChildren } from '@/lib/utils';
 
 const containerVariants = cva('@bsm/main:px-6 @blg/main:px-8 mx-auto w-full', {

@@ -1,11 +1,11 @@
 'use client';
 
+import { Slot } from '@radix-ui/react-slot';
+import { cva, VariantProps } from 'class-variance-authority';
 import * as React from 'react';
 import { ComponentProps, PropsWithChildren } from 'react';
 
 import { cn } from '@/lib/utils';
-import { cva, VariantProps } from 'class-variance-authority';
-import { Slot } from '@radix-ui/react-slot';
 
 const tableContainerVariants = cva('relative w-full overflow-x-auto', {
   defaultVariants: {

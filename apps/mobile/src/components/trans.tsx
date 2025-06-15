@@ -1,6 +1,6 @@
+import { ComponentProps } from 'react';
 import { Trans as I18NTrans } from 'react-i18next';
 import { Text } from 'react-native';
-import { ComponentProps } from 'react';
 
 export function Trans({
   ...props

@@ -1,14 +1,15 @@
+import { PropsWithChildren, useState } from 'react';
+import { createStore, StoreApi, useStore } from 'zustand/index';
+
 import {
   createRequiredContext,
   useRequiredContext,
 } from '@/lib/required-context';
-import { createStore, StoreApi, useStore } from 'zustand/index';
-import { PropsWithChildren, useState } from 'react';
 
-type SurveyState = {
+interface SurveyState {
   isLoading: boolean;
   setLoading: (loading: boolean) => void;
-};
+}
 
 function buildSurveyStore() {
   return createStore<SurveyState>((set) => ({

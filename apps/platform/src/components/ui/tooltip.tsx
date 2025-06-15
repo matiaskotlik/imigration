@@ -1,5 +1,6 @@
 'use client';
 
+import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import {
   ComponentProps,
   createContext,
@@ -8,10 +9,9 @@ import {
   useContext,
   useRef,
 } from 'react';
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 
-import { cn } from '@/lib/utils';
 import { useCopyValue } from '@/hooks/use-copy';
+import { cn } from '@/lib/utils';
 
 const TooltipCopyContext = createContext<{
   contentRef?: RefObject<HTMLDivElement | null>;
@@ -21,9 +21,9 @@ const TooltipCopyContext = createContext<{
 export function CopyTooltip({
   copyValue,
   ...props
-}: {
-  copyValue?: string;
-} & ComponentProps<typeof Tooltip>) {
+}: ComponentProps<typeof Tooltip> & {
+  readonly copyValue?: string;
+}) {
   const contentRef = useRef<HTMLDivElement>(null);
   const copyFn = useCallback(
     () => copyValue ?? contentRef.current?.textContent,
@@ -65,6 +65,7 @@ export function TooltipContent({
         {...props}
       >
         <div ref={contentRef}>{children}</div>
+
         <TooltipPrimitive.Arrow className='bg-secondary fill-secondary z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]' />
       </TooltipPrimitive.Content>
     </TooltipPrimitive.Portal>

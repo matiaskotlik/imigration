@@ -1,7 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import * as React from 'react';
 import { PropsWithChildren } from 'react';
+
+import { Container } from '@/components/ui/container';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -9,9 +12,7 @@ import {
   NavigationMenuList,
 } from '@/components/ui/navigation-menu';
 import { Section } from '@/components/ui/section';
-import { Container } from '@/components/ui/container';
 import { H2 } from '@/components/ui/typography';
-import Link from 'next/link';
 
 export function Shell({ children }: PropsWithChildren) {
   return (
@@ -21,6 +22,7 @@ export function Shell({ children }: PropsWithChildren) {
           <H2>
             <Link href='/'>iMigration Admin Dashboard</Link>
           </H2>
+
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -32,6 +34,7 @@ export function Shell({ children }: PropsWithChildren) {
           </NavigationMenu>
         </Container>
       </Section>
+
       {children}
     </>
   );
