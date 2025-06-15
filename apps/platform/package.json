@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "next build --no-lint",
-    "build:check": "next lint --ignore-path * && tsc -noEmit",
+    "build:check": "next lint --ignore-path . && tsc -noEmit",
     "clean": "git clean -xdf node_modules .cache .turbo .next",
     "dev": "next dev --turbopack",
     "format": "prettier . --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
