@@ -9,6 +9,10 @@ await jiti.import('./src/env');
 const nextConfig = {
   /** Enable hot reloading for local packages without a build step */
   transpilePackages: ['@repo/api', '@repo/pdfme-plugins', '@repo/supabase'],
+  /** We already do linting separately tasks in CI */
+  eslint: { ignoreDuringBuilds: true },
+  // typescript: { ignoreBuildErrors: true },
+  // TODO
   // experimental: {
   //   typedRoutes: true,
   // },

@@ -1,0 +1,35 @@
+name: Platform
+
+on:
+  push:
+    paths:
+      - 'packages/platform/**'
+      - '.github/workflows/platform*.yml'
+
+  pull_request:
+    paths:
+      - 'packages/platform/**'
+      - '.github/workflows/platform*.yml'
+
+jobs:
+  check:
+    name: Check
+    uses: ./.github/workflows/platform-check.yml
+
+  deploy-production:
+    name: Production Deploy
+    if: github.ref == 'refs/heads/main'
+    needs: check
+    uses: ./.github/workflows/platform-deploy.yml
+    secrets: inherit
+    with:
+      environment: production
+
+  deploy-staging:
+    name: Staging Deploy
+    if: github.ref == 'refs/heads/staging'
+    needs: check
+    uses: ./.github/workflows/platform-deploy.yml
+    secrets: inherit
+    with:
+      environment: preview
