@@ -5,7 +5,7 @@ on:
 
 defaults:
   run:
-    working-directory: 'supabase'
+    working-directory: 'packages/supabase'
 
 jobs:
   db-push:
