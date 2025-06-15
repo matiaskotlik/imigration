@@ -29,7 +29,7 @@ export function BrandName({
 export function BrandSpinner({ className }: StyledProps) {
   return (
     <div className={cn('flex items-center justify-center', className)}>
-      <div className="text-primary pointer-events-none inline-block aspect-square w-8 bg-current align-middle [mask-image:url('data:image/svg+xml,%3Csvg%20width%3D%2724%27%20height%3D%2724%27%20viewBox%3D%270%200%2024%2024%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%276%27%20height%3D%2722%27%3E%3Canimate%20attributeName%3D%27y%27%20values%3D%271%3B5%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27/%3E%3Canimate%20attributeName%3D%27height%27%20values%3D%2722%3B14%3B22%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27/%3E%3Canimate%20attributeName%3D%27opacity%27%20values%3D%271%3B0.2%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27/%3E%3C/rect%3E%3Crect%20x%3D%279%27%20y%3D%271%27%20width%3D%276%27%20height%3D%2722%27%3E%3Canimate%20attributeName%3D%27y%27%20values%3D%271%3B5%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.65s%27/%3E%3Canimate%20attributeName%3D%27height%27%20values%3D%2722%3B14%3B22%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.65s%27/%3E%3Canimate%20attributeName%3D%27opacity%27%20values%3D%271%3B0.2%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.65s%27/%3E%3C/rect%3E%3Crect%20x%3D%2717%27%20y%3D%271%27%20width%3D%276%27%20height%3D%2722%27%3E%3Canimate%20attributeName%3D%27y%27%20values%3D%271%3B5%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.5s%27/%3E%3Canimate%20attributeName%3D%27height%27%20values%3D%2722%3B14%3B22%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.5s%27/%3E%3Canimate%20attributeName%3D%27opacity%27%20values%3D%271%3B0.2%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.5s%27/%3E%3C/rect%3E%3C/svg%3E')] [mask-position:center] [mask-repeat:no-repeat] [mask-size:100%]" />
+      <div className="text-primary pointer-events-none inline-block aspect-square w-8 bg-current [mask-image:url('data:image/svg+xml,%3Csvg%20width%3D%2724%27%20height%3D%2724%27%20viewBox%3D%270%200%2024%2024%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%276%27%20height%3D%2722%27%3E%3Canimate%20attributeName%3D%27y%27%20values%3D%271%3B5%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27/%3E%3Canimate%20attributeName%3D%27height%27%20values%3D%2722%3B14%3B22%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27/%3E%3Canimate%20attributeName%3D%27opacity%27%20values%3D%271%3B0.2%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27/%3E%3C/rect%3E%3Crect%20x%3D%279%27%20y%3D%271%27%20width%3D%276%27%20height%3D%2722%27%3E%3Canimate%20attributeName%3D%27y%27%20values%3D%271%3B5%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.65s%27/%3E%3Canimate%20attributeName%3D%27height%27%20values%3D%2722%3B14%3B22%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.65s%27/%3E%3Canimate%20attributeName%3D%27opacity%27%20values%3D%271%3B0.2%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.65s%27/%3E%3C/rect%3E%3Crect%20x%3D%2717%27%20y%3D%271%27%20width%3D%276%27%20height%3D%2722%27%3E%3Canimate%20attributeName%3D%27y%27%20values%3D%271%3B5%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.5s%27/%3E%3Canimate%20attributeName%3D%27height%27%20values%3D%2722%3B14%3B22%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.5s%27/%3E%3Canimate%20attributeName%3D%27opacity%27%20values%3D%271%3B0.2%3B1%27%20keyTimes%3D%270%3B0.938%3B1%27%20dur%3D%27.8s%27%20repeatCount%3D%27indefinite%27%20begin%3D%27-0.5s%27/%3E%3C/rect%3E%3C/svg%3E')] [mask-size:100%] [mask-position:center] [mask-repeat:no-repeat] align-middle" />
     </div>
   );
 }
@@ -42,7 +42,7 @@ export function BrandTitle({
     <h1
       className={cn(
         BrandFont.className,
-        'leading select-none text-2xl tracking-tight text-black',
+        'leading text-2xl tracking-tight text-black select-none',
         className
       )}
     >
@@ -58,11 +58,11 @@ export function BrandTitleWithLogo({
   return (
     <div
       className={cn(
-        'font-brand flex h-7 select-none items-center justify-center gap-3 text-3xl tracking-tight text-white',
+        'font-brand flex h-7 items-center justify-center gap-3 text-3xl tracking-tight text-white select-none',
         className
       )}
     >
-      <BrandLogo className='flex-0 h-full' />
+      <BrandLogo className='h-full flex-0' />
 
       <h1>{children}</h1>
     </div>

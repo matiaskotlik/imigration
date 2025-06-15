@@ -33,7 +33,7 @@ export function MultilineCodeCopy({
 }) {
   return (
     <Button
-      className='absolute right-2 top-2 hidden group-hover:block'
+      className='absolute top-2 right-2 hidden group-hover:block'
       disabled={value === null}
       size='icon'
       variant='outline'

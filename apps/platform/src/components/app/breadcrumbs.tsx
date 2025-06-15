@@ -107,7 +107,7 @@ export function Breadcrumbs() {
       href,
     }));
   return (
-    <Breadcrumb className='overflow-hidden whitespace-nowrap px-2'>
+    <Breadcrumb className='overflow-hidden px-2 whitespace-nowrap'>
       <BreadcrumbList>
         <Suspense fallback={<Skeleton size='description' />}>
           {crumbs.map(({ crumb, href }, idx) => (

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { cn, StyledPropsWithChildren } from '@/lib/utils';
 
-const sectionVariants = cva('not-first-of-type:pt-0 w-full', {
+const sectionVariants = cva('w-full not-first-of-type:pt-0', {
   defaultVariants: {
     center: false,
     size: 'md',
