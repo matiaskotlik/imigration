@@ -6,11 +6,6 @@ on:
       - 'packages/supabase/**'
       - '.github/workflows/supabase*.yml'
 
-  pull_request:
-    paths:
-      - 'packages/supabase/**'
-      - '.github/workflows/supabase*.yml'
-
 jobs:
   check:
     name: Check

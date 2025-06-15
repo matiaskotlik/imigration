@@ -6,11 +6,6 @@ on:
       - 'apps/platform/**'
       - '.github/workflows/platform*.yml'
 
-  pull_request:
-    paths:
-      - 'apps/platform/**'
-      - '.github/workflows/platform*.yml'
-
 jobs:
   check:
     name: Check
