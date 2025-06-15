@@ -15,8 +15,8 @@
     "format": "prettier --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
     "format:check": "prettier --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
     "ios": "expo run:ios",
-    "lint": "ESLINT_NO_DEV_ERRORS=true expo lint -- --fix --cache --cache-location .cache/.eslintcache",
-    "lint:check": "expo lint -- --cache --cache-location .cache/.eslintcache"
+    "lint": "expo lint --fix -- --cache-location .cache/.eslintcache",
+    "lint:check": "expo lint -- --cache-location .cache/.eslintcache"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {

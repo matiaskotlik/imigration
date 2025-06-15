@@ -2,6 +2,3 @@
 apps/*
 packages/*
 tooling/*
-
-# don't need to reformat this
-pnpm-lock.yaml
