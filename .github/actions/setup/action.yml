@@ -8,9 +8,5 @@ runs:
       with:
         node-version-file: 'package.json'
         cache: 'pnpm'
-
-    - shell: bash
-      run: pnpm add --global turbo
-
     - shell: bash
       run: pnpm install
