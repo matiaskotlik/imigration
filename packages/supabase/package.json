@@ -15,7 +15,7 @@
   "scripts": {
     "build:check": "tsc --noEmit --emitDeclarationOnly false",
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "config:push": "supabase config push ${SUPABASE_PROJECT_REF:+--project-ref=$SUPABASE_PROJECT_REF}",
+    "config:push": "supabase config push ${SUPABASE_PROJECT_REF:+--project-ref $SUPABASE_PROJECT_REF}",
     "db:clear": "scripts/db-clear.sh",
     "db:diff": "supabase db diff",
     "db:diff:check": "supabase db diff | tee /dev/stderr | [ $(wc -c) -eq 0 ]",
@@ -32,7 +32,7 @@
     "format:check": "prettier . --check --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
     "lint": "eslint . --fix --cache --cache-location .cache/.eslintcache",
     "lint:check": "eslint . --cache --cache-location .cache/.eslintcache",
-    "migrations:push": "supabase db push ${SUPABASE_DB_URL:+--db-url=$SUPABASE_DB_URL}",
+    "migrations:push": "supabase db push ${SUPABASE_DB_URL:+--db-url $SUPABASE_DB_URL}",
     "start": "supabase start",
     "types:check": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts | diff - gen/database.types.ts",
     "types:gen": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts > gen/database.types.ts"
