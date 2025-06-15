@@ -16,7 +16,6 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
   },
   extends: [vercel()],
-
   server: {},
   shared: {
     NODE_ENV: z

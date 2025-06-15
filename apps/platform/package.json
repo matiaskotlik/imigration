@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "dotenv -e ../../.env -- next build",
+    "build": "next build",
     "clean": "git clean -xdf node_modules .cache .turbo .next",
-    "dev": "dotenv -e ../../.env -- next dev --turbopack",
+    "dev": "next dev --turbopack",
     "format": "prettier . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit"
@@ -13,6 +13,7 @@
   "prettier": "@repo/prettier-config",
   "dependencies": {
     "@cantoo/pdf-lib": "^2.4.1",
+    "@dotenvx/dotenvx": "^1.44.2",
     "@hookform/resolvers": "^5.1.1",
     "@pdfme/common": "^5.4.0",
     "@pdfme/converter": "^5.4.0",
@@ -76,7 +77,6 @@
     "@types/node": "^24.0.1",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "dotenv-cli": "^8.0.0",
     "eslint": "catalog:",
     "jiti": "^2.4.2",
     "prettier": "catalog:",
