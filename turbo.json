@@ -2,6 +2,9 @@
   "$schema": "https://turborepo.org/schema.json",
   "ui": "tui",
   "tasks": {
+    "topo": {
+      "dependsOn": ["^topo"]
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".cache/tsbuildinfo.json", "dist/**"]
@@ -19,11 +22,11 @@
       "outputLogs": "new-only"
     },
     "lint:check": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["topo", "^build"],
       "outputs": [".cache/.eslintcache"]
     },
     "lint": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["topo", "^build"],
       "outputs": [".cache/.eslintcache"]
     },
     "//#format:root": {
@@ -35,7 +38,7 @@
       "outputLogs": "new-only"
     },
     "build:check": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["topo", "^build"],
       "outputs": [".cache/tsbuildinfo.json"]
     },
     "clean": {

@@ -2,6 +2,12 @@ name: Check
 
 on:
   push:
+  workflow_call:
+    inputs:
+      working-directory:
+        description: Working directory to run checks in
+        required: true
+        type: string
 
 jobs:
   lint:
@@ -11,7 +17,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm lint:check
+      - run: turbo run lint:check
+        working-directory: ${{ inputs.working-directory }}
 
   format:
     name: Format
@@ -20,7 +27,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm format:check
+      - run: turbo run format:check
+        working-directory: ${{ inputs.working-directory }}
 
   build:
     name: Build
@@ -29,4 +37,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm build:check
+      - run: turbo run build:check
+        working-directory: ${{ inputs.working-directory }}
