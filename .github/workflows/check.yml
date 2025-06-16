@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: turbo run lint:check
+      - run: pnpm exec turbo run lint:check
         working-directory: ${{ inputs.working-directory }}
 
   format:
@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: turbo run format:check
+      - run: pnpm exec turbo run format:check
         working-directory: ${{ inputs.working-directory }}
 
   build:
@@ -37,5 +37,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: turbo run build:check
+      - run: pnpm exec turbo run build:check
         working-directory: ${{ inputs.working-directory }}
