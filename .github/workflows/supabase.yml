@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'packages/supabase/**'
-      - '.github/workflows/**'
+      - '.github/**'
 
 jobs:
   supabase-check:

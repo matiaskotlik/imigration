@@ -6,7 +6,6 @@ on:
     inputs:
       working-directory:
         description: Working directory to run checks in
-        required: true
         type: string
 
 jobs:
