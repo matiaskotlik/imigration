@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm exec turbo run format:check .
+      - run: pnpm exec turbo run format:check -- .
         working-directory: ${{ inputs.working-directory }}
 
   build:
