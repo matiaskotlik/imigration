@@ -1,4 +1,3 @@
-const path = require('path')
 
 const buildNextLintCommand = (filenames) =>
   `next lint --fix --cache-location .cache/.eslintcache --file ${filenames
@@ -6,5 +5,5 @@ const buildNextLintCommand = (filenames) =>
     .join(' --file ')}`
 
 module.exports = {
-  '**': ["pnpm format --", buildNextLintCommand],
+  '*': ["pnpm format --ignore-unknown --", buildNextLintCommand],
 }
