@@ -1,8 +1,10 @@
+import path from 'node:path';
+
 const buildNextLintCommand = (filenames) =>
-  `next lint --fix --cache-location .cache/.eslintcache --file ${filenames
+  `pnpm lint --file ${filenames
     .map((f) => path.relative(process.cwd(), f))
     .join(' --file ')}`;
 
-module.exports = {
+export default {
   '*': ['pnpm format --ignore-unknown --', buildNextLintCommand],
 };
