@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm exec turbo run lint:check
+      - run: turbo run lint:check
 
   format:
     name: Format
@@ -25,7 +25,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm exec turbo run format:check -- .
+      - run: turbo run format:check -- .
 
   build:
     name: Build
@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm exec turbo run build:check
+      - run: turbo run build:check
 
   db-lint:
     name: Database lint
@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm exec turbo run start
+      - run: turbo run start
       - run: pnpm db:lint
 
   db-diff:

@@ -4,15 +4,6 @@ on:
   push:
 
 jobs:
-  version:
-    name: Version
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup
-      - run: turbo --version
-
   lint:
     name: Lint
     runs-on: ubuntu-latest
