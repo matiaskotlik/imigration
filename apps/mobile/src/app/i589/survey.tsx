@@ -17,7 +17,7 @@ export default function SurveyScreen() {
   const router = useRouter();
 
   const handleComplete = useCallback(
-    async (data: unknown) => {
+    async (_data: unknown) => {
       router.replace('./complete');
       return true;
     },

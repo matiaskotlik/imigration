@@ -1,23 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { Linking, View } from 'react-native';
+import { View } from 'react-native';
 import { Button, Text, useTheme } from 'react-native-paper';
 import tw from 'twrnc';
 
 import { Container } from '@/components/ui/container';
 import { documentListQueryOptions } from '@/queries/documents';
 
-interface StoredDocument {
-  title: string;
-  uri: string;
-}
+// interface StoredDocument {
+//   title: string;
+//   uri: string;
+// }
 
 export default function DocumentsScreen() {
   const theme = useTheme();
   const { t } = useTranslation();
   // const [documents] = useMMKVObject<StoredDocument[]>('documents');
-  const { data: documents, status } = useQuery(documentListQueryOptions());
+  const { data: documents, status: _status } = useQuery(
+    documentListQueryOptions()
+  );
 
   return (
     <>

@@ -23,6 +23,8 @@ catalogs:
     '@types/react': ~19.0.10
     '@types/react-dom': ~19.0.6
 
+nodeLinker: hoisted
+
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - canvas

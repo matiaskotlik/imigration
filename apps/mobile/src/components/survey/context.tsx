@@ -4,7 +4,7 @@ import { createStore, StoreApi, useStore } from 'zustand/index';
 import {
   createRequiredContext,
   useRequiredContext,
-} from '@/lib/required-context';
+} from '@/hooks/use-required-context';
 
 interface SurveyState {
   isLoading: boolean;

@@ -1,4 +1,3 @@
-import { Database } from '@repo/supabase/database.types';
 import {
   PG_INVALID_TEXT_REPRESENTATION,
   PGRST_SINGULAR_RESPONSE_ITEM_COUNT_MISMATCH,
@@ -13,7 +12,6 @@ import {
 import {
   AuthTokenResponsePassword,
   PostgrestError,
-  SupabaseClient,
   User,
   UserResponse,
 } from '@supabase/supabase-js';
