@@ -9,9 +9,7 @@ on:
 jobs:
   check:
     name: Check
-    uses: ./.github/workflows/check.yml
-    with:
-      working-directory: 'apps/platform'
+    uses: ./.github/workflows/platform-check.yml
 
   deploy-production:
     name: Production Deploy

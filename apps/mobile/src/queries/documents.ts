@@ -3,31 +3,29 @@ import { queryOptions } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase/client';
 import { InferDataType, supabaseQueryOptions } from '@/lib/supabase/utils';
 
-export const surveyQueryOptions = (id: string) =>
+export const documentListQueryOptions = () =>
   queryOptions({
     ...supabaseQueryOptions({
       query: () =>
-        supabase
-          .from('surveys')
-          .select(
-            `
+        supabase.from('documents').select(
+          `
       id,
       name,
       description,
       updatedAt:updated_at,
-      json
+      template
     `
-          )
-          .eq('id', id)
-          .single(),
+        ),
       transform: (data) => data,
     }),
     meta: {
-      errorMessage: 'Failed to load survey',
+      errorMessage: 'Failed to load documents',
     },
   });
 
-export type Survey = InferDataType<ReturnType<typeof surveyQueryOptions>>;
+export type DocumentListItem = InferDataType<
+  ReturnType<typeof documentListQueryOptions>
+>[number];
 
 // for dev: hover to see type
-let _: Survey;
+let _: DocumentListItem;

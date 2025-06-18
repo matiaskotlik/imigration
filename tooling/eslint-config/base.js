@@ -1,10 +1,7 @@
 /// <reference types="./types.d.ts" />
 
 import { includeIgnoreFile } from '@eslint/compat';
-import eslintJs from '@eslint/js';
-import tsParser from '@typescript-eslint/parser';
 import eslintPluginCanonical from 'eslint-plugin-canonical';
-import eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintPluginMarkdown from 'eslint-plugin-markdown';
 import eslintPluginNode from 'eslint-plugin-n';
 import eslintPluginPerfectionist from 'eslint-plugin-perfectionist';
@@ -14,36 +11,19 @@ import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginVitest from 'eslint-plugin-vitest';
 import { defineConfig } from 'eslint/config';
 import path from 'node:path';
-import tseslint from 'typescript-eslint';
 
 export default defineConfig([
   includeIgnoreFile(path.join(import.meta.dirname, '../../.gitignore')),
   {
     ignores: ['**/*.config.*', '**/.lintstagedrc.js'],
   },
-  {
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: { projectService: true },
-    },
-    linterOptions: {
-      reportUnusedDisableDirectives: true,
-    },
-  },
   eslintPluginMarkdown.configs.recommended,
   eslintPluginPerfectionist.configs['recommended-natural'],
-  eslintPluginImportX.flatConfigs.recommended,
-  eslintPluginImportX.flatConfigs.typescript,
   eslintPluginPromise.configs['flat/recommended'],
   eslintPluginNode.configs['flat/recommended'],
   eslintPluginUnicorn.configs.recommended,
   eslintPluginTurbo.configs['flat/recommended'],
   eslintPluginCanonical.configs['flat/recommended'],
-  eslintJs.configs.recommended,
-  // @ts-expect-error typescript-eslint types do not match eslint
-  tseslint.configs.strictTypeChecked,
-  // @ts-expect-error typescript-eslint types do not match eslint
-  tseslint.configs.stylisticTypeChecked,
   {
     ignores: ['**/env.ts'],
     rules: {
@@ -52,12 +32,6 @@ export default defineConfig([
   },
   {
     rules: {
-      '@typescript-eslint/no-misused-promises': [
-        'error',
-        {
-          checksVoidReturn: false,
-        },
-      ],
       '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',

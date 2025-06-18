@@ -1,12 +1,8 @@
 import baseConfig from '@repo/eslint-config/base';
-
-import { FlatCompat } from '@eslint/eslintrc';
-
-const compat = new FlatCompat({
-  baseDirectory: import.meta.dirname,
-});
+import typescriptConfig from '@repo/eslint-config/typescript';
+import nextConfig from '@repo/eslint-config/next';
 
 export default [
   ...baseConfig,
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  ...nextConfig
 ];

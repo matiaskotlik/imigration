@@ -1,12 +1,12 @@
-name: Check
+name: Platform Check
 
 on:
-  push:
+  workflow_dispatch:
   workflow_call:
-    inputs:
-      working-directory:
-        description: Working directory to run checks in
-        type: string
+
+defaults:
+  run:
+    working-directory: 'packages/platform'
 
 jobs:
   lint:
@@ -17,7 +17,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm exec turbo run lint:check
-        working-directory: ${{ inputs.working-directory }}
 
   format:
     name: Format
@@ -27,7 +26,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm exec turbo run format:check -- .
-        working-directory: ${{ inputs.working-directory }}
 
   build:
     name: Build
@@ -37,4 +35,3 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm exec turbo run build:check
-        working-directory: ${{ inputs.working-directory }}

@@ -7,29 +7,23 @@ on:
       - '.github/**'
 
 jobs:
-  supabase-check:
-    name: Supabase Check
-    uses: ./.github/workflows/supabase-check.yml
-
   check:
     name: Check
-    uses: ./.github/workflows/check.yml
-    with:
-      working-directory: 'packages/supabase'
+    uses: ./.github/workflows/supabase-check.yml
 
-  deploy-production:
+  production-deploy:
     name: Production Deploy
     if: github.ref == 'refs/heads/main'
-    needs: [check, supabase-check]
+    needs: [check]
     uses: ./.github/workflows/supabase-deploy.yml
     secrets: inherit
     with:
       environment: production
 
-  deploy-staging:
+  staging-deploy:
     name: Staging Deploy
     if: github.ref == 'refs/heads/staging'
-    needs: [check, supabase-check]
+    needs: [check]
     uses: ./.github/workflows/supabase-deploy.yml
     secrets: inherit
     with:

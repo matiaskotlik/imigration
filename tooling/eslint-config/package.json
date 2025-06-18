@@ -28,7 +28,6 @@
     "eslint-import-resolver-typescript": "latest",
     "eslint-plugin-canonical": "latest",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-import-x": "latest",
     "eslint-plugin-jsx-a11y": "latest",
     "eslint-plugin-markdown": "latest",
     "eslint-plugin-n": "latest",

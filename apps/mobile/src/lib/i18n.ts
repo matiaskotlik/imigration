@@ -1,5 +1,4 @@
 import { getLocales } from 'expo-localization';
-// eslint-disable-next-line import-x/no-named-as-default
 import i18n, { LanguageDetectorModule } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 

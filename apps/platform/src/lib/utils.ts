@@ -53,7 +53,7 @@ export function groupBy<
   return array.reduce(
     (acc, obj) => {
       const group = obj[key];
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+       
       (acc[group] ||= []).push(obj);
       return acc;
     },
@@ -116,7 +116,7 @@ export function split<T extends object>(array: T[]) {
   return array.reduce(
     (acc, obj) => {
       for (const [key, value] of Object.entries(obj)) {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+         
         (acc[key as keyof T] ||= []).push(value as T[keyof T]);
       }
       return acc;

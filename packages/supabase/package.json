@@ -25,8 +25,6 @@
     "db:lint:check": "supabase db lint | tee /dev/stderr | jq -e 'all(all(.issues[]; .level != \"error\"))'",
     "db:reset": "supabase db reset",
     "db:schema:apply": "scripts/db-schema-apply.sh",
-    "db:start": "supabase db start",
-    "db:stop": "supabase db stop",
     "db:test": "supabase db test",
     "dev": "supabase start",
     "format": "prettier --write --ignore-path ../../.gitignore --cache --cache-location .cache/.prettiercache",
@@ -34,13 +32,18 @@
     "lint": "eslint --fix --cache --cache-location .cache/.eslintcache",
     "lint:check": "eslint --cache --cache-location .cache/.eslintcache",
     "migrations:push": "supabase db push ${SUPABASE_DB_URL:+--db-url $SUPABASE_DB_URL}",
-    "start": "supabase start",
+    "start": "supabase db start",
+    "stop": "supabase db stop",
     "types:check": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts | diff - gen/database.types.ts",
     "types:gen": "supabase gen types typescript --local | prettier --stdin-filepath gen/database.types.ts > gen/database.types.ts"
   },
   "prettier": "@repo/prettier-config",
   "dependencies": {
-    "@supabase/supabase-js": "^2.50.0"
+    "@supabase-cache-helpers/postgrest-core": "^0.12.1",
+    "@supabase-cache-helpers/postgrest-react-query": "^1.13.4",
+    "@supabase/postgrest-js": "^1.19.4",
+    "@supabase/supabase-js": "^2.50.0",
+    "@tanstack/react-query": "catalog:"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

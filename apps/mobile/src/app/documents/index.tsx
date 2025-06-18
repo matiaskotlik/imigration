@@ -1,11 +1,12 @@
+import { useQuery } from '@tanstack/react-query';
 import { Stack } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Linking, View } from 'react-native';
-import { useMMKVObject } from 'react-native-mmkv';
 import { Button, Text, useTheme } from 'react-native-paper';
 import tw from 'twrnc';
 
 import { Container } from '@/components/ui/container';
+import { documentListQueryOptions } from '@/queries/documents';
 
 interface StoredDocument {
   title: string;
@@ -15,7 +16,8 @@ interface StoredDocument {
 export default function DocumentsScreen() {
   const theme = useTheme();
   const { t } = useTranslation();
-  const [documents] = useMMKVObject<StoredDocument[]>('documents');
+  // const [documents] = useMMKVObject<StoredDocument[]>('documents');
+  const { data: documents, status } = useQuery(documentListQueryOptions());
 
   return (
     <>
@@ -33,10 +35,10 @@ export default function DocumentsScreen() {
               <Button
                 key={idx}
                 mode='outlined'
-                onPress={() => Linking.openURL(doc.uri)}
+                // onPress={() => Linking.openURL(doc.uri)}
                 style={tw`w-full`}
               >
-                {doc.title}
+                {doc.name}
               </Button>
             ))
           ) : (

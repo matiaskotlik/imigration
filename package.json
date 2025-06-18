@@ -26,7 +26,7 @@
     "lint-staged": "^16.1.2",
     "prettier": "catalog:",
     "sherif": "latest",
-    "turbo": "^2.5.4",
+    "turbo": "^2.5.3",
     "typescript": "catalog:",
     "vercel": "^43.1.0"
   },

@@ -4,6 +4,7 @@ import { PaperProvider, useTheme } from 'react-native-paper';
 import { ReducedMotionConfig, ReduceMotion } from 'react-native-reanimated';
 import tw, { useDeviceContext } from 'twrnc';
 
+import '@/lib/polyfill';
 import { SplashScreenBarrier } from '@/components/splash-screen-barrier';
 import { theme } from '@/lib/paper-theme';
 import { LanguageProvider } from '@/providers/language';

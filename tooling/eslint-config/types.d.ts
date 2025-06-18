@@ -1,13 +1,3 @@
-declare module 'eslint-plugin-import-x' {
-  import type { Linter } from 'eslint';
-
-  export const flatConfigs: {
-    'react-native': { rules: Linter.RulesRecord };
-    recommended: { rules: Linter.RulesRecord };
-    typescript: { rules: Linter.RulesRecord };
-  };
-}
-
 declare module 'eslint-plugin-canonical' {
   import type { Linter } from 'eslint';
 
