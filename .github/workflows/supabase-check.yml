@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: turbo run start
+      - run: pnpm db:start
       - run: pnpm db:lint
 
   db-diff:
@@ -53,7 +53,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: turbo run start
+      - run: pnpm db:start
       - run: pnpm db:diff:check
 
   db-dump:
