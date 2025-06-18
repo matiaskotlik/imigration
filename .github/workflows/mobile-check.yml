@@ -35,3 +35,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: turbo run build:check
+
+  expo:
+    name: Expo
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm add --global expo
+      - run: expo install --check
