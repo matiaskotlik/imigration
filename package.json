@@ -30,9 +30,9 @@
     "typescript": "catalog:",
     "vercel": "^43.1.0"
   },
-  "packageManager": "pnpm@10.12.1",
+  "packageManager": "pnpm@10.12.4",
   "engines": {
     "node": "^22.16.0",
-    "pnpm": ">=10.11.1"
+    "pnpm": ">=10.12.4"
   }
 }
