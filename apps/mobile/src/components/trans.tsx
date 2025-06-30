@@ -10,6 +10,7 @@ export function Trans({
     <I18NTrans
       components={{
         italic: <Text style={{ fontStyle: 'italic' }} />,
+        pre: <Text style={{ fontFamily: 'monospace' }} />,
         strong: <Text style={{ fontWeight: 'bold' }} />,
       }}
       parent={Text}

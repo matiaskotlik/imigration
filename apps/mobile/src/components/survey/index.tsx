@@ -13,7 +13,7 @@ import { useStoredObjectOnce } from '@/hooks/use-storage';
 import { type Survey as SurveyType } from '@/lib/schema/survey';
 import { sleep } from '@/lib/utils';
 
-export const Survey = memo(function Survey({
+export const SurveyWrapper = memo(function SurveyWrapper({
   onComplete,
   survey,
 }: {
@@ -62,7 +62,7 @@ export const Survey = memo(function Survey({
   // When it's done, we will set loading to false.
   const handleRender = async () => {
     await sleep(100); // Allow the DOMSurvey to resize itself
-    setLoading(true);
+    setLoading(false);
   };
 
   return (

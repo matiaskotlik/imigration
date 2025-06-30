@@ -5,12 +5,12 @@ import {
 import { PropsWithChildren } from 'react';
 
 import { makeQueryClient } from '@/lib/query';
-import { documentListInfiniteQueryOptions } from '@/queries/document-list';
+import { documentsInfiniteQueryOptions } from '@/queries/documents';
 
 export default function DocumentListLayout({ children }: PropsWithChildren) {
   // prefetch queries
   const queryClient = makeQueryClient();
-  void queryClient.prefetchInfiniteQuery(documentListInfiniteQueryOptions());
+  void queryClient.prefetchInfiniteQuery(documentsInfiniteQueryOptions());
 
   return (
     <QueryHydrationBoundary state={dehydrate(queryClient)}>

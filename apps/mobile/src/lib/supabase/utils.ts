@@ -135,7 +135,6 @@ export const supabaseQueryOptions = <
       try {
         result = await query.throwOnError();
       } catch (error) {
-        console.log('query fail', query, error);
         return transformError(error);
       }
       return transform(result.data);

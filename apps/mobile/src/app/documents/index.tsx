@@ -1,12 +1,17 @@
-import { useQuery } from '@tanstack/react-query';
-import { Stack } from 'expo-router';
-import { useTranslation } from 'react-i18next';
+import { useMutation } from '@tanstack/react-query';
+import * as FileSystem from 'expo-file-system';
+import { Stack, useRouter } from 'expo-router';
+import { t } from 'i18next';
+import { Suspense } from 'react';
 import { View } from 'react-native';
-import { Button, Text, useTheme } from 'react-native-paper';
+import { ActivityIndicator, Button, Text, useTheme } from 'react-native-paper';
 import tw from 'twrnc';
 
+import { Trans } from '@/components/trans';
 import { Container } from '@/components/ui/container';
-import { documentListQueryOptions } from '@/queries/documents';
+import { useRNSuspenseQuery } from '@/hooks/use-rn-query';
+import { useTRPC } from '@/lib/trpc';
+import { Documents, documentsQueryOptions } from '@/queries/documents';
 
 // interface StoredDocument {
 //   title: string;
@@ -15,11 +20,7 @@ import { documentListQueryOptions } from '@/queries/documents';
 
 export default function DocumentsScreen() {
   const theme = useTheme();
-  const { t } = useTranslation();
   // const [documents] = useMMKVObject<StoredDocument[]>('documents');
-  const { data: documents, status: _status } = useQuery(
-    documentListQueryOptions()
-  );
 
   return (
     <>
@@ -31,25 +32,83 @@ export default function DocumentsScreen() {
         }}
       />
       <View style={tw`flex-1`}>
-        <Container style={tw`flex-1 gap-4`}>
-          {documents && documents.length > 0 ? (
-            documents.map((doc, idx) => (
-              <Button
-                key={idx}
-                mode='outlined'
-                // onPress={() => Linking.openURL(doc.uri)}
-                style={tw`w-full`}
-              >
-                {doc.name}
-              </Button>
-            ))
-          ) : (
-            <Text style={tw`text-center text-lg`}>
-              {t('documents.noneMessage')}
-            </Text>
-          )}
-        </Container>
+        <Suspense
+          fallback={
+            <View style={tw`flex-1 items-center justify-center`}>
+              <ActivityIndicator size='large' />
+            </View>
+          }
+        >
+          <DocumentList />
+        </Suspense>
       </View>
     </>
   );
+}
+
+function DocumentList() {
+  const { data: documents } = useRNSuspenseQuery(documentsQueryOptions());
+
+  return (
+    <Container style={tw`flex-1 gap-4`}>
+      {documents && documents.length > 0 ? (
+        documents.map((document) => (
+          <DocumentListItem document={document} key={document.id} />
+        ))
+      ) : (
+        <Text style={tw`text-center text-lg`}>
+          <Trans i18nKey='documents.noneMessage' />
+        </Text>
+      )}
+    </Container>
+  );
+}
+
+function DocumentListItem({ document }: { document: Documents[number] }) {
+  const router = useRouter();
+  const trpc = useTRPC();
+  const { mutate: generatePdf } = useMutation(
+    trpc.document.generatePdf.mutationOptions({
+      meta: {
+        errorMessage: 'Failed to generate PDF.',
+      },
+      async onSuccess({ data }) {
+        console.log('PDF generated succesddsfully:', data.slice(0, 30));
+        const fileUri = `${FileSystem.cacheDirectory}${randomId()}.pdf`;
+        await FileSystem.writeAsStringAsync(fileUri, data, {
+          encoding: 'base64',
+        });
+        router.push({
+          params: {
+            source: fileUri,
+          },
+          pathname: '/pdf-view',
+        });
+      },
+    })
+  );
+
+  return (
+    <Button
+      mode='outlined'
+      onPress={() =>
+        generatePdf({
+          documentId: document.id,
+          variables: {},
+        })
+      }
+      style={tw`w-full`}
+    >
+      {document.name}
+    </Button>
+  );
+}
+
+function randomId(length = 12) {
+  let id = '';
+  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+  for (let i = 0; i < length; i++) {
+    id += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return id;
 }

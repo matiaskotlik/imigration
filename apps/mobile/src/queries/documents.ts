@@ -3,7 +3,7 @@ import { queryOptions } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase/client';
 import { InferDataType, supabaseQueryOptions } from '@/lib/supabase/utils';
 
-export const documentListQueryOptions = () =>
+export const documentsQueryOptions = () =>
   queryOptions({
     ...supabaseQueryOptions({
       query: () =>
@@ -23,9 +23,7 @@ export const documentListQueryOptions = () =>
     },
   });
 
-export type DocumentListItem = InferDataType<
-  ReturnType<typeof documentListQueryOptions>
->[number];
+export type Documents = InferDataType<ReturnType<typeof documentsQueryOptions>>;
 
 // for dev: hover to see type
-let _: DocumentListItem;
+let _: Documents[number];

@@ -1,12 +1,13 @@
 import { PropsWithChildren } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { View } from 'react-native';
+import { ActivityIndicator } from 'react-native-paper';
 import tw from 'twrnc';
 
 import { useIsLoading } from '@/components/survey/context';
 
 export function SurveyLoader({ children }: PropsWithChildren) {
   const isLoading = useIsLoading();
-  // TODO animate/fade this?
+
   return (
     <View style={tw`relative flex-1`}>
       <View

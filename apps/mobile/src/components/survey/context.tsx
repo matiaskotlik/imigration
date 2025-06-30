@@ -13,7 +13,7 @@ interface SurveyState {
 
 function buildSurveyStore() {
   return createStore<SurveyState>((set) => ({
-    isLoading: false,
+    isLoading: true,
     setLoading: (loading: boolean) => {
       set({ isLoading: loading });
     },

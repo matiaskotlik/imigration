@@ -25,10 +25,7 @@ import {
 } from '@/components/ui/table';
 import { H3 } from '@/components/ui/typography';
 import { urlId } from '@/lib/id';
-import {
-  DocumentListItem,
-  useInfiniteDocumentList,
-} from '@/queries/document-list';
+import { DocumentsInfinite, useInfiniteDocuments } from '@/queries/documents';
 
 export function DocumentList() {
   const {
@@ -36,7 +33,7 @@ export function DocumentList() {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteDocumentList();
+  } = useInfiniteDocuments();
 
   if (documents.length === 0) {
     return <DocumentListEmpty />;
@@ -137,7 +134,11 @@ function DocumentListEmpty() {
   );
 }
 
-function DocumentRow({ document }: { readonly document: DocumentListItem }) {
+function DocumentRow({
+  document,
+}: {
+  readonly document: DocumentsInfinite[number];
+}) {
   return (
     <TableRow>
       <TableCell>{document.name}</TableCell>

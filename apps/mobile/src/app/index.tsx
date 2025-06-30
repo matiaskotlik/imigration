@@ -1,5 +1,6 @@
 import { Redirect } from 'expo-router';
 
 export default function Home() {
-  return <Redirect href='/onboarding' />;
+  // TODO onboarding flow
+  return <Redirect href='/documents' />;
 }

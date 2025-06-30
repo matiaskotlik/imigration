@@ -4,11 +4,11 @@ packages:
   - tooling/*
 
 catalog:
-  eslint: ^9.29.0
-  prettier: ^3.5.3
+  eslint: ^9.30.0
+  prettier: ^3.6.2
   tailwindcss: ^4.1.10
   typescript: ^5.8.3
-  zod: ^3.25.64
+  zod: ^3.25.67
   '@tanstack/react-query': 5.80.7
   '@tanstack/react-query-devtools': ^5.80.7
   '@tanstack/react-query-next-experimental': ^5.80.7
@@ -34,3 +34,6 @@ onlyBuiltDependencies:
   - sharp
   - supabase
   - unrs-resolver
+
+patchedDependencies:
+  '@pdfme/generator': patches/@pdfme__generator.patch

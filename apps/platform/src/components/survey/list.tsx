@@ -25,7 +25,7 @@ import {
 } from '@/components/ui/table';
 import { H3 } from '@/components/ui/typography';
 import { urlId } from '@/lib/id';
-import { SurveyListItem, useInfiniteSurveyList } from '@/queries/survey-list';
+import { SurveysInfinite, useInfiniteSurveys } from '@/queries/surveys';
 
 export function SurveyList() {
   const {
@@ -33,7 +33,7 @@ export function SurveyList() {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteSurveyList();
+  } = useInfiniteSurveys();
 
   if (surveys.length === 0) {
     return <SurveyListEmpty />;
@@ -146,7 +146,7 @@ function SurveyListEmpty() {
   );
 }
 
-function SurveyRow({ survey }: { readonly survey: SurveyListItem }) {
+function SurveyRow({ survey }: { readonly survey: SurveysInfinite[number] }) {
   return (
     <TableRow>
       <TableCell>{survey.name}</TableCell>

@@ -10,7 +10,7 @@ import {
   supabaseInfiniteQueryOptions,
 } from '@/lib/supabase/utils';
 
-export const documentListInfiniteQueryOptions = () =>
+export const documentsInfiniteQueryOptions = () =>
   infiniteQueryOptions({
     ...supabaseInfiniteQueryOptions({
       getNextPageParam: (lastPage) => lastPage.at(-1)?.updatedAt,
@@ -38,12 +38,12 @@ export const documentListInfiniteQueryOptions = () =>
     select: (data) => data.pages.flat(),
   });
 
-export type DocumentListItem = InferInfiniteDataType<
-  ReturnType<typeof documentListInfiniteQueryOptions>
->[number];
+export type DocumentsInfinite = InferInfiniteDataType<
+  ReturnType<typeof documentsInfiniteQueryOptions>
+>;
 
 // for dev: hover to see type
-let _: DocumentListItem;
+let _: DocumentsInfinite[number];
 
-export const useInfiniteDocumentList = () =>
-  useSuspenseInfiniteQuery(documentListInfiniteQueryOptions());
+export const useInfiniteDocuments = () =>
+  useSuspenseInfiniteQuery(documentsInfiniteQueryOptions());

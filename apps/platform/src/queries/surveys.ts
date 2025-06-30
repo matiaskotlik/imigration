@@ -10,7 +10,7 @@ import {
   supabaseInfiniteQueryOptions,
 } from '@/lib/supabase/utils';
 
-export const surveyListInfiniteQueryOptions = () =>
+export const surveysInfiniteQueryOptions = () =>
   infiniteQueryOptions({
     ...supabaseInfiniteQueryOptions({
       getNextPageParam: (lastPage) => lastPage.at(-1)?.updatedAt,
@@ -38,12 +38,12 @@ export const surveyListInfiniteQueryOptions = () =>
     select: (data) => data.pages.flat(),
   });
 
-export type SurveyListItem = InferInfiniteDataType<
-  ReturnType<typeof surveyListInfiniteQueryOptions>
->[number];
+export type SurveysInfinite = InferInfiniteDataType<
+  ReturnType<typeof surveysInfiniteQueryOptions>
+>;
 
 // for dev: hover to see type
-let _: SurveyListItem;
+let _: SurveysInfinite[number];
 
-export const useInfiniteSurveyList = () =>
-  useSuspenseInfiniteQuery(surveyListInfiniteQueryOptions());
+export const useInfiniteSurveys = () =>
+  useSuspenseInfiniteQuery(surveysInfiniteQueryOptions());

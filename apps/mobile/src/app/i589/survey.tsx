@@ -1,19 +1,44 @@
-import { useQuery } from '@tanstack/react-query';
 import { Stack, useRouter } from 'expo-router';
-import { useCallback } from 'react';
+import { Suspense, useCallback } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import tw from 'twrnc';
 
-import { Survey } from '@/components/survey';
+import { SurveyWrapper } from '@/components/survey';
 import { SurveyProvider } from '@/components/survey/context';
 import { SurveyLoader } from '@/components/survey/load';
 import { useSurveyTitle } from '@/components/survey/title';
+import { useRNSuspenseQuery } from '@/hooks/use-rn-query';
 import { surveyQueryOptions } from '@/queries/survey';
 
-const I589_SURVEY_ID = '68368fc5ab924061e1c0ad64';
+const I589_SURVEY_ID = '448ce721-8c3c-4b20-9d6e-267b266c1eab';
 
-export default function SurveyScreen() {
-  const { data: survey, status } = useQuery(surveyQueryOptions(I589_SURVEY_ID));
+export { ErrorBoundary } from '@/components/ui/error';
+
+export default function I589SurveyScreen() {
+  const title = useSurveyTitle();
+
+  return (
+    <>
+      <Stack.Screen options={{ title }} />
+      <View style={tw`flex-1`}>
+        <SafeAreaView />
+        <SurveyProvider>
+          <SurveyLoader>
+            {/* SurveyLoader will handle the loading state */}
+            <Suspense>
+              <Survey />
+            </Suspense>
+          </SurveyLoader>
+        </SurveyProvider>
+      </View>
+    </>
+  );
+}
+
+function Survey() {
+  const { data: survey } = useRNSuspenseQuery(
+    surveyQueryOptions(I589_SURVEY_ID)
+  );
   const router = useRouter();
 
   const handleComplete = useCallback(
@@ -24,23 +49,5 @@ export default function SurveyScreen() {
     [router]
   );
 
-  const title = useSurveyTitle();
-
-  return (
-    <>
-      <Stack.Screen options={{ title }} />
-      <View style={tw`flex-1`}>
-        <SafeAreaView />
-        <SurveyProvider>
-          <SurveyLoader>
-            {status === 'success' && (
-              <>
-                <Survey onComplete={handleComplete} survey={survey} />
-              </>
-            )}
-          </SurveyLoader>
-        </SurveyProvider>
-      </View>
-    </>
-  );
+  return <SurveyWrapper onComplete={handleComplete} survey={survey} />;
 }

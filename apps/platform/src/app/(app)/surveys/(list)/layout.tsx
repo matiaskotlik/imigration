@@ -5,12 +5,12 @@ import {
 import { PropsWithChildren } from 'react';
 
 import { makeQueryClient } from '@/lib/query';
-import { surveyListInfiniteQueryOptions } from '@/queries/survey-list';
+import { surveysInfiniteQueryOptions } from '@/queries/surveys';
 
 export default function SurveyListLayout({ children }: PropsWithChildren) {
   // prefetch queries
   const queryClient = makeQueryClient();
-  void queryClient.prefetchInfiniteQuery(surveyListInfiniteQueryOptions());
+  void queryClient.prefetchInfiniteQuery(surveysInfiniteQueryOptions());
 
   return (
     <QueryHydrationBoundary state={dehydrate(queryClient)}>

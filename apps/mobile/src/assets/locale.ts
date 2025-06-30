@@ -5,8 +5,11 @@ export default {
         noneMessage: 'You have no saved documents yet.',
         screenTitle: 'Documents',
       },
-      emailPlaceholder: 'you@example.com or +1 (555) 123-4567',
-      hide: 'Hide',
+      error: {
+        message:
+          'There was an error loading this content:\n<pre>{{message}}</pre>',
+        title: 'Something went wrong!',
+      },
       i589: {
         complete: {
           continue: 'Finish',
@@ -35,10 +38,6 @@ export default {
           title: "Let's get to know you",
         },
       },
-      passwordPlaceholder: 'Create a password or 4-digit PIN',
-      privacyPolicy: 'Privacy Policy',
-      secureAccount: 'Secure Your Account',
-      show: 'Show',
       situation: {
         border: 'I just crossed the border and need safety',
         family: 'My family will arrive soon',
@@ -52,8 +51,6 @@ export default {
         progressText:
           'Answered {requiredAnsweredQuestionCount}/{requiredQuestionCount} questions',
       },
-      termsAgreement: 'I agree to the Terms of Service and Privacy Policy',
-      termsOfService: 'Terms of Service',
       welcome: {
         chooseLanguage: 'Choose your language to get started.',
         next: 'Next',
@@ -69,8 +66,11 @@ export default {
         noneMessage: 'Aún no tienes documentos guardados.',
         screenTitle: 'Documentos',
       },
-      emailPlaceholder: 'tú@ejemplo.com o +52 (55) 1234-5678',
-      hide: 'Ocultar',
+      error: {
+        message:
+          'Hubo un error al cargar este contenido:\n<pre>{{message}}</pre>',
+        title: '¡Algo salió mal!',
+      },
       i589: {
         complete: {
           continue: 'Terminar',
@@ -98,10 +98,6 @@ export default {
           title: 'Queremos Conocerte!',
         },
       },
-      passwordPlaceholder: 'Crea una contraseña o PIN de 4 dígitos',
-      privacyPolicy: 'Política de privacidad',
-      secureAccount: 'Asegura Tu Cuenta',
-      show: 'Mostrar',
       situation: {
         border: 'Acabo de cruzar la frontera y necesito protección',
         family: 'Mi familia llegará pronto',
@@ -115,9 +111,6 @@ export default {
         progressText:
           'Respondió {requiredAnsweredQuestionCount}/{requiredQuestionCount} preguntas',
       },
-      termsAgreement:
-        'Acepto los Términos de servicio y la Política de privacidad',
-      termsOfService: 'Términos de servicio',
       welcome: {
         chooseLanguage: 'Elige tu idioma para comenzar.',
         next: 'Siguiente',

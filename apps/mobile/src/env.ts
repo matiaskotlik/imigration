@@ -5,6 +5,7 @@ export const env = createEnv({
   client: {
     EXPO_PUBLIC_SUPABASE_ANON_KEY: z.string().nonempty(),
     EXPO_PUBLIC_SUPABASE_URL: z.url(),
+    EXPO_PUBLIC_TRPC_URL: z.url(),
   },
   clientPrefix: 'EXPO_PUBLIC_',
   extends: [],
@@ -14,6 +15,7 @@ export const env = createEnv({
   runtimeEnvStrict: {
     EXPO_PUBLIC_SUPABASE_ANON_KEY: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
     EXPO_PUBLIC_SUPABASE_URL: process.env.EXPO_PUBLIC_SUPABASE_URL,
+    EXPO_PUBLIC_TRPC_URL: process.env.EXPO_PUBLIC_TRPC_URL,
     NODE_ENV: process.env.NODE_ENV,
   },
   server: {},
