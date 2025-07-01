@@ -27,7 +27,7 @@
     "sherif": "latest",
     "turbo": "^2.5.3",
     "typescript": "catalog:",
-    "vercel": "^43.1.0"
+    "vercel": "^43.3.0"
   },
   "packageManager": "pnpm@10.12.1",
   "engines": {
