@@ -1,24 +1,30 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Plugin, Schema, ZOOM } from '@pdfme/common';
 import { image } from '@pdfme/schemas';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import SignaturePad from 'signature_pad';
 
 type Signature = Schema & {};
 
-const getEffectiveScale = (element: HTMLElement | null) => {
-  let scale = 1;
-  while (element && element !== document.body) {
-    const style = globalThis.getComputedStyle(element);
-    const { transform } = style;
-    if (transform && transform !== 'none') {
-      const localScale = Number.parseFloat(
-        /matrix\((.+)\)/.exec(transform)?.[1]?.split(', ')[3] ?? '1'
-      );
-      scale *= localScale;
-    }
-    element = element.parentElement;
-  }
-  return scale;
-};
+// const getEffectiveScale = (element: HTMLElement | null) => {
+//   let scale = 1;
+//   if (globalThis.document === undefined) {
+//     return scale;
+//   }
+//
+//   while (element && element !== globalThis.document.body) {
+//     const style = globalThis.getComputedStyle(element);
+//     const { transform } = style;
+//     if (transform && transform !== 'none') {
+//       const localScale = Number.parseFloat(
+//         /matrix\((.+)\)/.exec(transform)?.[1]?.split(', ')[3] ?? '1'
+//       );
+//       scale *= localScale;
+//     }
+//     element = element.parentElement;
+//   }
+//   return scale;
+// };
 
 export const signature: Plugin<Signature> = {
   pdf: image.pdf,
@@ -34,48 +40,49 @@ export const signature: Plugin<Signature> = {
     },
     schema: {},
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ui: async (argument) => {
-    const { i18n, mode, onChange, rootElement, schema, value } = argument;
-
-    const canvas = document.createElement('canvas');
-    canvas.width = schema.width * ZOOM;
-    canvas.height = schema.height * ZOOM;
-    const resetScale = 1 / getEffectiveScale(rootElement);
-    canvas.getContext('2d')!.scale(resetScale, resetScale);
-
-    const signaturePad = new SignaturePad(canvas);
-    if (value) {
-      await signaturePad
-        .fromDataURL(value, { ratio: resetScale })
-        .catch((error: unknown) => {
-          console.log('Error loading signature:', error);
-        });
-    } else {
-      signaturePad.clear();
-    }
-
-    if (mode === 'viewer' || (mode === 'form' && schema.readOnly)) {
-      signaturePad.off();
-    } else {
-      signaturePad.on();
-      const clearButton = document.createElement('button');
-      clearButton.style.position = 'absolute';
-      clearButton.style.zIndex = '1';
-      clearButton.textContent = i18n('signature.clear') || 'x';
-      clearButton.addEventListener('click', () => {
-        if (onChange) {
-          onChange({ key: 'content', value: '' });
-        }
-      });
-      rootElement.append(clearButton);
-      signaturePad.addEventListener('endStroke', () => {
-        const data = signaturePad.toDataURL('image/png');
-        if (onChange && data) {
-          onChange({ key: 'content', value: data });
-        }
-      });
-    }
-    rootElement.append(canvas);
+    // const { i18n, mode, onChange, rootElement, schema, value } = argument;
+    //
+    // const canvas = globalThis.document.createElement('canvas');
+    // canvas.width = schema.width * ZOOM;
+    // canvas.height = schema.height * ZOOM;
+    // const resetScale = 1 / getEffectiveScale(rootElement);
+    // canvas.getContext('2d')!.scale(resetScale, resetScale);
+    //
+    // const signaturePad = new SignaturePad(canvas);
+    // if (value) {
+    //   await signaturePad
+    //     .fromDataURL(value, { ratio: resetScale })
+    //     .catch((error: unknown) => {
+    //       console.log('Error loading signature:', error);
+    //     });
+    // } else {
+    //   signaturePad.clear();
+    // }
+    //
+    // if (mode === 'viewer' || (mode === 'form' && schema.readOnly)) {
+    //   signaturePad.off();
+    // } else {
+    //   signaturePad.on();
+    //   const clearButton = globalThis.document.createElement('button');
+    //   clearButton.style.position = 'absolute';
+    //   clearButton.style.zIndex = '1';
+    //   clearButton.textContent = i18n('signature.clear') || 'x';
+    //   clearButton.addEventListener('click', () => {
+    //     if (onChange) {
+    //       onChange({ key: 'content', value: '' });
+    //     }
+    //   });
+    //   rootElement.append(clearButton);
+    //   signaturePad.addEventListener('endStroke', () => {
+    //     const data = signaturePad.toDataURL('image/png');
+    //     if (onChange && data) {
+    //       onChange({ key: 'content', value: data });
+    //     }
+    //   });
+    // }
+    // rootElement.append(canvas);
   },
   // icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>',
 };
