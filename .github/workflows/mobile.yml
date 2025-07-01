@@ -10,21 +10,21 @@ jobs:
   check:
     name: Check
     uses: ./.github/workflows/mobile-check.yml
-#
-#  deploy-production:
-#    name: Production Deploy
-#    if: github.ref == 'refs/heads/main'
-#    needs: [check]
-#    uses: ./.github/workflows/mobile-deploy.yml
-#    secrets: inherit
-#    with:
-#      environment: production
-#
-#  deploy-staging:
-#    name: Staging Deploy
-#    if: github.ref == 'refs/heads/staging'
-#    needs: [check]
-#    uses: ./.github/workflows/mobile-deploy.yml
-#    secrets: inherit
-#    with:
-#      environment: preview
+
+  production-build:
+    name: Production Build
+    if: github.ref == 'refs/heads/main'
+    needs: [check]
+    uses: ./.github/workflows/mobile-build.yml
+    secrets: inherit
+    with:
+      environment: production
+
+  staging-build:
+    name: Staging Build
+    if: github.ref == 'refs/heads/staging'
+    needs: [check]
+    uses: ./.github/workflows/mobile-build.yml
+    secrets: inherit
+    with:
+      environment: preview

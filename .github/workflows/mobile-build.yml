@@ -1,0 +1,45 @@
+name: Mobile Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment to build for
+        required: true
+        type: choice
+        options:
+          - production
+          - preview
+  workflow_call:
+    inputs:
+      environment:
+        description: Environment to build for
+        required: true
+        type: string
+
+defaults:
+  run:
+    working-directory: 'apps/mobile'
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ inputs.environment }}-mobile-build
+
+jobs:
+  ios:
+    name: iOS
+    runs-on: macos-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: turbo run lint:check
+      - run: >
+          pnpm exec eas build
+          --local
+          --non-interactive
+          --platform ios
+          --profile ${{ inputs.environment }}
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
