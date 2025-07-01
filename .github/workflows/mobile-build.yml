@@ -34,12 +34,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: turbo run lint:check
+      - uses: expo/expo-github-action@v8
+        with:
+          token: ${{ secrets.EXPO_TOKEN }}
+          packager: 'pnpm'
+
       - run: >
-          pnpm exec eas build
+          eas build
           --local
           --non-interactive
           --platform ios
           --profile ${{ inputs.environment }}
-        env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
