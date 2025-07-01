@@ -86,6 +86,7 @@
     "@repo/prettier-config": "workspace:*",
     "@repo/tsconfig": "workspace:*",
     "@types/react": "catalog:react19",
+    "eas-cli": "^16.13.3",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
