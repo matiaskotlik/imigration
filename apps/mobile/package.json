@@ -6,7 +6,7 @@
   "scripts": {
     "android": "expo run:android",
     "build:check": "tsc --noEmit",
-    "clean": "git clean -xdf .cache .expo .turbo android ios node_modules",
+    "clean": "git clean -xdf .cache .expo .turbo dist android ios node_modules",
     "deps:check": "expo install --check",
     "dev": "expo start",
     "dev:android": "expo start --android",
@@ -29,7 +29,7 @@
     "@react-navigation/native": "^7.1.6",
     "@repo/api": "workspace:*",
     "@repo/eslint-config": "workspace:*",
-    "@repo/supabase": "workspace:^",
+    "@repo/supabase": "workspace:*",
     "@repo/tsconfig": "workspace:*",
     "@shopify/react-native-skia": "2.0.0-next.4",
     "@t3-oss/env-core": "^0.13.8",
