@@ -1,5 +1,12 @@
 name: Setup
 
+inputs:
+  xcode:
+    description: 'Setup Xcode'
+    type: boolean
+    required: false
+    default: false
+
 runs:
   using: composite
   steps:
@@ -8,7 +15,13 @@ runs:
       with:
         node-version-file: 'package.json'
         cache: 'pnpm'
-    - shell: bash
+    - name: Install Turbo CLI
+      shell: bash
       run: pnpm add --global turbo
-    - shell: bash
+    - name: Install NPM Dependencies
+      shell: bash
       run: pnpm install
+    - name: Setup Xcode
+      if: inputs.xcode
+      shell: bash
+      run: sudo xcode-select --switch $(ls /Applications/Xcode*.app | sort --version-sort | tail -n 1)
