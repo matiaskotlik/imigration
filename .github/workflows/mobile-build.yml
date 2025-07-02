@@ -47,11 +47,11 @@ jobs:
           --non-interactive
           --platform ios
           --profile ${{ inputs.environment }}
-          --output app-build
-      - uses: actions/upload-artifact@v2
+          --output app-build.ipa
+      - uses: actions/upload-artifact@v4
         with:
-          name: app-ios
-          path: app-build
+          name: imigration.ipa
+          path: app-build.ipa
 
   update:
     name: Update
