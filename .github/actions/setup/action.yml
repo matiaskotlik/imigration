@@ -18,4 +18,6 @@ runs:
     - name: Setup Xcode
       if: runner.os == 'macOS'
       shell: bash
-      run: sudo xcode-select --switch "$(find /Applications/ -maxdepth 1 -name 'Xcode*.app' | sort -V | tail -n 1)"
+      run: |
+        sudo xcode-select --switch "$(find /Applications/ -maxdepth 1 -name 'Xcode*.app' | sort -V | tail -n 1)"
+        xcodebuild -version
