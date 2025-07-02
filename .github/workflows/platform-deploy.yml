@@ -32,7 +32,6 @@ jobs:
     environment: ${{ inputs.environment }}
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm add --global vercel
       - run: vercel link --repo --yes --token=${{ secrets.VERCEL_TOKEN }}

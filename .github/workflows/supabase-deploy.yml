@@ -24,7 +24,6 @@ jobs:
     environment: ${{ inputs.environment }}
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm migrations:push
         working-directory: 'packages/supabase'
@@ -37,7 +36,6 @@ jobs:
     environment: ${{ inputs.environment }}
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm config:push
         working-directory: 'packages/supabase'

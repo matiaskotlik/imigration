@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: turbo run lint:check
 
@@ -23,7 +22,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: turbo run format:check -- .
 
@@ -32,7 +30,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: turbo run build:check
 
@@ -41,7 +38,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm db:start
       - run: pnpm db:lint
@@ -51,7 +47,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm db:start
       - run: pnpm db:diff:check
@@ -61,7 +56,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm db:start
       - run: pnpm db:dump:check
@@ -71,7 +65,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm db:start
       - run: pnpm db:test
@@ -81,7 +74,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm db:start
       - run: pnpm types:check

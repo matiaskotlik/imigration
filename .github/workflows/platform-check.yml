@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: turbo run lint:check
 
@@ -23,7 +22,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: turbo run format:check -- .
 
@@ -32,6 +30,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: turbo run build:check
