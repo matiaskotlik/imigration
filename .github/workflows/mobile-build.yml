@@ -41,14 +41,17 @@ jobs:
           expo-cache: true
           eas-cache: true
           packager: 'pnpm'
-
       - run: >
           eas build
           --local
           --non-interactive
           --platform ios
           --profile ${{ inputs.environment }}
-          --output build
+          --output app-build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: app-ios
+          path: app-build
 
   update:
     name: Update
