@@ -46,3 +46,4 @@ jobs:
           --non-interactive
           --platform ios
           --profile ${{ inputs.environment }}
+          --output build
