@@ -34,24 +34,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - uses: expo/expo-github-action@v8
-        with:
-          token: ${{ secrets.EXPO_TOKEN }}
-          eas-version: latest
-          expo-cache: true
-          eas-cache: true
-          packager: 'pnpm'
+      - run: pnpm add --global eas-cli
       - run: >
+          NODE_OPTIONS="--openssl-legacy-provider --max_old_space_size=4096"
           eas build
           --local
           --non-interactive
           --platform ios
           --profile ${{ inputs.environment }}
-          --output ${{ github.workspace }}/app-build.ipa
-      - uses: actions/upload-artifact@v4
-        with:
-          name: imigration.ipa
-          path: app-build.ipa
+          --output imigration.ipa
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      - run: >
+          curl https://upload.diawi.com/
+            -F token='${{ secrets.DIAWI_TOKEN }}'
+            -F file=@imigration.ipa
+            -F find_by_udid=1
+            -F comment="$(git log -1 --pretty=reference)"
+          | jq -r '"https://i.diawi.com/\(.job)"'
 
   update:
     name: Update
@@ -61,11 +61,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - uses: expo/expo-github-action@v8
-        with:
-          token: ${{ secrets.EXPO_TOKEN }}
-          eas-version: latest
-          expo-cache: true
-          eas-cache: true
-          packager: 'pnpm'
+      - run: pnpm add --global eas-cli
       - run: eas update --auto --non-interactive
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
