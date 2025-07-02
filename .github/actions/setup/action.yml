@@ -8,6 +8,7 @@ inputs:
     default: false
 
 runs:
+  name: Setup
   using: composite
   steps:
     - uses: pnpm/action-setup@v4
