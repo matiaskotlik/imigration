@@ -47,3 +47,19 @@ jobs:
           --platform ios
           --profile ${{ inputs.environment }}
           --output build
+
+  update:
+    name: Update
+    runs-on: macos-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - uses: expo/expo-github-action@v8
+        with:
+          token: ${{ secrets.EXPO_TOKEN }}
+          eas-version: latest
+          packager: 'pnpm'
+
+      - run: eas update --auto --non-interactive
