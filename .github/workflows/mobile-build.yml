@@ -38,6 +38,8 @@ jobs:
         with:
           token: ${{ secrets.EXPO_TOKEN }}
           eas-version: latest
+          expo-cache: true
+          eas-cache: true
           packager: 'pnpm'
 
       - run: >
@@ -56,10 +58,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
       - uses: expo/expo-github-action@v8
         with:
           token: ${{ secrets.EXPO_TOKEN }}
           eas-version: latest
           packager: 'pnpm'
-
       - run: eas update --auto --non-interactive
