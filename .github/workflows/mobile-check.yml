@@ -43,5 +43,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: exec expo install --check
+      - run: pnpm exec expo install --check
       - run: pnpx expo-doctor
