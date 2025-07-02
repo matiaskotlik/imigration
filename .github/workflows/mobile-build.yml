@@ -34,8 +34,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-        with:
-          xcode: true
       - uses: expo/expo-github-action@v8
         with:
           token: ${{ secrets.EXPO_TOKEN }}
@@ -60,11 +58,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-        with:
-          xcode: true
       - uses: expo/expo-github-action@v8
         with:
           token: ${{ secrets.EXPO_TOKEN }}
           eas-version: latest
+          expo-cache: true
+          eas-cache: true
           packager: 'pnpm'
       - run: eas update --auto --non-interactive
