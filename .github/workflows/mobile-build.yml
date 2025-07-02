@@ -45,13 +45,10 @@ jobs:
           --output imigration.ipa
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-      - run: >
-          curl https://upload.diawi.com/
-            -F token='${{ secrets.DIAWI_TOKEN }}'
-            -F file=@imigration.ipa
-            -F find_by_udid=1
-            -F comment="$(git log -1 --pretty=reference)"
-          | jq -r '"https://i.diawi.com/\(.job)"'
+      - uses: rnkdsh/action-upload-diawi@v1.5.9
+        with:
+          token: ${{ secrets.DIAWI_TOKEN }}
+          file: imigration.ipa
 
   update:
     name: Update
