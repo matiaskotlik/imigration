@@ -62,9 +62,9 @@ jobs:
       - name: Job Summary
         if: inputs.environment == 'preview'
         run: |
-          echo "## ${{ matrix.name }} App" >> $GITHUB_STEP_SUMMARY
-          echo ${{ steps.diawi.outputs.url }} >> $GITHUB_STEP_SUMMARY
-          echo ![QR Code](${{ steps.diawi.outputs.qrcode }}) >> $GITHUB_STEP_SUMMARY
+          echo '## ${{ matrix.name }} App' >> $GITHUB_STEP_SUMMARY
+          echo '${{ steps.diawi.outputs.url }}' >> $GITHUB_STEP_SUMMARY
+          echo '![QR Code](${{ steps.diawi.outputs.qrcode }})' >> $GITHUB_STEP_SUMMARY
 
   push-update:
     name: Push Update
@@ -79,3 +79,4 @@ jobs:
       - run: pnpm add --global eas-cli
       - run: eas env:pull ${{ inputs.environment }} --non-interactive
       - run: eas update --auto --non-interactive --environment ${{ inputs.environment }}
+      - run: pnpx sentry-expo-upload-sourcemaps dist
