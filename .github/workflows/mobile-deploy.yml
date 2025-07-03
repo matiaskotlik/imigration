@@ -31,11 +31,13 @@ jobs:
       matrix:
         include:
           - platform: ios
+            name: iOS
             os: macos-latest
           - platform: android
+            name: Android
             os: ubuntu-latest
 
-    name: Build ${{ matrix.platform }}
+    name: Build ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
     environment: ${{ inputs.environment }}
     env:
@@ -56,8 +58,7 @@ jobs:
           token: ${{ secrets.DIAWI_TOKEN }}
           file: ${{ steps.build.outputs.artifact-path }}
       - run: |
-          PLATFORM="${{ matrix.platform }}"
-          echo "## ${PLATFORM^} App" >> $GITHUB_STEP_SUMMARY
+          echo "## ${{ matrix.name }} App" >> $GITHUB_STEP_SUMMARY
           echo ${{ steps.diawi.outputs.url }} >> $GITHUB_STEP_SUMMARY
           echo ![QR Code](${{ steps.diawi.outputs.qrcode }}) >> $GITHUB_STEP_SUMMARY
 

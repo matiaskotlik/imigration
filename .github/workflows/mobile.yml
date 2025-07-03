@@ -11,8 +11,8 @@ jobs:
     name: Check
     uses: ./.github/workflows/mobile-check.yml
 
-  #  production-build:
-  #    name: Production Build
+  #  production-deploy:
+  #    name: Production Deploy
   #    if: github.ref == 'refs/heads/main'
   #    needs: [check]
   #    uses: ./.github/workflows/mobile-deploy.yml
@@ -20,8 +20,8 @@ jobs:
   #    with:
   #      environment: production
 
-  staging-build:
-    name: Staging Build
+  staging-deploy:
+    name: Staging Deploy
     if: github.ref == 'refs/heads/staging'
     needs: [check]
     uses: ./.github/workflows/mobile-deploy.yml
