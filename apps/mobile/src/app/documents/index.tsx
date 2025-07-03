@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/react-native';
 import { useMutation } from '@tanstack/react-query';
 import * as FileSystem from 'expo-file-system';
 import { Stack, useRouter } from 'expo-router';
@@ -39,6 +40,13 @@ export default function DocumentsScreen() {
             </View>
           }
         >
+          <Button
+            onPress={() => {
+              Sentry.captureException(new Error('First error'));
+            }}
+          >
+            Try!
+          </Button>
           <DocumentList />
         </Suspense>
       </View>

@@ -18,7 +18,15 @@
         }
       ],
       "expo-localization",
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "mobile",
+          "organization": "imigration"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,

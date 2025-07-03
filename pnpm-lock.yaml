@@ -137,6 +137,9 @@ importers:
       '@repo/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
+      '@sentry/react-native':
+        specifier: ^6.16.1
+        version: 6.16.1(expo@53.0.16(@babel/core@7.27.7)(@expo/metro-runtime@5.0.4(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0)))(graphql@16.8.1)(react-native-webview@13.13.5(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
       '@shopify/react-native-skia':
         specifier: 2.0.0-next.4
         version: 2.0.0-next.4(react-native-reanimated@3.17.5(@babel/core@7.27.7)(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
@@ -314,13 +317,13 @@ importers:
         version: 5.1.1(react-hook-form@7.57.0(react@19.0.0))
       '@pdfme/common':
         specifier: ^5.4.0
-        version: 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@pdfme/converter':
         specifier: ^5.4.0
-        version: 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@pdfme/ui':
         specifier: ^5.4.0
-        version: 5.4.0(@pdfme/common@5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)))(@types/react@19.0.14)(date-fns@4.1.0)(moment@2.30.1)
+        version: 5.4.0(@pdfme/common@5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)))(@types/react@19.0.14)(date-fns@4.1.0)(moment@2.30.1)
       '@radix-ui/react-accordion':
         specifier: ^1.2.11
         version: 1.2.11(@types/react-dom@19.0.6(@types/react@19.0.14))(@types/react@19.0.14)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -2664,6 +2667,111 @@ packages:
 
   '@scena/react-ruler@0.19.0':
     resolution: {integrity: sha512-2OEOjLMOptDxdSuEqID2JAljQuYoeoV09MnLjiBeyzJxoUcVjzyBCPwkMbHRKj2Z3WrwztJAFBF+y6yNNM5Lcw==}
+
+  '@sentry-internal/browser-utils@8.54.0':
+    resolution: {integrity: sha512-DKWCqb4YQosKn6aD45fhKyzhkdG7N6goGFDeyTaJFREJDFVDXiNDsYZu30nJ6BxMM7uQIaARhPAC5BXfoED3pQ==}
+    engines: {node: '>=14.18'}
+
+  '@sentry-internal/feedback@8.54.0':
+    resolution: {integrity: sha512-nQqRacOXoElpE0L0ADxUUII0I3A94niqG9Z4Fmsw6057QvyrV/LvTiMQBop6r5qLjwMqK+T33iR4/NQI5RhsXQ==}
+    engines: {node: '>=14.18'}
+
+  '@sentry-internal/replay-canvas@8.54.0':
+    resolution: {integrity: sha512-K/On3OAUBeq/TV2n+1EvObKC+WMV9npVXpVyJqCCyn8HYMm8FUGzuxeajzm0mlW4wDTPCQor6mK9/IgOquUzCw==}
+    engines: {node: '>=14.18'}
+
+  '@sentry-internal/replay@8.54.0':
+    resolution: {integrity: sha512-8xuBe06IaYIGJec53wUC12tY2q4z2Z0RPS2s1sLtbA00EvK1YDGuXp96IDD+HB9mnDMrQ/jW5f97g9TvPsPQUg==}
+    engines: {node: '>=14.18'}
+
+  '@sentry/babel-plugin-component-annotate@3.5.0':
+    resolution: {integrity: sha512-s2go8w03CDHbF9luFGtBHKJp4cSpsQzNVqgIa9Pfa4wnjipvrK6CxVT4icpLA3YO6kg5u622Yoa5GF3cJdippw==}
+    engines: {node: '>= 14'}
+
+  '@sentry/browser@8.54.0':
+    resolution: {integrity: sha512-BgUtvxFHin0fS0CmJVKTLXXZcke0Av729IVfi+2fJ4COX8HO7/HAP02RKaSQGmL2HmvWYTfNZ7529AnUtrM4Rg==}
+    engines: {node: '>=14.18'}
+
+  '@sentry/cli-darwin@2.46.0':
+    resolution: {integrity: sha512-5Ll+e5KAdIk9OYiZO8aifMBRNWmNyPjSqdjaHlBC1Qfh7pE3b1zyzoHlsUazG0bv0sNrSGea8e7kF5wIO1hvyg==}
+    engines: {node: '>=10'}
+    os: [darwin]
+
+  '@sentry/cli-linux-arm64@2.46.0':
+    resolution: {integrity: sha512-OEJN8yAjI9y5B4telyqzu27Hi3+S4T8VxZCqJz1+z2Mp0Q/MZ622AahVPpcrVq/5bxrnlZR16+lKh8L1QwNFPg==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux, freebsd, android]
+
+  '@sentry/cli-linux-arm@2.46.0':
+    resolution: {integrity: sha512-WRrLNq/TEX/TNJkGqq6Ad0tGyapd5dwlxtsPbVBrIdryuL1mA7VCBoaHBr3kcwJLsgBHFH0lmkMee2ubNZZdkg==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux, freebsd, android]
+
+  '@sentry/cli-linux-i686@2.46.0':
+    resolution: {integrity: sha512-xko3/BVa4LX8EmRxVOCipV+PwfcK5Xs8lP6lgF+7NeuAHMNL4DqF6iV9rrN8gkGUHCUI9RXSve37uuZnFy55+Q==}
+    engines: {node: '>=10'}
+    cpu: [x86, ia32]
+    os: [linux, freebsd, android]
+
+  '@sentry/cli-linux-x64@2.46.0':
+    resolution: {integrity: sha512-hJ1g5UEboYcOuRia96LxjJ0jhnmk8EWLDvlGnXLnYHkwy3ree/L7sNgdp/QsY8Z4j2PGO5f22Va+UDhSjhzlfQ==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux, freebsd, android]
+
+  '@sentry/cli-win32-arm64@2.46.0':
+    resolution: {integrity: sha512-mN7cpPoCv2VExFRGHt+IoK11yx4pM4ADZQGEso5BAUZ5duViXB2WrAXCLd8DrwMnP0OE978a7N8OtzsFqjkbNA==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@sentry/cli-win32-i686@2.46.0':
+    resolution: {integrity: sha512-6F73AUE3lm71BISUO19OmlnkFD5WVe4/wA1YivtLZTc1RU3eUYJLYxhDfaH3P77+ycDppQ2yCgemLRaA4A8mNQ==}
+    engines: {node: '>=10'}
+    cpu: [x86, ia32]
+    os: [win32]
+
+  '@sentry/cli-win32-x64@2.46.0':
+    resolution: {integrity: sha512-yuGVcfepnNL84LGA0GjHzdMIcOzMe0bjPhq/rwPsPN+zu11N+nPR2wV2Bum4U0eQdqYH3iAlMdL5/BEQfuLJww==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@sentry/cli@2.46.0':
+    resolution: {integrity: sha512-nqoPl7UCr446QFkylrsRrUXF51x8Z9dGquyf4jaQU+OzbOJMqclnYEvU6iwbwvaw3tu/2DnoZE/Og+Nq1h63sA==}
+    engines: {node: '>= 10'}
+    hasBin: true
+
+  '@sentry/core@8.54.0':
+    resolution: {integrity: sha512-03bWf+D1j28unOocY/5FDB6bUHtYlm6m6ollVejhg45ZmK9iPjdtxNWbrLsjT1WRym0Tjzowu+A3p+eebYEv0Q==}
+    engines: {node: '>=14.18'}
+
+  '@sentry/react-native@6.16.1':
+    resolution: {integrity: sha512-T172mEcdd2BmMsHjbRIlRgePz46OoUC2MNrciOSBfsxcy1YdWmMKcmVRiwSEi5CQm9077+4B0aHNsmYqOgufng==}
+    hasBin: true
+    peerDependencies:
+      expo: '>=49.0.0'
+      react: '>=17.0.0'
+      react-native: '>=0.65.0'
+    peerDependenciesMeta:
+      expo:
+        optional: true
+
+  '@sentry/react@8.54.0':
+    resolution: {integrity: sha512-42T/fp8snYN19Fy/2P0Mwotu4gcdy+1Lx+uYCNcYP1o7wNGigJ7qb27sW7W34GyCCHjoCCfQgeOqDQsyY8LC9w==}
+    engines: {node: '>=14.18'}
+    peerDependencies:
+      react: ^16.14.0 || 17.x || 18.x || 19.x
+
+  '@sentry/types@8.54.0':
+    resolution: {integrity: sha512-wztdtr7dOXQKi0iRvKc8XJhJ7HaAfOv8lGu0yqFOFwBZucO/SHnu87GOPi8mvrTiy1bentQO5l+zXWAaMvG4uw==}
+    engines: {node: '>=14.18'}
+
+  '@sentry/utils@8.54.0':
+    resolution: {integrity: sha512-JL8UDjrsKxKclTdLXfuHfE7B3KbrAPEYP7tMyN/xiO2vsF6D84fjwYyalO0ZMtuFZE6vpSze8ZOLEh6hLnPYsw==}
+    engines: {node: '>=14.18'}
 
   '@shopify/react-native-skia@2.0.0-next.4':
     resolution: {integrity: sha512-NzvdgryRz6tkKMHgCChCKa3wXfN9TZhlV0/LrfIU/wKLC1uKgGXkoZgNz7Is0wwdhtao1JJJJ81fqHCGHgzk9g==}
@@ -11184,13 +11292,13 @@ snapshots:
     dependencies:
       pako: 1.0.11
 
-  '@pdfme/common@5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+  '@pdfme/common@5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
       '@pdfme/pdf-lib': 1.18.4
       acorn: 8.15.0
-      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       buffer: 6.0.3
-      form-render: 2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      form-render: 2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       zod: 3.25.64
 
   '@pdfme/common@5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(form-render@2.5.3(@types/react@19.1.8)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))':
@@ -11202,9 +11310,9 @@ snapshots:
       form-render: 2.5.3(@types/react@19.1.8)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       zod: 3.25.64
 
-  '@pdfme/converter@5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+  '@pdfme/converter@5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
-      '@pdfme/common': 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+      '@pdfme/common': 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@pdfme/pdf-lib': 1.18.4
       pdfjs-dist: 3.11.174
     optionalDependencies:
@@ -11240,15 +11348,15 @@ snapshots:
       fontkit: 2.0.4
       lucide: 0.507.0
 
-  '@pdfme/ui@5.4.0(@pdfme/common@5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)))(@types/react@19.0.14)(date-fns@4.1.0)(moment@2.30.1)':
+  '@pdfme/ui@5.4.0(@pdfme/common@5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)))(@types/react@19.0.14)(date-fns@4.1.0)(moment@2.30.1)':
     dependencies:
       '@dnd-kit/core': 6.3.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@dnd-kit/sortable': 10.0.0(@dnd-kit/core@6.3.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@16.14.0)
-      '@pdfme/common': 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
-      '@pdfme/converter': 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+      '@pdfme/common': 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+      '@pdfme/converter': 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@scena/react-guides': 0.28.2
-      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      form-render: 2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      form-render: 2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       globrex: 0.1.2
       hotkeys-js: 3.13.11
       lucide-react: 0.508.0(react@16.14.0)
@@ -12040,6 +12148,112 @@ snapshots:
     dependencies:
       '@daybrush/utils': 1.13.0
       framework-utils: 1.1.0
+
+  '@sentry-internal/browser-utils@8.54.0':
+    dependencies:
+      '@sentry/core': 8.54.0
+
+  '@sentry-internal/feedback@8.54.0':
+    dependencies:
+      '@sentry/core': 8.54.0
+
+  '@sentry-internal/replay-canvas@8.54.0':
+    dependencies:
+      '@sentry-internal/replay': 8.54.0
+      '@sentry/core': 8.54.0
+
+  '@sentry-internal/replay@8.54.0':
+    dependencies:
+      '@sentry-internal/browser-utils': 8.54.0
+      '@sentry/core': 8.54.0
+
+  '@sentry/babel-plugin-component-annotate@3.5.0': {}
+
+  '@sentry/browser@8.54.0':
+    dependencies:
+      '@sentry-internal/browser-utils': 8.54.0
+      '@sentry-internal/feedback': 8.54.0
+      '@sentry-internal/replay': 8.54.0
+      '@sentry-internal/replay-canvas': 8.54.0
+      '@sentry/core': 8.54.0
+
+  '@sentry/cli-darwin@2.46.0':
+    optional: true
+
+  '@sentry/cli-linux-arm64@2.46.0':
+    optional: true
+
+  '@sentry/cli-linux-arm@2.46.0':
+    optional: true
+
+  '@sentry/cli-linux-i686@2.46.0':
+    optional: true
+
+  '@sentry/cli-linux-x64@2.46.0':
+    optional: true
+
+  '@sentry/cli-win32-arm64@2.46.0':
+    optional: true
+
+  '@sentry/cli-win32-i686@2.46.0':
+    optional: true
+
+  '@sentry/cli-win32-x64@2.46.0':
+    optional: true
+
+  '@sentry/cli@2.46.0':
+    dependencies:
+      https-proxy-agent: 5.0.1
+      node-fetch: 2.7.0
+      progress: 2.0.3
+      proxy-from-env: 1.1.0
+      which: 2.0.2
+    optionalDependencies:
+      '@sentry/cli-darwin': 2.46.0
+      '@sentry/cli-linux-arm': 2.46.0
+      '@sentry/cli-linux-arm64': 2.46.0
+      '@sentry/cli-linux-i686': 2.46.0
+      '@sentry/cli-linux-x64': 2.46.0
+      '@sentry/cli-win32-arm64': 2.46.0
+      '@sentry/cli-win32-i686': 2.46.0
+      '@sentry/cli-win32-x64': 2.46.0
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+
+  '@sentry/core@8.54.0': {}
+
+  '@sentry/react-native@6.16.1(expo@53.0.16(@babel/core@7.27.7)(@expo/metro-runtime@5.0.4(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0)))(graphql@16.8.1)(react-native-webview@13.13.5(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@sentry/babel-plugin-component-annotate': 3.5.0
+      '@sentry/browser': 8.54.0
+      '@sentry/cli': 2.46.0
+      '@sentry/core': 8.54.0
+      '@sentry/react': 8.54.0(react@19.0.0)
+      '@sentry/types': 8.54.0
+      '@sentry/utils': 8.54.0
+      react: 19.0.0
+      react-native: 0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0)
+    optionalDependencies:
+      expo: 53.0.16(@babel/core@7.27.7)(@expo/metro-runtime@5.0.4(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0)))(graphql@16.8.1)(react-native-webview@13.13.5(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+
+  '@sentry/react@8.54.0(react@19.0.0)':
+    dependencies:
+      '@sentry/browser': 8.54.0
+      '@sentry/core': 8.54.0
+      hoist-non-react-statics: 3.3.2
+      react: 19.0.0
+
+  '@sentry/types@8.54.0':
+    dependencies:
+      '@sentry/core': 8.54.0
+
+  '@sentry/utils@8.54.0':
+    dependencies:
+      '@sentry/core': 8.54.0
 
   '@shopify/react-native-skia@2.0.0-next.4(react-native-reanimated@3.17.5(@babel/core@7.27.7)(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.5(@babel/core@7.27.7)(@types/react@19.0.14)(react@19.0.0))(react@19.0.0)':
     dependencies:
@@ -13105,7 +13319,6 @@ snapshots:
       debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   agent-base@7.1.3: {}
 
@@ -13220,7 +13433,7 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       '@ant-design/colors': 7.2.1
       '@ant-design/cssinjs': 1.23.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -13269,8 +13482,8 @@ snapshots:
       rc-tree-select: 5.27.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       rc-upload: 4.9.2(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       rc-util: 5.44.4(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
       scroll-into-view-if-needed: 3.1.0
       throttle-debounce: 5.0.2
     transitivePeerDependencies:
@@ -15428,11 +15641,11 @@ snapshots:
       cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
-  form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
+  form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       '@ant-design/icons': 4.8.3(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       ahooks: 3.8.5(react@16.14.0)
-      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       async-validator: 3.5.2
       classnames: 2.5.1
       color: 3.2.1
@@ -15441,17 +15654,17 @@ snapshots:
       rc-color-picker: 1.2.6(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
-      virtualizedtableforantd4: 1.3.1(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      virtualizedtableforantd4: 1.3.1(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       zustand: 4.5.7(@types/react@19.0.14)(react@16.14.0)
     transitivePeerDependencies:
       - '@types/react'
       - immer
 
-  form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@ant-design/icons': 4.8.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       ahooks: 3.8.5(react@19.0.0)
-      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       async-validator: 3.5.2
       classnames: 2.5.1
       color: 3.2.1
@@ -15460,7 +15673,7 @@ snapshots:
       rc-color-picker: 1.2.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
-      virtualizedtableforantd4: 1.3.1(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      virtualizedtableforantd4: 1.3.1(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       zustand: 4.5.7(@types/react@19.0.14)(react@19.0.0)
     transitivePeerDependencies:
       - '@types/react'
@@ -15793,7 +16006,6 @@ snapshots:
       debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   https-proxy-agent@7.0.6:
     dependencies:
@@ -20012,15 +20224,15 @@ snapshots:
       - rollup
       - supports-color
 
-  virtualizedtableforantd4@1.3.1(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
+  virtualizedtableforantd4@1.3.1(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
-      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
 
-  virtualizedtableforantd4@1.3.1(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  virtualizedtableforantd4@1.3.1(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      antd: 5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
