@@ -15,7 +15,7 @@ jobs:
   #    name: Production Build
   #    if: github.ref == 'refs/heads/main'
   #    needs: [check]
-  #    uses: ./.github/workflows/mobile-build.yml
+  #    uses: ./.github/workflows/mobile-deploy.yml
   #    secrets: inherit
   #    with:
   #      environment: production
@@ -24,7 +24,7 @@ jobs:
     name: Staging Build
     if: github.ref == 'refs/heads/staging'
     needs: [check]
-    uses: ./.github/workflows/mobile-build.yml
+    uses: ./.github/workflows/mobile-deploy.yml
     secrets: inherit
     with:
       environment: preview
