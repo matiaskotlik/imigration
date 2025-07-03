@@ -42,7 +42,7 @@ jobs:
           --non-interactive
           --platform ios
           --profile ${{ inputs.environment }}
-          --output imigration.ipa
+          --output ${{ github.workspace }}/imigration.ipa
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
       - uses: rnkdsh/action-upload-diawi@v1.5.9
