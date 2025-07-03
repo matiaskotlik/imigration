@@ -9,7 +9,6 @@
     "build:check": "tsc --noEmit",
     "build:ios": "eas build --local --non-interactive --platform ios --output build/app.ipa",
     "clean": "git clean -xdf .cache .expo .turbo dist build android ios node_modules",
-    "deps:check": "expo install --check",
     "dev": "expo start",
     "dev:android": "expo start --android",
     "dev:ios": "expo start --ios",
