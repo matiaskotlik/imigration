@@ -38,7 +38,8 @@
       "bundleIdentifier": "com.kiltok.imigration",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "appleTeamId": "KFXKCQLGM5"
     },
     "android": {
       "adaptiveIcon": {

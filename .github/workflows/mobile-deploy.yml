@@ -54,11 +54,14 @@ jobs:
           echo "artifact-path=$(realpath build/*)" >> $GITHUB_OUTPUT
       - run: ls build/*
       - id: diawi
+        if: inputs.environment == 'preview'
         uses: rnkdsh/action-upload-diawi@v1.5.9
         with:
           token: ${{ secrets.DIAWI_TOKEN }}
           file: ${{ steps.build.outputs.artifact-path }}
-      - run: |
+      - name: Job Summary
+        if: inputs.environment == 'preview'
+        run: |
           echo "## ${{ matrix.name }} App" >> $GITHUB_STEP_SUMMARY
           echo ${{ steps.diawi.outputs.url }} >> $GITHUB_STEP_SUMMARY
           echo ![QR Code](${{ steps.diawi.outputs.qrcode }}) >> $GITHUB_STEP_SUMMARY
