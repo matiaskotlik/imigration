@@ -5,9 +5,9 @@
   "main": "expo-router/entry",
   "scripts": {
     "android": "expo run:android",
-    "build:android": "eas build --local --non-interactive --platform android --output build/app.apk",
+    "build:android": "eas build --local ${CI+--non-interactive} --platform android --output build/app.apk",
     "build:check": "tsc --noEmit",
-    "build:ios": "eas build --local --non-interactive --platform ios --output build/app.ipa",
+    "build:ios": "eas build --local ${CI+--non-interactive} --platform ios --output build/app.ipa",
     "clean": "git clean -xdf .cache .expo .turbo dist build android ios node_modules",
     "dev": "expo start",
     "dev:android": "expo start --android",
