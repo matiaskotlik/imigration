@@ -15,7 +15,6 @@
   "prettier": "@repo/prettier-config",
   "dependencies": {
     "@cantoo/pdf-lib": "^2.4.1",
-    "@dotenvx/dotenvx": "^1.44.2",
     "@hookform/resolvers": "^5.1.1",
     "@pdfme/common": "^5.4.0",
     "@pdfme/converter": "^5.4.0",
