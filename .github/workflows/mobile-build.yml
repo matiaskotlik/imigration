@@ -26,9 +26,17 @@ concurrency:
   group: ${{ inputs.environment }}-mobile-build
 
 jobs:
-  android:
-    name: Android
-    runs-on: ubuntu-latest
+  build:
+    name: Build
+    strategy:
+      matrix:
+        include:
+          - platform: ios
+            os: macos-latest
+          - platform: android
+            os: ubuntu-latest
+
+    runs-on: ${{ matrix.os }}
     environment: ${{ inputs.environment }}
     env:
       EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
@@ -37,43 +45,21 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
       - run: pnpm add --global eas-cli
-      - run: pnpm build:android --profile ${{ inputs.environment }}
+      - id: build
+        run: |
+          pnpm build:${{ matrix.platform }} --profile ${{ inputs.environment }}
+          echo "artifact-path=$(realpath build/*)" >> $GITHUB_OUTPUT
+      - run: ls build/*
       - id: diawi
         uses: rnkdsh/action-upload-diawi@v1.5.9
         with:
           token: ${{ secrets.DIAWI_TOKEN }}
-          file: apps/mobile/build/app.apk
+          file: ${{ steps.build.outputs.artifact-path }}
       - run: |
-          echo '## Uploaded Android Build' >> $GITHUB_STEP_SUMMARY
+          PLATFORM="${{ matrix.platform }}"
+          echo "## ${PLATFORM^} App" >> $GITHUB_STEP_SUMMARY
           echo ${{ steps.diawi.outputs.url }} >> $GITHUB_STEP_SUMMARY
-          echo ``` >> $GITHUB_STEP_SUMMARY
-          echo ${{ steps.diawi.outputs.qrcode }} >> $GITHUB_STEP_SUMMARY
-          echo ``` >> $GITHUB_STEP_SUMMARY
-
-  ios:
-    name: iOS
-    runs-on: macos-latest
-    environment: ${{ inputs.environment }}
-    env:
-      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-
-    steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/setup
-      - run: pnpm add --global eas-cli
-      - run: eas env:pull ${{ inputs.environment }} --non-interactive
-      - run: pnpm build:ios --profile ${{ inputs.environment }}
-      - id: diawi
-        uses: rnkdsh/action-upload-diawi@v1.5.9
-        with:
-          token: ${{ secrets.DIAWI_TOKEN }}
-          file: apps/mobile/build/app.ipa
-      - run: |
-          echo '## Uploaded iOS Build' >> $GITHUB_STEP_SUMMARY
-          echo ${{ steps.diawi.outputs.url }} >> $GITHUB_STEP_SUMMARY
-          echo ``` >> $GITHUB_STEP_SUMMARY
-          echo ${{ steps.diawi.outputs.qrcode }} >> $GITHUB_STEP_SUMMARY
-          echo ``` >> $GITHUB_STEP_SUMMARY
+          echo ![QR Code](${{ steps.diawi.outputs.qrcode }}) >> $GITHUB_STEP_SUMMARY
 
   update:
     name: Update
