@@ -34,9 +34,9 @@ jobs:
           - platform: ios
             name: iOS
             os: macos-latest
-          - platform: android
-            name: Android
-            os: ubuntu-latest
+    #          - platform: android
+    #            name: Android
+    #            os: ubuntu-latest
 
     name: Build ${{ matrix.name }}
     runs-on: ${{ matrix.os }}
@@ -52,7 +52,6 @@ jobs:
         run: |
           pnpm build:${{ matrix.platform }} --profile ${{ inputs.environment }}
           echo "artifact-path=$(realpath build/*)" >> $GITHUB_OUTPUT
-      - run: ls build/*
       - id: diawi
         if: inputs.environment == 'preview'
         uses: rnkdsh/action-upload-diawi@v1.5.9
