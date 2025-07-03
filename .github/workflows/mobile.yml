@@ -23,7 +23,7 @@ jobs:
   staging-build:
     name: Staging Build
     if: github.ref == 'refs/heads/staging'
-    #    needs: [check]
+    needs: [check]
     uses: ./.github/workflows/mobile-build.yml
     secrets: inherit
     with:
