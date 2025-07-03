@@ -27,7 +27,6 @@ concurrency:
 
 jobs:
   build:
-    name: Build
     strategy:
       matrix:
         include:
@@ -36,6 +35,7 @@ jobs:
           - platform: android
             os: ubuntu-latest
 
+    name: Build ${{ matrix.platform }}
     runs-on: ${{ matrix.os }}
     environment: ${{ inputs.environment }}
     env:
