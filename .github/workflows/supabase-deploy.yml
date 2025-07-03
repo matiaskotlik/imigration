@@ -18,8 +18,8 @@ concurrency:
   group: ${{ inputs.environment }}-supabase-deploy
 
 jobs:
-  migrations:
-    name: Migrations
+  push-migrations:
+    name: Push Migrations
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
 
@@ -31,8 +31,8 @@ jobs:
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
 
-  config:
-    name: Config
+  push-config:
+    name: Push Config
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
 

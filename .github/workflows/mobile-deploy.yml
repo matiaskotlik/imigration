@@ -23,11 +23,12 @@ defaults:
 
 concurrency:
   cancel-in-progress: true
-  group: ${{ inputs.environment }}-mobile-build
+  group: ${{ inputs.environment }}-mobile-deploy
 
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - platform: ios
@@ -62,8 +63,8 @@ jobs:
           echo ${{ steps.diawi.outputs.url }} >> $GITHUB_STEP_SUMMARY
           echo ![QR Code](${{ steps.diawi.outputs.qrcode }}) >> $GITHUB_STEP_SUMMARY
 
-  update:
-    name: Update
+  push-update:
+    name: Push Update
     runs-on: macos-latest
     environment: ${{ inputs.environment }}
     env:

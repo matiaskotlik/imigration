@@ -26,8 +26,8 @@ concurrency:
   group: ${{ inputs.environment }}-platform-deploy
 
 jobs:
-  vercel:
-    name: Vercel
+  build-vercel:
+    name: Build Vercel
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
 
