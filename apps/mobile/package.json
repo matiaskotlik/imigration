@@ -5,8 +5,10 @@
   "main": "expo-router/entry",
   "scripts": {
     "android": "expo run:android",
+    "build:android": "pnpx eas-cli build --local --non-interactive --platform android --output build/app.apk",
     "build:check": "tsc --noEmit",
-    "clean": "git clean -xdf .cache .expo .turbo dist android ios node_modules",
+    "build:ios": "pnpx eas-cli build --local --non-interactive --platform ios --output build/app.ipa",
+    "clean": "git clean -xdf .cache .expo .turbo dist build android ios node_modules",
     "deps:check": "expo install --check",
     "dev": "expo start",
     "dev:android": "expo start --android",

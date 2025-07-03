@@ -26,6 +26,26 @@ concurrency:
   group: ${{ inputs.environment }}-mobile-build
 
 jobs:
+  android:
+    name: Android
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm build:android --profile ${{ inputs.environment }}
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      - id: diawi
+        uses: rnkdsh/action-upload-diawi@v1.5.9
+        with:
+          token: ${{ secrets.DIAWI_TOKEN }}
+          file: apps/mobile/build/app.apk
+      - run: |
+          echo ${{ steps.diawi.outputs.url }}
+          echo ${{ steps.diawi.outputs.qrcode }}
+
   ios:
     name: iOS
     runs-on: macos-latest
@@ -34,21 +54,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: pnpm add --global eas-cli
-      - run: >
-          NODE_OPTIONS="--openssl-legacy-provider --max_old_space_size=4096"
-          eas build
-          --local
-          --non-interactive
-          --platform ios
-          --profile ${{ inputs.environment }}
-          --output ${{ github.workspace }}/imigration.ipa
+      - run: pnpm build:ios --profile ${{ inputs.environment }}
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-      - uses: rnkdsh/action-upload-diawi@v1.5.9
+      - id: diawi
+        uses: rnkdsh/action-upload-diawi@v1.5.9
         with:
           token: ${{ secrets.DIAWI_TOKEN }}
-          file: imigration.ipa
+          file: apps/mobile/build/app.ipa
+      - run: |
+          echo ${{ steps.diawi.outputs.url }}
+          echo ${{ steps.diawi.outputs.qrcode }}
 
   update:
     name: Update
