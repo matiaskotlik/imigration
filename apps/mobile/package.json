@@ -33,7 +33,7 @@
     "@repo/supabase": "workspace:*",
     "@repo/tsconfig": "workspace:*",
     "@sentry/react-native": "~6.14.0",
-    "@shopify/react-native-skia": "2.0.0-next.4",
+    "@shopify/react-native-skia": "2.1.1",
     "@t3-oss/env-core": "^0.13.8",
     "@tanstack/react-query": "catalog:",
     "@trpc/client": "catalog:",
