@@ -20,7 +20,7 @@
     "@pdfme/generator": "^5.4.0",
     "@pdfme/schemas": "^5.4.0",
     "signature_pad": "^5.0.9",
-    "zod": "^3.25.64"
+    "zod": "^3.25.74"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
