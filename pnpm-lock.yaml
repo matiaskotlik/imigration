@@ -314,7 +314,7 @@ importers:
         version: 2.4.1
       '@hookform/resolvers':
         specifier: ^5.1.1
-        version: 5.1.1(react-hook-form@7.57.0(react@19.0.0))
+        version: 5.1.1(react-hook-form@7.60.0(react@19.0.0))
       '@pdfme/common':
         specifier: ^5.4.0
         version: 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
@@ -436,8 +436,8 @@ importers:
         specifier: ^6.0.0
         version: 6.0.0(react@19.0.0)
       react-hook-form:
-        specifier: ^7.57.0
-        version: 7.57.0(react@19.0.0)
+        specifier: ^7.60.0
+        version: 7.60.0(react@19.0.0)
       react-twc:
         specifier: ^1.4.2
         version: 1.4.2(@types/react@19.0.14)(react@19.0.0)
@@ -654,7 +654,7 @@ importers:
         version: 9.29.0
       '@next/eslint-plugin-next':
         specifier: latest
-        version: 15.3.4
+        version: 15.3.5
       '@typescript-eslint/parser':
         specifier: latest
         version: 8.35.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
@@ -663,7 +663,7 @@ importers:
         version: 9.2.0(eslint-plugin-import-x@4.15.2(@typescript-eslint/utils@8.35.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.29.0(jiti@2.4.2)))(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
       eslint-config-next:
         specifier: latest
-        version: 15.3.4(eslint-plugin-import-x@4.15.2(@typescript-eslint/utils@8.35.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.29.0(jiti@2.4.2)))(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
+        version: 15.3.5(eslint-plugin-import-x@4.15.2(@typescript-eslint/utils@8.35.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.29.0(jiti@2.4.2)))(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
       eslint-config-prettier:
         specifier: latest
         version: 10.1.5(eslint@9.29.0(jiti@2.4.2))
@@ -687,7 +687,7 @@ importers:
         version: 5.1.0(eslint@9.29.0(jiti@2.4.2))
       eslint-plugin-n:
         specifier: latest
-        version: 17.20.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
+        version: 17.21.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
       eslint-plugin-perfectionist:
         specifier: latest
         version: 4.15.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
@@ -1905,8 +1905,8 @@ packages:
   '@next/env@15.3.3':
     resolution: {integrity: sha512-OdiMrzCl2Xi0VTjiQQUK0Xh7bJHnOuET2s+3V+Y40WJBAXrJeGA3f+I8MZJ/YQ3mVGi5XGR1L66oFlgqXhQ4Vw==}
 
-  '@next/eslint-plugin-next@15.3.4':
-    resolution: {integrity: sha512-lBxYdj7TI8phbJcLSAqDt57nIcobEign5NYIKCiy0hXQhrUbTqLqOaSDi568U6vFg4hJfBdZYsG4iP/uKhCqgg==}
+  '@next/eslint-plugin-next@15.3.5':
+    resolution: {integrity: sha512-BZwWPGfp9po/rAnJcwUBaM+yT/+yTWIkWdyDwc74G9jcfTrNrmsHe+hXHljV066YNdVs8cxROxX5IgMQGX190w==}
 
   '@next/swc-darwin-arm64@15.3.3':
     resolution: {integrity: sha512-WRJERLuH+O3oYB4yZNVahSVFmtxRNjNF1I1c34tYMoJb0Pve+7/RaLAJJizyYiFhjYNGHRAE1Ri2Fd23zgDqhg==}
@@ -4905,8 +4905,8 @@ packages:
     peerDependencies:
       eslint: '>=8.10'
 
-  eslint-config-next@15.3.4:
-    resolution: {integrity: sha512-WqeumCq57QcTP2lYlV6BRUySfGiBYEXlQ1L0mQ+u4N4X4ZhUVSSQ52WtjqHv60pJ6dD7jn+YZc0d1/ZSsxccvg==}
+  eslint-config-next@15.3.5:
+    resolution: {integrity: sha512-oQdvnIgP68wh2RlR3MdQpvaJ94R6qEFl+lnu8ZKxPj5fsAHrSF/HlAOZcsimLw3DT6bnEQIUdbZC2Ab6sWyptg==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0 || ^9.0.0
       typescript: '>=3.3.1'
@@ -5045,8 +5045,8 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
-  eslint-plugin-n@17.20.0:
-    resolution: {integrity: sha512-IRSoatgB/NQJZG5EeTbv/iAx1byOGdbbyhQrNvWdCfTnmPxUT0ao9/eGOeG7ljD8wJBsxwE8f6tES5Db0FRKEw==}
+  eslint-plugin-n@17.21.0:
+    resolution: {integrity: sha512-1+iZ8We4ZlwVMtb/DcHG3y5/bZOdazIpa/4TySo22MLKdwrLcfrX0hbadnCvykSQCCmkAnWmIP8jZVb2AAq29A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
@@ -7872,8 +7872,8 @@ packages:
     peerDependencies:
       react: '>=17.0.0'
 
-  react-hook-form@7.57.0:
-    resolution: {integrity: sha512-RbEks3+cbvTP84l/VXGUZ+JMrKOS8ykQCRYdm5aYsxnDquL0vspsyNhGRO7pcH6hsZqWlPOjLye7rJqdtdAmlg==}
+  react-hook-form@7.60.0:
+    resolution: {integrity: sha512-SBrYOvMbDB7cV8ZfNpaiLcgjH/a1c7aK0lK+aNigpf4xWLO8q+o4tcvVurv3c4EOyzn/3dCsYt4GKD42VvJ/+A==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -10469,7 +10469,7 @@ snapshots:
       react-dom: 16.14.0(react@16.14.0)
       tslib: 2.8.1
 
-  '@dnd-kit/sortable@10.0.0(@dnd-kit/core@6.3.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@16.14.0)':
+  '@dnd-kit/sortable@10.0.0(@dnd-kit/core@6.3.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react@16.14.0)':
     dependencies:
       '@dnd-kit/core': 6.3.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@dnd-kit/utilities': 3.2.2(react@16.14.0)
@@ -10885,10 +10885,10 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
-  '@hookform/resolvers@5.1.1(react-hook-form@7.57.0(react@19.0.0))':
+  '@hookform/resolvers@5.1.1(react-hook-form@7.60.0(react@19.0.0))':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.57.0(react@19.0.0)
+      react-hook-form: 7.60.0(react@19.0.0)
 
   '@humanfs/core@0.19.1': {}
 
@@ -11138,7 +11138,7 @@ snapshots:
 
   '@next/env@15.3.3': {}
 
-  '@next/eslint-plugin-next@15.3.4':
+  '@next/eslint-plugin-next@15.3.5':
     dependencies:
       fast-glob: 3.3.1
 
@@ -11255,7 +11255,7 @@ snapshots:
   '@pdfme/ui@5.4.0(@pdfme/common@5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)))(@types/react@19.0.14)(date-fns@4.1.0)(moment@2.30.1)':
     dependencies:
       '@dnd-kit/core': 6.3.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
-      '@dnd-kit/sortable': 10.0.0(@dnd-kit/core@6.3.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@16.14.0)
+      '@dnd-kit/sortable': 10.0.0(@dnd-kit/core@6.3.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react@16.14.0)
       '@pdfme/common': 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@pdfme/converter': 5.4.0(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(form-render@2.5.3(@types/react@19.0.14)(antd@5.26.0(date-fns@4.1.0)(moment@2.30.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@scena/react-guides': 0.28.2
@@ -14697,9 +14697,9 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-config-next@15.3.4(eslint-plugin-import-x@4.15.2(@typescript-eslint/utils@8.35.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.29.0(jiti@2.4.2)))(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3):
+  eslint-config-next@15.3.5(eslint-plugin-import-x@4.15.2(@typescript-eslint/utils@8.35.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(eslint-import-resolver-node@0.3.9)(eslint@9.29.0(jiti@2.4.2)))(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3):
     dependencies:
-      '@next/eslint-plugin-next': 15.3.4
+      '@next/eslint-plugin-next': 15.3.5
       '@rushstack/eslint-patch': 1.11.0
       '@typescript-eslint/eslint-plugin': 8.34.0(@typescript-eslint/parser@8.35.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
       '@typescript-eslint/parser': 8.35.1(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
@@ -14950,10 +14950,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-n@17.20.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3):
+  eslint-plugin-n@17.21.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3):
     dependencies:
       '@eslint-community/eslint-utils': 4.7.0(eslint@9.29.0(jiti@2.4.2))
-      '@typescript-eslint/utils': 8.34.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3)
       enhanced-resolve: 5.18.1
       eslint: 9.29.0(jiti@2.4.2)
       eslint-plugin-es-x: 7.8.0(eslint@9.29.0(jiti@2.4.2))
@@ -14964,7 +14963,6 @@ snapshots:
       semver: 7.7.2
       ts-declaration-location: 1.0.7(typescript@5.8.3)
     transitivePeerDependencies:
-      - supports-color
       - typescript
 
   eslint-plugin-perfectionist@4.15.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.8.3):
@@ -18503,7 +18501,7 @@ snapshots:
     dependencies:
       react: 19.0.0
 
-  react-hook-form@7.57.0(react@19.0.0):
+  react-hook-form@7.60.0(react@19.0.0):
     dependencies:
       react: 19.0.0
 
